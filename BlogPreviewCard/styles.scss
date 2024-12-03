@@ -1,0 +1,69 @@
+* {
+  font-family: 'Figtree', sans-serif;
+}
+
+p {
+  font-size: 16px;
+}
+
+label {
+  padding: 2px 15px;
+  border-radius: 5%;
+}
+.margin-10 {
+  margin-bottom: 10px;
+}
+.margin-20 {
+  margin-bottom: 20px;
+}
+
+.bg-1 {
+  background-color: rgb(245, 208, 78);
+}
+
+.bg-2 {
+  background-color: white;
+}
+
+.gray-500 {
+  font-weight: 500;
+  color: hsl(0, 0%, 42%);
+}
+
+.gray-950 {
+  font-weight: 950;
+  color: hsl(0, 0%, 7%);
+}
+
+.yellow-950 {
+  font-weight: 950;
+  color: hsl(47, 88%, 63%);
+}
+
+.container-fluid {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.qrcode-box {
+  width: 380px;
+  height: 520px;
+  padding: 20px;
+  border-radius: 5%;
+  border: 1px solid black;
+  box-shadow: 10px 10px 0px black;
+}
+
+.thumbnail {
+  border: none;
+}
+.img-poster {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.img-avatar {
+  width: 40px;
+}
+
