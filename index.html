@@ -1,17 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GitHub Pages - Multi-Page Site</title>
+    <!-- Theme Made By www.w3schools.com - No Copyright -->
+    <title>Homepage For Projects</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+      main {
+        height: 100vh;
+      }
+      .bg-1 {
+        background-color: rgb(3, 12, 38);
+      }
+      .bg-2 {
+        background-color: rgb(39, 65, 140);
+      }
+      .thumbnail {
+        border: 0px solid transparent;
+        padding: 20px;
+        margin-top: 50px;
+      }
+      .thumbnail img {
+        border-radius: 3%;
+        margin-bottom: 30px;
+      }
+      h4 {
+        font-family: "Montserrat", sans-serif;
+        color: white;
+        margin-bottom: 20px;
+      }
+      .btn {
+        font-family: "Lato", sans-serif;
+        color: rgb(39, 65, 140);
+      }
+    </style>
   </head>
   <body>
-    <h1>Welcome to My GitHub Pages Site</h1>
-
-    <p>This is the home page for the project. You can navigate to different content from here:</p>
-
-    <ul>
-      <li><a href="BlogPreviewCard/index.html">Blog Preview Card</a></li>
-    </ul>
+    <main class="container-fluid bg-1">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-sm-4">
+            <div class="thumbnail bg-2">
+              <img src="https://i.imgur.com/ArsREAA.jpeg" alt="BlogPreviewCard" />
+              <h4><strong>BlogPreviewCard</strong></h4>
+              <button class="btn btn-default" href="BlogPreviewCard/index.html">View More</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
   </body>
 </html>
