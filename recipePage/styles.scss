@@ -1,7 +1,10 @@
 $color-1: rgb(67, 65, 64);
 
+html,
 body {
-  background-color: white;
+  background-color: rgb(243, 229, 216);
+  margin: 0;
+  padding: 0;
 }
 
 p {
@@ -101,6 +104,7 @@ ol {
 
 .container-fluid {
   height: 100%;
+  min-height: 100vh;
   padding: 20px;
   display: flex;
   justify-content: center;
