@@ -1,136 +1,131 @@
 $color-1: rgb(67, 65, 64);
+$very-darkblue: hsl(212, 21%, 14%);
+$dark-grayisblue: hsl(228, 12%, 48%);
+$dark-cyan: hsl(158, 36%, 37%);
+$cream: hsl(30, 38%, 92%);
+$deep-green: rgb(26, 64, 49);
 
 html,
 body {
-  background-color: rgb(243, 229, 216);
-  margin: 0;
-  padding: 0;
+  background-color: $cream;
+  color: black;
+  font-size: 10px;
 }
-
 p {
-  font-size: 16px;
-  font-family: "Outfit", sans-serif;
-  color: $color-1;
+  color: $dark-grayisblue;
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 1.4rem;
+}
+h4 {
+  font-family: "Fraunces", sans-serif;
+  font-weight: 700;
+  font-size: 3.5rem;
 }
 
-h3 {
-  margin-bottom: 30px;
-  color: hsl(332, 51%, 32%);
-  font-family: "Young Serif", sans-serif;
-}
-
-.table th,
-.table td {
-  padding-left: 30px !important;
-  padding-right: 30px !important;
-}
-
-th,
-td {
-  font-size: 16px;
-  font-weight: 500;
-  color: $color-1;
-}
-
-.no-top-border {
-  border-top: none !important;
-}
-
-th:nth-child(2),
-td:nth-child(2) {
-  color: hsl(332, 51%, 32%);
-  font-size: 16px;
-}
-
-hr {
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
-
-li {
-  font-size: 15px;
-  color: $color-1;
-}
-
-ul {
-  list-style-type: none;
-  padding-left: 5px;
-  li::before {
-    content: "\2022"; /* Unicode 小圆点 */
-    font-size: 16px; /* 设置小圆点的大小 */
-    margin-right: 20px; /* 设置点与文本之间的间距 */
-  }
-  li > span {
-    color: rgb(83, 73, 71);
-  }
-}
-
-ol {
-  list-style-type: decimal; /* 使用默认数字序号 */
-  padding-left: 15px; /* 去除默认的内边距 */
-  li {
-    padding-left: 20px; /* 给整个li项增加左边距，确保每行文本都有间距 */
-    margin-bottom: 12px; /* 给li项之间增加间距 */
-  }
-  li::marker {
-    color: hsl(332, 51%, 32%);
-    font-size: 16px;
-  }
-}
-
-.bold {
-  font-weight: 600;
+.sub-title {
+  letter-spacing: 3px;
 }
 
 .margin-10 {
   margin-bottom: 10px;
 }
-
 .margin-20 {
   margin-bottom: 20px;
 }
-
 .margin-30 {
   margin-bottom: 30px;
 }
-
-.bg-1 {
-  background-color: rgb(243, 229, 216);
+.margin-50 {
+  margin-bottom: 50px;
 }
 
-.bg-2 {
-  background-color: rgb(255, 255, 255);
+.btn {
+  width: 90%;
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto;
+  background-color: $dark-cyan;
+  color: white;
+  font-size: clamp(1rem, 0.8vw + 1rem, 1.4rem);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  border: 0px solid transparent;
+  cursor: pointer;
+  &:hover {
+    background-color: $deep-green;
+    color: white;
+  }
 }
 
-.container-fluid {
-  height: 100%;
-  min-height: 100vh;
-  padding: 20px;
+.new-price {
+  color: $dark-cyan;
+  font-family: "Fraunces", sans-serif;
+  font-weight: 700;
+  margin-right: 20px;
+  display: inline-block;
+}
+
+.old-price {
+  display: inline-block;
+  text-decoration: line-through;
+  border-radius: 10px !important;
+}
+
+main {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
+  height: 100vh; /* 父容器占满整个视口高度 */
 }
 
-.recipe-box {
-  width: 740px;
-  padding: 35px;
-  border-radius: 20px;
+#a {
+  background-color: white;
+  width: 600px;
+  height: 450px;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between; /* 使两个子元素水平排列 */
+  align-items: center; /* 使子元素在垂直方向上高度相等 */
+}
+
+#a1,
+#a2 {
+  width: 300px;
+  height: 100%; /* 让子元素高度相等 */
+}
+
+#a1 {
   img {
     width: 100%;
-    border-radius: 10px;
   }
 }
 
-.prepare-time-box {
-  background-color: rgb(255, 247, 252);
-  padding: 20px;
-  li::before {
-    color: rgb(118, 55, 79);
-  }
+#a2 {
+  box-sizing: border-box;
+  padding: 30px;
 }
 
-.ingredients-box {
-  li::before {
-    color: hsl(332, 51%, 32%);
+@media (max-width: 768px) {
+  h4 {
+    font-size: 3rem;
+  }
+  #a {
+    width: 90%;
+    flex-direction: column; /* 当屏幕宽度小于768px时，子元素垂直排列 */
+    justify-content: center; /* 确保子元素在垂直方向上居中 */
+    align-items: center; /* 子元素水平居中 */
+    height: auto; /* 让父容器高度自动调整 */
+    margin: 20px auto; /* 让父容器水平居中 */
+  }
+  #a1,
+  #a2 {
+    width: 100%; /* 子元素宽度占满父容器 */
+  }
+
+  #a2 {
+    padding: 20px; /* 减少内边距，避免布局拥挤 */
   }
 }
