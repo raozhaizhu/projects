@@ -100,7 +100,8 @@ ol {
 }
 
 .container-fluid {
-  height: 100vh;
+  height: 100%;
+  padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -127,10 +128,5 @@ ol {
 .ingredients-box {
   li::before {
     color: hsl(332, 51%, 32%);
-  }
-}
-
-.instructions-box {
-  li::before {
   }
 }
