@@ -34,10 +34,35 @@
         font-family: "Montserrat", sans-serif;
         color: white;
         margin-bottom: 20px;
+        letter-spacing: 1px;
       }
       .btn {
+        padding: 10px 20px;
         font-family: "Lato", sans-serif;
-        color: rgb(39, 65, 140);
+        font-weight: bold;
+        border: 0px solid transparent;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .btn:hover {
+        background-color: rgb(4, 191, 104);
+        color: rgb(3, 12, 38);
+        transform: translateY(-10px) rotate(10deg); /* 向上移动并旋转 */
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        animation: rotateAnimation 0.5s ease; /* 添加旋转动画 */
+      }
+
+      @keyframes rotateAnimation {
+        0% {
+          transform: translateY(-10px) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-10px) rotate(20deg);
+        }
+        100% {
+          transform: translateY(-10px) rotate(0deg);
+        }
       }
     </style>
   </head>
