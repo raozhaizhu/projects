@@ -19,6 +19,7 @@
       .bg-2 {
         background-color: rgb(39, 65, 140);
       }
+
       .thumbnail {
         border: 0px solid transparent;
         padding: 20px;
@@ -48,20 +49,20 @@
       .btn:hover {
         background-color: rgb(4, 191, 104);
         color: rgb(3, 12, 38);
-        transform: translateY(-10px) rotate(10deg); /* 向上移动并旋转 */
+        transform: scale(1.1); /* 放大按钮 */
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
         animation: rotateAnimation 0.5s ease; /* 添加旋转动画 */
       }
 
       @keyframes rotateAnimation {
         0% {
-          transform: translateY(-10px) rotate(0deg);
+          transform: rotate(0deg);
         }
         50% {
-          transform: translateY(-10px) rotate(20deg);
+          transform: rotate(20deg);
         }
         100% {
-          transform: translateY(-10px) rotate(0deg);
+          transform: rotate(0deg);
         }
       }
     </style>

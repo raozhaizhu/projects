@@ -1,0 +1,136 @@
+$color-1: rgb(67, 65, 64);
+
+html,
+body {
+  background-color: rgb(243, 229, 216);
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  font-size: 16px;
+  font-family: "Outfit", sans-serif;
+  color: $color-1;
+}
+
+h3 {
+  margin-bottom: 30px;
+  color: hsl(332, 51%, 32%);
+  font-family: "Young Serif", sans-serif;
+}
+
+.table th,
+.table td {
+  padding-left: 30px !important;
+  padding-right: 30px !important;
+}
+
+th,
+td {
+  font-size: 16px;
+  font-weight: 500;
+  color: $color-1;
+}
+
+.no-top-border {
+  border-top: none !important;
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+  color: hsl(332, 51%, 32%);
+  font-size: 16px;
+}
+
+hr {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+li {
+  font-size: 15px;
+  color: $color-1;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 5px;
+  li::before {
+    content: "\2022"; /* Unicode 小圆点 */
+    font-size: 16px; /* 设置小圆点的大小 */
+    margin-right: 20px; /* 设置点与文本之间的间距 */
+  }
+  li > span {
+    color: rgb(83, 73, 71);
+  }
+}
+
+ol {
+  list-style-type: decimal; /* 使用默认数字序号 */
+  padding-left: 15px; /* 去除默认的内边距 */
+  li {
+    padding-left: 20px; /* 给整个li项增加左边距，确保每行文本都有间距 */
+    margin-bottom: 12px; /* 给li项之间增加间距 */
+  }
+  li::marker {
+    color: hsl(332, 51%, 32%);
+    font-size: 16px;
+  }
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.margin-10 {
+  margin-bottom: 10px;
+}
+
+.margin-20 {
+  margin-bottom: 20px;
+}
+
+.margin-30 {
+  margin-bottom: 30px;
+}
+
+.bg-1 {
+  background-color: rgb(243, 229, 216);
+}
+
+.bg-2 {
+  background-color: rgb(255, 255, 255);
+}
+
+.container-fluid {
+  height: 100%;
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.recipe-box {
+  width: 740px;
+  padding: 35px;
+  border-radius: 20px;
+  img {
+    width: 100%;
+    border-radius: 10px;
+  }
+}
+
+.prepare-time-box {
+  background-color: rgb(255, 247, 252);
+  padding: 20px;
+  li::before {
+    color: rgb(118, 55, 79);
+  }
+}
+
+.ingredients-box {
+  li::before {
+    color: hsl(332, 51%, 32%);
+  }
+}
