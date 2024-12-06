@@ -1,16 +1,12 @@
 // colors styles
-$Red: rgb(255, 90, 56);
-$Cyan: rgb(0, 148, 150);
-$Orange: rgb(255, 124, 27);
-$Blue: rgb(53, 84, 255);
-$VeryDarkBlue: rgb(38, 45, 56);
-$GrayishBlue: rgb(131, 141, 153);
-$VeryLightGray: rgb(249, 249, 249);
 $colors: (
-  cyan: $Cyan,
-  red: $Red,
-  orange: $Orange,
-  blue: $Blue,
+  red: rgb(255, 90, 56),
+  cyan: rgb(0, 148, 150),
+  orange: rgb(255, 124, 27),
+  blue: rgb(53, 84, 255),
+  very-dark-blue: rgb(38, 45, 56),
+  grayish-blue: rgb(131, 141, 153),
+  very-light-gray: rgb(249, 249, 249),
 );
 // font styles
 $SansSerif-Poppins: "Poppins", sans-serif;
@@ -32,6 +28,11 @@ header {
 .card {
   border-radius: 2% !important;
 }
+.project-card {
+  width: 350px;
+  height: 250px;
+  padding: 30px;
+}
 @each $name, $color in $colors {
   ##{$name}-card {
     border-top: 4px solid rgba($color, 0.7);
@@ -41,11 +42,6 @@ header {
 // spacing styles
 .gap-2rem {
   gap: 2rem;
-}
-.project-card {
-  width: 350px;
-  height: 250px;
-  padding: 30px;
 }
 // text&img styles
 .description {
@@ -57,7 +53,6 @@ header {
   height: 4rem;
 }
 // RWD styles
-
 @media (max-width: 1200px) {
   main {
     flex-direction: column;
