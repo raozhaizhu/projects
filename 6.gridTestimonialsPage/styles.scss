@@ -1,32 +1,124 @@
-// colors styles
-$bg-1: rgb(237, 242, 248);
-$moderate-violet: rgb(89, 52, 139);
-$very-dark-grayish-blue: rgb(48, 54, 85);
-$very-dark-blackish-blue: rgb(29, 37, 47);
-$light-gray: rgb(207, 207, 207);
-$light-grayish-blue: rgb(209, 221, 233);
-
-// font styles
-$SansSerif-Poppins: 'Poppins', sans-serif;
 // global styles
 * {
-  font-family: $SansSerif-Poppins;
   box-sizing: border-box;
   margin: 0;
   font-size: 13px;
 }
 body {
-  background-color: $bg-1;
+  background-color: rgb(237, 242, 248);
 }
-// container styles
+h1 {
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  color: white;
+  font-weight: 600;
+  font-size: 1.6rem;
+}
+p {
+  margin: 0;
+}
+.p-white {
+  color: white;
+}
+.p-light-grey {
+  color: hsl(0, 0%, 81%);
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  font-weight: 500;
+}
+.p-light-grey-opacity {
+  color: hsl(0, 0%, 81%, 0.5);
+  font-family: 'Barlow Semi Condensed', sans-serif;
+}
+.p-light-grey-opacityplus {
+  color: hsl(0, 0%, 81%, 0.7);
+}
+.p-grayish-dark-blue {
+  color: hsl(219, 29%, 14%);
+}
+.p-grayish-blue {
+  color: hsl(217, 19%, 35%);
+}
+.p-grayish-blue-opacity {
+  color: hsl(217, 19%, 35%, 0.5);
+}
+.p-grayish-blue-opacityplus {
+  color: hsl(217, 19%, 35%, 0.7);
+}
 
-// spacing styles
+/* 主容器 */
+.testimonial-main {
+  height: 100vh;
 
-// text&img styles
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
 
-// RWD styles
-@media (max-width: 768px) {
-  main {
+/* 卡片容器 */
+.testimonial-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  width: 66rem;
+}
+
+/* 单个卡片的基础样式 */
+.testimonial-card {
+  border-radius: 1rem; /* 使用圆角边框 */
+  height: 22rem;
+  padding: 2rem;
+}
+
+/* 特定卡片样式 */
+.card-1 {
+  background-color: rgb(115, 63, 200);
+  width: 42rem; /* 调整宽度 */
+}
+
+.card-2 {
+  background-color: rgb(73, 85, 107);
+  width: 20rem;
+}
+
+.card-3 {
+  background-color: rgb(255, 255, 255);
+  width: 20rem;
+}
+
+.card-4 {
+  background-color: rgb(24, 32, 45);
+  width: 42rem; /* 调整宽度 */
+}
+
+.card-5 {
+  background-color: rgb(255, 255, 255);
+  width: 20rem;
+  height: 46rem;
+}
+
+@media (max-width: 1200px) {
+  .testimonial-main {
+    width: 90;
+    height: auto;
     flex-direction: column;
+    flex-wrap: wrap;
+    margin: 2rem auto;
+  }
+  .testimonial-container {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  .testimonial-card {
+    width: 90%;
+    height: auto;
+  }
+
+  .card-5 {
+    margin-top: 1rem;
   }
 }
+
