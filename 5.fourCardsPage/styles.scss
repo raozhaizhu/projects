@@ -14,11 +14,16 @@ $SansSerif-Poppins: "Poppins", sans-serif;
 * {
   font-size: 15px;
   font-family: $SansSerif-Poppins;
-  background-color: white;
   box-sizing: border-box;
   margin: 0;
 }
-h5 {
+
+body {
+  background-color: map-get($colors, very-light-gray);
+}
+
+h2 {
+  font-size: 1.25rem;
   font-weight: 700;
 }
 header {
@@ -47,7 +52,7 @@ header {
 }
 // text&img styles
 .description {
-  color: $GrayishBlue;
+  color: map-get($colors, GrayishBlue);
   white-space: pre-line;
 }
 .icon {

@@ -1,12 +1,16 @@
 * {
   font-size: 15px;
   font-family: "Poppins", sans-serif;
-  background-color: white;
   box-sizing: border-box;
   margin: 0;
 }
 
-h5 {
+body {
+  background-color: rgb(249, 249, 249);
+}
+
+h2 {
+  font-size: 1.25rem;
   font-weight: 700;
 }
 
@@ -18,14 +22,21 @@ header {
   border-radius: 2% !important;
 }
 
-#cyan-card {
-  border-top: 4px solid rgba(0, 148, 150, 0.7);
-  box-shadow: 0 4px 8px rgba(0, 148, 150, 0.2) !important;
+.project-card {
+  width: 30vw;
+  max-width: 350px;
+  height: 250px;
+  padding: 30px;
 }
 
 #red-card {
   border-top: 4px solid rgba(255, 90, 56, 0.7);
   box-shadow: 0 4px 8px rgba(255, 90, 56, 0.2) !important;
+}
+
+#cyan-card {
+  border-top: 4px solid rgba(0, 148, 150, 0.7);
+  box-shadow: 0 4px 8px rgba(0, 148, 150, 0.2) !important;
 }
 
 #orange-card {
@@ -38,20 +49,27 @@ header {
   box-shadow: 0 4px 8px rgba(53, 84, 255, 0.2) !important;
 }
 
+#very-dark-blue-card {
+  border-top: 4px solid rgba(38, 45, 56, 0.7);
+  box-shadow: 0 4px 8px rgba(38, 45, 56, 0.2) !important;
+}
+
+#grayish-blue-card {
+  border-top: 4px solid rgba(131, 141, 153, 0.7);
+  box-shadow: 0 4px 8px rgba(131, 141, 153, 0.2) !important;
+}
+
+#very-light-gray-card {
+  border-top: 4px solid rgba(249, 249, 249, 0.7);
+  box-shadow: 0 4px 8px rgba(249, 249, 249, 0.2) !important;
+}
+
 .gap-2rem {
   gap: 2rem;
 }
 
-.project-card {
-  width: 30vw;
-  max-width: 350px;
-  height: 250px;
-  padding: 30px;
-}
-
 .description {
-  color: rgb(131, 141, 153);
-  white-space: pre-wrap;
+  white-space: pre-line;
 }
 
 .icon {
@@ -69,4 +87,4 @@ header {
   .project-card {
     width: 350px;
   }
-} /*# sourceMappingURL=styles.css.map */
+}/*# sourceMappingURL=styles.css.map */
