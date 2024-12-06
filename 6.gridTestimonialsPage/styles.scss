@@ -1,0 +1,131 @@
+$color-1: rgb(67, 65, 64);
+$very-darkblue: hsl(212, 21%, 14%);
+$dark-grayisblue: hsl(228, 12%, 48%);
+$dark-cyan: hsl(158, 36%, 37%);
+$cream: hsl(30, 38%, 92%);
+$deep-green: rgb(26, 64, 49);
+
+html,
+body {
+  background-color: $cream;
+  color: black;
+  font-size: 10px;
+}
+p {
+  color: $dark-grayisblue;
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 1.4rem;
+}
+h4 {
+  font-family: "Fraunces", sans-serif;
+  font-weight: 700;
+  font-size: 3.5rem;
+}
+
+.sub-title {
+  letter-spacing: 3px;
+}
+
+.margin-10 {
+  margin-bottom: 10px;
+}
+.margin-20 {
+  margin-bottom: 20px;
+}
+.margin-30 {
+  margin-bottom: 30px;
+}
+.margin-50 {
+  margin-bottom: 50px;
+}
+
+.btn {
+  width: 90%;
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto;
+  background-color: $dark-cyan;
+  color: white;
+  font-size: clamp(1rem, 0.8vw + 1rem, 1.4rem);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  border: 0px solid transparent;
+  cursor: pointer;
+  &:hover {
+    background-color: $deep-green;
+    color: white;
+  }
+}
+
+.new-price {
+  color: $dark-cyan;
+  font-family: "Fraunces", sans-serif;
+  font-weight: 700;
+  margin-right: 20px;
+  display: inline-block;
+}
+
+.old-price {
+  display: inline-block;
+  text-decoration: line-through;
+  border-radius: 10px !important;
+}
+
+main {
+  display: flex;
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
+  height: 100vh; /* 父容器占满整个视口高度 */
+}
+
+#a {
+  background-color: white;
+  width: 600px;
+  height: 450px;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between; /* 使两个子元素水平排列 */
+  align-items: center; /* 使子元素在垂直方向上高度相等 */
+}
+
+#a1,
+#a2 {
+  width: 300px;
+  height: 100%; /* 让子元素高度相等 */
+}
+
+#a1 {
+  img {
+    width: 100%;
+  }
+}
+
+#a2 {
+  box-sizing: border-box;
+  padding: 30px;
+}
+
+@media (max-width: 768px) {
+  h4 {
+    font-size: 3rem;
+  }
+  #a {
+    width: 90%;
+    flex-direction: column; /* 当屏幕宽度小于768px时，子元素垂直排列 */
+    justify-content: center; /* 确保子元素在垂直方向上居中 */
+    align-items: center; /* 子元素水平居中 */
+    height: auto; /* 让父容器高度自动调整 */
+    margin: 20px auto; /* 让父容器水平居中 */
+  }
+  #a1,
+  #a2 {
+    width: 100%; /* 子元素宽度占满父容器 */
+  }
+
+  #a2 {
+    padding: 20px; /* 减少内边距，避免布局拥挤 */
+  }
+}
