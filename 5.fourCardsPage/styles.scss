@@ -29,7 +29,8 @@ header {
   border-radius: 2% !important;
 }
 .project-card {
-  width: 350px;
+  width: 30vw;
+  max-width: 350px;
   height: 250px;
   padding: 30px;
 }
@@ -53,11 +54,14 @@ header {
   height: 4rem;
 }
 // RWD styles
-@media (max-width: 1200px) {
+@media (max-width: 768px) {
   main {
     flex-direction: column;
   }
   .description {
     white-space: normal;
+  }
+  .project-card {
+    width: 350px;
   }
 }
