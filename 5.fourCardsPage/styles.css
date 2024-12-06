@@ -1,0 +1,68 @@
+* {
+  font-size: 15px;
+  font-family: "Poppins", sans-serif;
+  background-color: white;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+h5 {
+  font-weight: 700;
+}
+
+header {
+  margin: 6rem auto 3rem;
+}
+
+.card {
+  border-radius: 2% !important;
+}
+
+#cyan-card {
+  border-top: 4px solid rgba(0, 148, 150, 0.7);
+  box-shadow: 0 4px 8px rgba(0, 148, 150, 0.2) !important;
+}
+
+#red-card {
+  border-top: 4px solid rgba(255, 90, 56, 0.7);
+  box-shadow: 0 4px 8px rgba(255, 90, 56, 0.2) !important;
+}
+
+#orange-card {
+  border-top: 4px solid rgba(255, 124, 27, 0.7);
+  box-shadow: 0 4px 8px rgba(255, 124, 27, 0.2) !important;
+}
+
+#blue-card {
+  border-top: 4px solid rgba(53, 84, 255, 0.7);
+  box-shadow: 0 4px 8px rgba(53, 84, 255, 0.2) !important;
+}
+
+.gap-2rem {
+  gap: 2rem;
+}
+
+.project-card {
+  width: 350px;
+  height: 250px;
+  padding: 30px;
+}
+
+.description {
+  color: rgb(131, 141, 153);
+  white-space: pre-wrap;
+}
+
+.icon {
+  width: 4rem;
+  height: 4rem;
+}
+
+@media (max-width: 1200px) {
+  main {
+    flex-direction: column;
+  }
+  .description {
+    white-space: normal;
+  }
+}/*# sourceMappingURL=styles.css.map */

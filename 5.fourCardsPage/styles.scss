@@ -1,0 +1,68 @@
+// colors styles
+$Red: rgb(255, 90, 56);
+$Cyan: rgb(0, 148, 150);
+$Orange: rgb(255, 124, 27);
+$Blue: rgb(53, 84, 255);
+$VeryDarkBlue: rgb(38, 45, 56);
+$GrayishBlue: rgb(131, 141, 153);
+$VeryLightGray: rgb(249, 249, 249);
+$colors: (
+  cyan: $Cyan,
+  red: $Red,
+  orange: $Orange,
+  blue: $Blue,
+);
+// font styles
+$SansSerif-Poppins: "Poppins", sans-serif;
+// global styles
+* {
+  font-size: 15px;
+  font-family: $SansSerif-Poppins;
+  background-color: white;
+  box-sizing: border-box;
+  margin: 0;
+}
+h5 {
+  font-weight: 700;
+}
+header {
+  margin: 6rem auto 3rem;
+}
+// container styles
+.card {
+  border-radius: 2% !important;
+}
+@each $name, $color in $colors {
+  ##{$name}-card {
+    border-top: 4px solid rgba($color, 0.7);
+    box-shadow: 0 4px 8px rgba($color, 0.2) !important; // 添加 box-shadow 样式
+  }
+}
+// spacing styles
+.gap-2rem {
+  gap: 2rem;
+}
+.project-card {
+  width: 350px;
+  height: 250px;
+  padding: 30px;
+}
+// text&img styles
+.description {
+  color: $GrayishBlue;
+  white-space: pre-wrap;
+}
+.icon {
+  width: 4rem;
+  height: 4rem;
+}
+// RWD styles
+
+@media (max-width: 1200px) {
+  main {
+    flex-direction: column;
+  }
+  .description {
+    white-space: normal;
+  }
+}
