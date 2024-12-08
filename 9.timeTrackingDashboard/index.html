@@ -68,10 +68,31 @@
         gap: 1.7rem;
       }
       .item {
-        z-index: 0;
-        background-color: rgb(29, 32, 75);
+        position: relative;
         border-radius: 1rem;
         height: fit-content;
+        padding-top: 44px;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        overflow: hidden;
+      }
+      .item1 {
+        background: linear-gradient(to bottom, rgb(255, 139, 100) 50%, rgb(13, 19, 35) 50%);
+      }
+      .item2 {
+        background: linear-gradient(to bottom, rgb(86, 194, 230) 50%, rgb(13, 19, 35) 50%);
+      }
+      .item3 {
+        background: linear-gradient(to bottom, rgb(255, 94, 125) 50%, rgb(13, 19, 35) 50%);
+      }
+      .item4 {
+        background: linear-gradient(to bottom, rgb(75, 207, 131) 50%, rgb(13, 19, 35) 50%);
+      }
+      .item5 {
+        background: linear-gradient(to bottom, rgb(114, 53, 209) 50%, rgb(13, 19, 35) 50%);
+      }
+      .item6 {
+        background: linear-gradient(to bottom, rgb(241, 198, 91) 50%, rgb(13, 19, 35) 50%);
       }
       .profile {
         grid-row: 1 / 3;
@@ -97,28 +118,18 @@
       }
 
       .info {
-        position: relative;
+        background-color: rgb(29, 32, 75);
         border-radius: 1rem;
         padding: 1.7rem;
         border-radius: 1rem;
+        position: relative;
+        z-index: 99;
       }
-
-      .info ::before {
-        content: '';
-        position: absolute;
-        top: -50px; /* 将伪元素放置在最顶部 */
-        left: 0;
-        right: 0;
-        height: 50px;
-        background-color: rgb(255, 139, 100);
-        border-top-left-radius: 1rem;
-        border-top-right-radius: 1rem;
-      }
-
       .info-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        border-radius: 1rem;
       }
       .info-title {
         font-size: 20px;
@@ -126,10 +137,41 @@
         font-weight: 500;
         margin: 0;
       }
+      .icon {
+        position: absolute;
+        z-index: 0;
+        top: -8px;
+        right: 12px;
+      }
+      .daily {
+        visibility: hidden;
+        position: absolute;
+      }
+      .weekly {
+        visibility: visible;
+        position: relative;
+      }
+      .monthly {
+        visibility: hidden;
+        position: absolute;
+      }
+      @media (max-width: 768px) {
+        body {
+          height: auto;
+        }
+        .container {
+          grid-template-columns: 1fr;
+          grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+          margin: 20px 0 20px 0 !important;
+        }
+        .profile {
+          grid-row: 1 / 3;
+        }
+      }
     </style>
   </head>
 
-  <body>
+  <body class="d-flex justify-content-center align-items-center">
     <main class="container">
       <div class="profile">
         <div class="report w-100">
@@ -148,6 +190,7 @@ Robson</h2>
         </div>
       </div>
       <div class="item item1">
+        <img src="images/icon-work.svg" alt="Work icon" class="icon" />
         <div class="info">
           <div class="info-header">
             <p class="info-title">Work</p>
@@ -156,17 +199,175 @@ Robson</h2>
           <div class="info-body">
             <div class="daily">
               <h1>5hrs</h1>
-              <p class="text-lightgrey">Previous - 7hrs</p>
+              <p class="text-lightgrey">Last day - 7hrs</p>
+            </div>
+            <div class="weekly">
+              <h1>36hrs</h1>
+              <p class="text-lightgrey">Last week - 36hrs</p>
+            </div>
+            <div class="monthly">
+              <h1>103hrs</h1>
+              <p class="text-lightgrey">Last month - 128hrs</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="item item2"></div>
-      <div class="item item3"></div>
-      <div class="item item4"></div>
-      <div class="item item5"></div>
-      <div class="item item6"></div>
+      <div class="item item2">
+        <img src="images/icon-play.svg" alt="Work icon" class="icon" />
+        <div class="info">
+          <div class="info-header">
+            <p class="info-title">Play</p>
+            <img src="images/icon-ellipsis.svg" alt="Ellipsis icon" />
+          </div>
+          <div class="info-body">
+            <div class="daily">
+              <h1>1hr</h1>
+              <p class="text-lightgrey">Last day - 2hrs</p>
+            </div>
+            <div class="weekly">
+              <h1>10hrs</h1>
+              <p class="text-lightgrey">Last week - 8hrs</p>
+            </div>
+            <div class="monthly">
+              <h1>23hrs</h1>
+              <p class="text-lightgrey">Last month - 29hrs</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="item item3">
+        <img src="images/icon-study.svg" alt="Work icon" class="icon" />
+        <div class="info">
+          <div class="info-header">
+            <p class="info-title">Study</p>
+            <img src="images/icon-ellipsis.svg" alt="Ellipsis icon" />
+          </div>
+          <div class="info-body">
+            <div class="daily">
+              <h1>0hrs</h1>
+              <p class="text-lightgrey">Last day - 1hr</p>
+            </div>
+            <div class="weekly">
+              <h1>4hrs</h1>
+              <p class="text-lightgrey">Last week - 7hrs</p>
+            </div>
+            <div class="monthly">
+              <h1>13hrs</h1>
+              <p class="text-lightgrey">Last month - 19hrs</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="item item4">
+        <img src="images/icon-exercise.svg" alt="Work icon" class="icon" />
+        <div class="info">
+          <div class="info-header">
+            <p class="info-title">Exercise</p>
+            <img src="images/icon-ellipsis.svg" alt="Ellipsis icon" />
+          </div>
+          <div class="info-body">
+            <div class="daily">
+              <h1>1hr</h1>
+              <p class="text-lightgrey">Last day - 1hr</p>
+            </div>
+            <div class="weekly">
+              <h1>4hrs</h1>
+              <p class="text-lightgrey">Last week - 5hrs</p>
+            </div>
+            <div class="monthly">
+              <h1>11hrs</h1>
+              <p class="text-lightgrey">Last month - 18hrs</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="item item5">
+        <img src="images/icon-social.svg" alt="Work icon" class="icon" />
+        <div class="info">
+          <div class="info-header">
+            <p class="info-title">Social</p>
+            <img src="images/icon-ellipsis.svg" alt="Ellipsis icon" />
+          </div>
+          <div class="info-body">
+            <div class="daily">
+              <h1>1hr</h1>
+              <p class="text-lightgrey">Last day - 3hrs</p>
+            </div>
+            <div class="weekly">
+              <h1>5hrs</h1>
+              <p class="text-lightgrey">Last week - 10hrs</p>
+            </div>
+            <div class="monthly">
+              <h1>21hrs</h1>
+              <p class="text-lightgrey">Last month - 23hrs</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="item item6">
+        <img src="images/icon-self-care.svg" alt="Work icon" class="icon" />
+        <div class="info">
+          <div class="info-header">
+            <p class="info-title">Study</p>
+            <img src="images/icon-ellipsis.svg" alt="Ellipsis icon" />
+          </div>
+          <div class="info-body">
+            <div class="daily">
+              <h1>0hrs</h1>
+              <p class="text-lightgrey">Last day - 1hr</p>
+            </div>
+            <div class="weekly">
+              <h1>2hrs</h1>
+              <p class="text-lightgrey">Last week - 2hrs</p>
+            </div>
+            <div class="monthly">
+              <h1>7hrs</h1>
+              <p class="text-lightgrey">Last month - 11hrs</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
+    <script>
+      const choices = document.querySelectorAll('.choices li a');
+      choices.forEach((choice) => {
+        choice.addEventListener('click', () => {
+          choices.forEach((c) => c.classList.remove('active'));
+          choice.classList.add('active');
+
+          const items = document.querySelectorAll('.item'); // 获取所有的 .item 元素
+
+          items.forEach((item) => {
+            const daily = item.querySelector('.daily');
+            const weekly = item.querySelector('.weekly');
+            const monthly = item.querySelector('.monthly');
+
+            if (choice.textContent === 'Daily') {
+              daily.style.visibility = 'visible';
+              daily.style.position = 'relative';
+              weekly.style.visibility = 'hidden';
+              weekly.style.position = 'absolute';
+              monthly.style.visibility = 'hidden';
+              monthly.style.position = 'absolute';
+            } else if (choice.textContent === 'Weekly') {
+              daily.style.visibility = 'hidden';
+              daily.style.position = 'absolute';
+              weekly.style.visibility = 'visible';
+              weekly.style.position = 'relative';
+              monthly.style.visibility = 'hidden';
+              monthly.style.position = 'absolute';
+            } else if (choice.textContent === 'Monthly') {
+              daily.style.visibility = 'hidden';
+              daily.style.position = 'absolute';
+              weekly.style.visibility = 'hidden';
+              weekly.style.position = 'absolute';
+              monthly.style.visibility = 'visible';
+              monthly.style.position = 'relative';
+            }
+          });
+        });
+      });
+    </script>
   </body>
 </html>
 
