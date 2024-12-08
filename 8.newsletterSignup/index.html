@@ -38,7 +38,7 @@
         border-radius: 2rem;
       }
       #a1 {
-        width: 30rem;
+        width: clamp(90%, 100%, 30rem);
         padding: 60px;
       }
       #b {
@@ -54,7 +54,7 @@
         font-size: 1rem;
         padding: 1rem;
       }
-      #a1 .btn:hover {
+      .btn:hover {
         background: linear-gradient(to right, rgb(252, 79, 119), rgb(249, 105, 60));
       }
       h1 {
@@ -146,8 +146,10 @@
       const emailInput = document.getElementById('email');
       form.addEventListener('submit', function (event) {
         event.preventDefault();
+        const emailValue = emailInput.value;
 
-        if (emailInput.validity.valid) {
+        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        if (emailRegex.test(emailValue)) {
           b.style.visibility = 'visible';
           b.style.position = 'relative';
           a.style.visibility = 'hidden';
