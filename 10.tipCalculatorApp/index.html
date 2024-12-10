@@ -23,11 +23,13 @@
                 padding: 0;
                 box-sizing: border-box;
             }
+            html {
+                font-size: 12px;
+            }
             body {
                 background-color: #c5e4e7;
                 color: black;
                 font-family: 'Space Mono', monospace;
-                font-size: 12px;
             }
             .container-fluid {
                 height: 100vh;
@@ -159,8 +161,7 @@
                     grid-template-columns: 1fr;
                 }
                 main {
-                    margin: 1rem;
-                    padding-bottom: 1rem;
+                    padding-bottom: 0.5rem;
                 }
             }
             /*alerts*/
@@ -175,7 +176,7 @@
     <body>
         <div class="container-fluid d-flex flex-column justify-content-center align-items-center">
             <!--prettier-ignore-->
-            <header class="text-center"><h2 class="text-center my-4">SPLI
+            <header class="text-center"><h2 class="text-center my-5">SPLI
 TTER</h2></header>
             <main class="d-flex justify-content-center align-items-center">
                 <div id="wrapper" class="bg-white rounded p-4">
