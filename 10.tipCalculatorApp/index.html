@@ -32,7 +32,7 @@
                 font-family: 'Space Mono', monospace;
             }
             header {
-                padding-top: env(safe-area-inset-top);
+                padding-top: var(--safe-area-top);
             }
             .container-fluid {
                 height: 100vh;
@@ -45,9 +45,6 @@
                 background-color: #f3f8fb;
             }
             /*texts*/
-            header {
-                width: 100%;
-            }
             h1 {
                 color: #26c2ad;
                 font-weight: 700;
@@ -179,7 +176,7 @@
     <body>
         <div class="container-fluid d-flex flex-column justify-content-center align-items-center">
             <!--prettier-ignore-->
-            <header class="text-center"><h2 class="text-center my-5">SPLI
+            <header class="text-center"><h2 class="text-center mb-5">SPLI
 TTER</h2></header>
             <main class="d-flex justify-content-center align-items-center">
                 <div id="wrapper" class="bg-white rounded p-4">
@@ -245,6 +242,11 @@ Total
             </main>
         </div>
         <script>
+            if (window.matchMedia('(display-mode: standalone)').matches) {
+                document.documentElement.style.setProperty('--safe-area-top', 'env(safe-area-inset-top)');
+            } else {
+                document.documentElement.style.setProperty('--safe-area-top', '20px');
+            }
             // 正则表达式定义
             const regexIntegerOnly = /^\d+$/;
             const regexDecimalOrInteger = /^\d+(\.\d+)?$/;
