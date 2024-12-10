@@ -233,7 +233,6 @@
                 });
             });
 
-            let timeoutId = null;
             submitBtn.addEventListener('click', (e) => {
                 e.preventDefault();
                 const pressedBtn = document.querySelector('.btn-pressed');
@@ -242,21 +241,11 @@
                     thxModal.style.display = 'block';
                     const rating = selectInfo.textContent.trim();
                     const ariaLiveRegion = document.querySelector('#aria-live-region');
-
-                    if (timeoutId) {
-                        clearTimeout(timeoutId);
-                    }
                     ariaLiveRegion.textContent = `You selected ${rating} out of 5.`;
-                    timeoutId = setTimeout(() => {
-                        ariaLiveRegion.textContent = '';
-                    }, 3000);
                 } else {
                     const notice = document.querySelector('#notice');
                     notice.style.display = 'block';
-                    if (timeoutId) {
-                        clearTimeout(timeoutId);
-                    }
-                    timeoutId = setTimeout(() => {
+                    setTimeout(() => {
                         notice.style.display = 'none';
                     }, 3000);
                 }
