@@ -63,16 +63,20 @@
             /*containers*/
             #wrapper {
                 width: clamp(50rem, 50%, 70rem);
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
             }
             #wrapper-btn {
                 display: grid;
                 grid-template-columns: 1fr 1fr 1fr;
                 grid-template-rows: auto auto;
-                gap: 0.5rem;
-                max-width: 100%;
+                gap: 0.3rem;
+                width: 100%;
             }
             #display-box {
                 background-color: #00474b;
+                padding: 1rem;
             }
             #text-zone {
                 height: fit-content;
@@ -143,9 +147,9 @@
 
             @media (max-width: 768px) {
                 #wrapper {
-                    width: 90vw;
+                    width: 100%;
                     margin: 1rem;
-                    padding: 0;
+                    grid-template-columns: 1fr;
                 }
                 #calcul-box {
                     padding: 0;
@@ -165,8 +169,8 @@
         <header class="d-flex justify-content-center align-items-center"><h2 class="text-center my-4">SPLI
 TTER</h2></header>
         <main class="d-flex justify-content-center align-items-center">
-            <div id="wrapper" class="row bg-white rounded p-4">
-                <div id="calcul-box" class="col-md-6">
+            <div id="wrapper" class="bg-white rounded p-4">
+                <div id="calcul-box" class="d-flex flex-column justify-content-between align-content-center">
                     <div id="wrapper-bill" class="t-l-green mb-3">
                         <label for="input-bill" class="fw-bold mb-2">Bill</label>
                         <input type="number" class="form-control b-l-blue" id="input-bill" placeholder="0" />
@@ -203,7 +207,7 @@ TTER</h2></header>
                         This alert box will disappear when you enter a valid number. Only positive integers are allowed.
                     </div>
                 </div>
-                <div id="display-box" class="col-md-6 rounded d-flex flex-column justify-content-between w-100">
+                <div id="display-box" class="rounded d-flex flex-column justify-content-between w-100">
                     <div id="text-zone" class="w-100">
                         <div class="d-flex justify-content-between align-items-center w-100">
                             <!--prettier-ignore-->
