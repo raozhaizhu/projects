@@ -1,6 +1,6 @@
 {
   "printWidth": 120,
-  "tabWidth": 2,
+  "tabWidth": 4,
   "useTabs": false,
   "singleQuote": true,
   "semi": true,
@@ -11,5 +11,4 @@
   "htmlWhitespaceSensitivity": "ignore",
   "jsonRecursiveFormat": true,
   "endOfLine": "crlf"
-
 }

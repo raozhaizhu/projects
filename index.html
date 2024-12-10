@@ -1,190 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Theme Made By www.w3schools.com - No Copyright -->
-    <title>Homepage For Projects</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css" />
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <style>
-      html,
-      body {
-        background-color: rgb(3, 12, 38);
-        margin: 0;
-        padding: 0;
-      }
-      main {
-        height: 100vh;
-      }
-      .bg-1 {
-        background-color: rgb(3, 12, 38);
-      }
-      .bg-2 {
-        background-color: rgb(39, 65, 140);
-      }
+    <head>
+        <!-- Theme Made By www.w3schools.com - No Copyright -->
+        <title>Homepage For Projects</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css" />
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <style>
+            html,
+            body {
+                background-color: rgb(3, 12, 38);
+                margin: 0;
+                padding: 0;
+            }
+            main {
+                height: 100vh;
+            }
+            .bg-1 {
+                background-color: rgb(3, 12, 38);
+            }
+            .bg-2 {
+                background-color: rgb(39, 65, 140);
+            }
 
-      .thumbnail {
-        border: 0px solid transparent;
-        padding: 30px;
-        margin-top: 30px !important;
-        height: 600px;
-      }
-      .thumbnail img {
-        border-radius: 3%;
-        margin-bottom: 30px;
-        height: 80%;
-      }
-      h4 {
-        font-family: 'Montserrat', sans-serif;
-        color: white;
-        margin-bottom: 20px;
-        letter-spacing: 1px;
-      }
-      .btn {
-        padding: 10px 20px;
-        font-family: 'Lato', sans-serif;
-        font-weight: bold;
-        border: 0px solid transparent;
-        cursor: pointer;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-      }
+            .thumbnail {
+                border: 0px solid transparent;
+                padding: 30px;
+                margin-top: 30px !important;
+                height: 600px;
+            }
+            .thumbnail img {
+                border-radius: 3%;
+                margin-bottom: 30px;
+                height: 80%;
+            }
+            h4 {
+                font-family: 'Montserrat', sans-serif;
+                color: white;
+                margin-bottom: 20px;
+                letter-spacing: 1px;
+            }
+            .btn {
+                padding: 10px 20px;
+                font-family: 'Lato', sans-serif;
+                font-weight: bold;
+                border: 0px solid transparent;
+                cursor: pointer;
+                transition: transform 0.2s ease, box-shadow 0.2s ease;
+            }
 
-      .btn:hover {
-        background-color: rgb(4, 191, 104);
-        color: rgb(3, 12, 38);
-        transform: scale(1.1); /* 放大按钮 */
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-        animation: rotateAnimation 0.5s ease; /* 添加旋转动画 */
-      }
+            .btn:hover {
+                background-color: rgb(4, 191, 104);
+                color: rgb(3, 12, 38);
+                transform: scale(1.1); /* 放大按钮 */
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+                animation: rotateAnimation 0.5s ease; /* 添加旋转动画 */
+            }
 
-      @keyframes rotateAnimation {
-        0% {
-          transform: rotate(0deg);
-        }
-        50% {
-          transform: rotate(20deg);
-        }
-        100% {
-          transform: rotate(0deg);
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <main class="container bg-1">
-      <div class="row text-center">
-        <div class="col-sm-4">
-          <div class="thumbnail bg-2" id="project9">
-            <img
-              src="https://i.imgur.com/gvERDmT.png"
-              alt="Time tracking dashboard"
-              class="img-responsive"
-              style="width: 100%; object-fit: cover"
-            />
-            <h4><strong>Time tracking dashboard</strong></h4>
-            <a href="9.timeTrackingDashboard/index.html" class="btn btn-default img-responsive">View More</a>
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="thumbnail bg-2" id="project8">
-            <img
-              src="https://i.imgur.com/0JoTIuh.png"
-              alt="Newsletter Sign-up"
-              class="img-responsive"
-              style="width: 100%; object-fit: cover"
-            />
-            <h4><strong>Newsletter Sign-up</strong></h4>
-            <a href="8.newsletterSignup/index.html" class="btn btn-default img-responsive">View More</a>
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="thumbnail bg-2" id="project7">
-            <img
-              src="https://i.imgur.com/HruyB0J.png"
-              alt="Article preview component"
-              class="img-responsive"
-              style="width: 100%; object-fit: cover"
-            />
-            <h4><strong>Article preview component</strong></h4>
-            <a href="7.articlePreviewComponent/index.html" class="btn btn-default img-responsive">View More</a>
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="thumbnail bg-2" id="project6">
-            <img
-              src="https://i.imgur.com/5V8tKKn.png"
-              alt="FourCardsPage"
-              class="img-responsive"
-              style="width: 100%; object-fit: cover"
-            />
-            <h4><strong>gridTestimonialsPage</strong></h4>
-            <a href="6.gridTestimonialsPage/index.html" class="btn btn-default img-responsive">View More</a>
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="thumbnail bg-2" id="project5">
-            <img
-              src="https://i.imgur.com/pil4PBy.png"
-              alt="FourCardsPage"
-              class="img-responsive"
-              style="width: 100%; object-fit: cover"
-            />
-            <h4><strong>FourCardsPage</strong></h4>
-            <a href="5.fourCardsPage/index.html" class="btn btn-default img-responsive">View More</a>
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="thumbnail bg-2" id="project4">
-            <img
-              src="https://i.imgur.com/lMc4YbB.png"
-              alt="productPreviewCardComponent"
-              class="img-responsive"
-              style="width: 100%; object-fit: cover"
-            />
-            <h4><strong>ProductPreview</strong></h4>
-            <a href="4.productPreviewCardComponent/index.html" class="btn btn-default img-responsive">View More</a>
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="thumbnail bg-2" id="project3">
-            <img
-              src="https://i.imgur.com/N4zzP9z.png"
-              alt="recipePage"
-              class="img-responsive"
-              style="width: 100%; object-fit: cover; object-position: top"
-            />
-            <h4><strong>RecipePage</strong></h4>
-            <a href="3.recipePage/index.html" class="btn btn-default img-responsive">View More</a>
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="thumbnail bg-2" id="project2">
-            <img
-              src="https://i.imgur.com/ArsREAA.jpeg"
-              alt="BlogPreviewCard"
-              class="img-responsive"
-              style="width: 100%; object-fit: cover"
-            />
-            <h4><strong>BlogPreviewCard</strong></h4>
-            <a href="2.blogPreviewCard/index.html" class="btn btn-default">View More</a>
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="thumbnail bg-2" id="project1">
-            <img
-              src="https://i.imgur.com/2jicEhD.png"
-              alt="socialLinksPorfile"
-              class="img-responsive"
-              style="width: 100%; object-fit: cover; object-position: top"
-            />
-            <h4><strong>SocialLinksPorfile</strong></h4>
-            <a href="1.socialLinksProfile/index.html" class="btn btn-default img-responsive">View More</a>
-          </div>
-        </div>
-      </div>
-    </main>
-  </body>
+            @keyframes rotateAnimation {
+                0% {
+                    transform: rotate(0deg);
+                }
+                50% {
+                    transform: rotate(20deg);
+                }
+                100% {
+                    transform: rotate(0deg);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <main class="container bg-1">
+            <div class="row text-center">
+                <div class="col-sm-4">
+                    <div class="thumbnail bg-2" id="project9">
+                        <img
+                            src="https://i.imgur.com/DjITo66.png"
+                            alt="Tip Calculator App"
+                            class="img-responsive"
+                            style="width: 100%; object-fit: cover"
+                        />
+                        <h4><strong>Tip Calculator App</strong></h4>
+                        <a href="10.tipCalculatorApp/index.html" class="btn btn-default img-responsive">View More</a>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="thumbnail bg-2" id="project9">
+                        <img
+                            src="https://i.imgur.com/gvERDmT.png"
+                            alt="Time tracking dashboard"
+                            class="img-responsive"
+                            style="width: 100%; object-fit: cover"
+                        />
+                        <h4><strong>Time tracking dashboard</strong></h4>
+                        <a href="9.timeTrackingDashboard/index.html" class="btn btn-default img-responsive">
+                            View More
+                        </a>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="thumbnail bg-2" id="project8">
+                        <img
+                            src="https://i.imgur.com/0JoTIuh.png"
+                            alt="Newsletter Sign-up"
+                            class="img-responsive"
+                            style="width: 100%; object-fit: cover"
+                        />
+                        <h4><strong>Newsletter Sign-up</strong></h4>
+                        <a href="8.newsletterSignup/index.html" class="btn btn-default img-responsive">View More</a>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="thumbnail bg-2" id="project7">
+                        <img
+                            src="https://i.imgur.com/HruyB0J.png"
+                            alt="Article preview component"
+                            class="img-responsive"
+                            style="width: 100%; object-fit: cover"
+                        />
+                        <h4><strong>Article preview component</strong></h4>
+                        <a href="7.articlePreviewComponent/index.html" class="btn btn-default img-responsive">
+                            View More
+                        </a>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="thumbnail bg-2" id="project6">
+                        <img
+                            src="https://i.imgur.com/5V8tKKn.png"
+                            alt="FourCardsPage"
+                            class="img-responsive"
+                            style="width: 100%; object-fit: cover"
+                        />
+                        <h4><strong>gridTestimonialsPage</strong></h4>
+                        <a href="6.gridTestimonialsPage/index.html" class="btn btn-default img-responsive">View More</a>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="thumbnail bg-2" id="project5">
+                        <img
+                            src="https://i.imgur.com/pil4PBy.png"
+                            alt="FourCardsPage"
+                            class="img-responsive"
+                            style="width: 100%; object-fit: cover"
+                        />
+                        <h4><strong>FourCardsPage</strong></h4>
+                        <a href="5.fourCardsPage/index.html" class="btn btn-default img-responsive">View More</a>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="thumbnail bg-2" id="project4">
+                        <img
+                            src="https://i.imgur.com/lMc4YbB.png"
+                            alt="productPreviewCardComponent"
+                            class="img-responsive"
+                            style="width: 100%; object-fit: cover"
+                        />
+                        <h4><strong>ProductPreview</strong></h4>
+                        <a href="4.productPreviewCardComponent/index.html" class="btn btn-default img-responsive">
+                            View More
+                        </a>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="thumbnail bg-2" id="project3">
+                        <img
+                            src="https://i.imgur.com/N4zzP9z.png"
+                            alt="recipePage"
+                            class="img-responsive"
+                            style="width: 100%; object-fit: cover; object-position: top"
+                        />
+                        <h4><strong>RecipePage</strong></h4>
+                        <a href="3.recipePage/index.html" class="btn btn-default img-responsive">View More</a>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="thumbnail bg-2" id="project2">
+                        <img
+                            src="https://i.imgur.com/ArsREAA.jpeg"
+                            alt="BlogPreviewCard"
+                            class="img-responsive"
+                            style="width: 100%; object-fit: cover"
+                        />
+                        <h4><strong>BlogPreviewCard</strong></h4>
+                        <a href="2.blogPreviewCard/index.html" class="btn btn-default">View More</a>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="thumbnail bg-2" id="project1">
+                        <img
+                            src="https://i.imgur.com/2jicEhD.png"
+                            alt="socialLinksPorfile"
+                            class="img-responsive"
+                            style="width: 100%; object-fit: cover; object-position: top"
+                        />
+                        <h4><strong>SocialLinksPorfile</strong></h4>
+                        <a href="1.socialLinksProfile/index.html" class="btn btn-default img-responsive">View More</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
 </html>
