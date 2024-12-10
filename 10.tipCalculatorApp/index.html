@@ -145,6 +145,10 @@
                 #wrapper {
                     width: 90vw;
                     margin: 1rem;
+                    padding: 0;
+                }
+                #calcul-box {
+                    padding: 0;
                 }
             }
             /*alerts*/
@@ -162,7 +166,7 @@
 TTER</h2></header>
         <main class="container d-flex justify-content-center align-items-center">
             <div id="wrapper" class="row bg-white rounded p-4">
-                <div id="calcul-box" class="col-md-6 p-4">
+                <div id="calcul-box" class="col-md-6">
                     <div id="wrapper-bill" class="t-l-green mb-3">
                         <label for="input-bill" class="fw-bold mb-2">Bill</label>
                         <input type="number" class="form-control b-l-blue" id="input-bill" placeholder="0" />
@@ -199,7 +203,7 @@ TTER</h2></header>
                         This alert box will disappear when you enter a valid number. Only positive integers are allowed.
                     </div>
                 </div>
-                <div id="display-box" class="col-md-6 rounded p-4 d-flex flex-column justify-content-between">
+                <div id="display-box" class="col-md-6 rounded d-flex flex-column justify-content-between">
                     <div id="text-zone">
                         <div class="d-flex justify-content-between align-items-center">
                             <!--prettier-ignore-->
@@ -218,7 +222,7 @@ Total
                             <h1 id="total-person">0.00</h1>
                         </div>
                     </div>
-                    <button id="reset-btn" class="btn">RESET</button>
+                    <button id="reset-btn" class="btn mb-4">RESET</button>
                 </div>
             </div>
         </main>
@@ -335,3 +339,4 @@ Total
         </script>
     </body>
 </html>
+
