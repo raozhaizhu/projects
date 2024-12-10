@@ -31,9 +31,7 @@
                 color: black;
                 font-family: 'Space Mono', monospace;
             }
-            header {
-                padding-top: var(--safe-area-top);
-            }
+
             .container-fluid {
                 height: 100vh;
             }
@@ -242,11 +240,20 @@ Total
             </main>
         </div>
         <script>
-            if (window.matchMedia('(display-mode: standalone)').matches) {
-                document.documentElement.style.setProperty('--safe-area-top', 'env(safe-area-inset-top)');
-            } else {
-                document.documentElement.style.setProperty('--safe-area-top', '20px');
+            // 定义一个函数来设置 header 的 paddingTop
+            function adjustHeaderPadding() {
+                const header = document.querySelector('header');
+                if (window.innerWidth > window.innerHeight) {
+                    header.style.paddingTop = '20rem';
+                } else {
+                    header.style.paddingTop = '0rem';
+                }
             }
+            // 页面加载时立即执行一次
+            adjustHeaderPadding();
+            // 在屏幕尺寸变化时执行
+            window.addEventListener('resize', adjustHeaderPadding);
+
             // 正则表达式定义
             const regexIntegerOnly = /^\d+$/;
             const regexDecimalOrInteger = /^\d+(\.\d+)?$/;
