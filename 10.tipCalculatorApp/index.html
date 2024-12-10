@@ -38,7 +38,7 @@
             .b-l-blue {
                 background-color: #f3f8fb;
             }
-            /*containers*/
+            /*texts*/
             header {
                 width: 100%;
             }
@@ -57,12 +57,19 @@
                 font-size: 2rem;
                 font-weight: 700;
             }
-
+            .price {
+                white-space: pre;
+            }
+            /*containers*/
+            #wrapper {
+                width: clamp(50rem, 50%, 70rem);
+            }
             #wrapper-btn {
                 display: grid;
                 grid-template-columns: 1fr 1fr 1fr;
                 grid-template-rows: auto auto;
                 gap: 0.5rem;
+                max-width: 100%;
             }
             #display-box {
                 background-color: #00474b;
@@ -98,7 +105,7 @@
             .btn {
                 background-color: #00474b;
                 color: #fff;
-                padding: 0.5rem 2.5rem;
+                padding: 0.5rem 2rem;
                 font-weight: 700;
             }
             .btn:hover {
@@ -133,12 +140,10 @@
             #reset-btn {
                 background-color: #0c686d;
             }
-            /*texts*/
-            .price {
-                white-space: pre;
-            }
+
             @media (max-width: 768px) {
                 #wrapper {
+                    width: 90vw;
                     margin: 1rem;
                 }
             }
@@ -155,7 +160,7 @@
         <!--prettier-ignore-->
         <header class="d-flex justify-content-center align-items-center"><h2 class="text-center mb-5">SPLI
 TTER</h2></header>
-        <main class="container">
+        <main class="container d-flex justify-content-center align-items-center">
             <div id="wrapper" class="row bg-white rounded p-4">
                 <div id="calcul-box" class="col-md-6 p-4">
                     <div id="wrapper-bill" class="t-l-green mb-3">
@@ -218,10 +223,12 @@ Total
             </div>
         </main>
         <script>
+            // 正则表达式定义
             const regexIntegerOnly = /^\d+$/;
             const regexDecimalOrInteger = /^\d+(\.\d+)?$/;
             const regexPercentage = /^\d+(\.\d+)?%$/;
             const regexSmallDecimal = /^0(\.\d+)$/;
+            // 获取输入元素
             const billInput = document.getElementById('input-bill');
             const peopleInput = document.getElementById('input-people');
             const tipBtns = document.querySelectorAll('.tip-btn');
@@ -230,6 +237,7 @@ Total
             const tipPerson = document.getElementById('tip-person');
             const totalPerson = document.getElementById('total-person');
 
+            // 检查小费选择
             const checkTip = () => {
                 tipBtns.forEach((tipBtn) => {
                     tipBtn.addEventListener('click', () => {
@@ -240,7 +248,9 @@ Total
                     });
                 });
             };
+            // 初始化小费检查
             checkTip();
+            // 计算小费和总金额
             const calculate = () => {
                 const act = document.querySelector('.act');
                 const custom = customInput.value.trim();
@@ -272,6 +282,7 @@ Total
                     totalPerson.textContent = ((billAmount + billAmount * tipPercentage) / numPeople).toFixed(2);
                 }
             };
+            // 重置按钮功能
             resetBtn.addEventListener('click', () => {
                 billInput.value = '';
                 peopleInput.value = '';
@@ -280,6 +291,7 @@ Total
                 tipPerson.textContent = '0.00';
                 totalPerson.textContent = '0.00';
             });
+            // 账单输入事件
             billInput.addEventListener('input', () => {
                 const alertBill = document.getElementById('alert-bill');
                 alertBill.timeout = setTimeout(() => {
@@ -292,6 +304,7 @@ Total
 
                 calculate();
             });
+            // 人数输入事件
             peopleInput.addEventListener('input', () => {
                 const alertPeople = document.getElementById('alert-people');
                 clearTimeout(alertPeople.timeout);
@@ -306,6 +319,7 @@ Total
                 calculate();
             });
 
+            // 自定义小费输入事件
             customInput.addEventListener('input', () => {
                 const alertCustom = document.getElementById('alert-custom');
                 clearTimeout(alertCustom.timeout);
