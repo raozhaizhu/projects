@@ -54,7 +54,7 @@
                 letter-spacing: 3px;
                 color: #4a6d6f;
                 white-space: pre;
-                font-size: 2rem;
+                font-size: 1.75rem;
                 font-weight: 700;
             }
             .price {
@@ -160,9 +160,9 @@
         </style>
     </head>
 
-    <body class="d-flex flex-column justify-content-center align-items-center">
+    <body>
         <!--prettier-ignore-->
-        <header class="d-flex justify-content-center align-items-center"><h2 class="text-center mb-5">SPLI
+        <header class="d-flex justify-content-center align-items-center"><h2 class="text-center my-4">SPLI
 TTER</h2></header>
         <main class="d-flex justify-content-center align-items-center">
             <div id="wrapper" class="row bg-white rounded p-4">
@@ -203,22 +203,20 @@ TTER</h2></header>
                         This alert box will disappear when you enter a valid number. Only positive integers are allowed.
                     </div>
                 </div>
-                <div id="display-box" class="col-md-6 rounded d-flex flex-column justify-content-between">
-                    <div id="text-zone">
-                        <div class="d-flex justify-content-between align-items-center">
+                <div id="display-box" class="col-md-6 rounded d-flex flex-column justify-content-between w-100">
+                    <div id="text-zone" class="w-100">
+                        <div class="d-flex justify-content-between align-items-center w-100">
                             <!--prettier-ignore-->
                             <p class="price text-white fw-bold">
 Tip Amount
-<span class="t-l-green fw-normal">/ person</span>
-                        </p>
+<span class="t-l-green fw-normal">/ person</span></p>
                             <h1 id="tip-person">0.00</h1>
                         </div>
                         <div class="d-flex justify-content-between align-items-center">
                             <!--prettier-ignore-->
                             <p class="price text-white fw-bold">
 Total
-<span class="t-l-green fw-normal">/ person</span>
-                        </p>
+<span class="t-l-green fw-normal">/ person</span></p>
                             <h1 id="total-person">0.00</h1>
                         </div>
                     </div>
