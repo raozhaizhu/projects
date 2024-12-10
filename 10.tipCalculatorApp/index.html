@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -67,13 +67,18 @@
                 grid-template-columns: 1fr 1fr;
                 gap: 1rem;
             }
+            #wrapper > * {
+                max-width: 100% !important; /* 确保子元素不会超出父元素宽度 */
+                word-wrap: break-word; /* 如果有长文本导致超出宽度，则换行 */
+            }
             #wrapper-btn {
                 display: grid;
                 grid-template-columns: 1fr 1fr 1fr;
                 grid-template-rows: auto auto;
-                gap: 0.3rem;
                 width: 100%;
+                gap: 0.3rem;
             }
+
             #display-box {
                 background-color: #00474b;
                 padding: 1rem;
@@ -116,6 +121,7 @@
                 background-color: #26c2ad;
                 color: #00474b;
             }
+
             .act {
                 background-color: #26c2ad;
                 color: #00474b;
@@ -152,12 +158,7 @@
                 }
                 main {
                     margin: 1rem;
-                }
-                main {
                     padding-bottom: 1rem;
-                }
-                #calcul-box {
-                    padding: 0;
                 }
             }
             /*alerts*/
@@ -212,8 +213,8 @@ TTER</h2></header>
                         This alert box will disappear when you enter a valid number. Only positive integers are allowed.
                     </div>
                 </div>
-                <div id="display-box" class="rounded d-flex flex-column justify-content-between w-100">
-                    <div id="text-zone" class="w-100">
+                <div id="display-box" class="rounded d-flex flex-column justify-content-between">
+                    <div id="text-zone">
                         <div class="d-flex justify-content-between align-items-center w-100">
                             <!--prettier-ignore-->
                             <p class="price text-white fw-bold">
