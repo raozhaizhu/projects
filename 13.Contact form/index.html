@@ -32,7 +32,6 @@
             input[type='radio'] {
                 width: 18px;
                 height: 18px;
-                margin-right: 1rem;
                 margin-bottom: 0;
             }
             input,
@@ -40,12 +39,77 @@
             .query-type-box-radio {
                 padding: 0.5rem 1.5rem;
                 border: 1px solid rgba(12, 125, 105, 0.5);
-                margin-bottom: 1.5rem;
                 border-radius: 0.5rem;
             }
-            label {
-                margin-bottom: 0.5rem;
+            /* 隐藏原生复选框 */
+            input[type='checkbox'] {
+                display: none;
             }
+
+            /* 自定义复选框样式 */
+            input[type='checkbox'] + label {
+                position: relative;
+                padding-left: 30px;
+                cursor: pointer;
+            }
+
+            input[type='checkbox'] + label::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 1px;
+                width: 20px;
+                height: 20px;
+                border: 2px solid #ccc;
+                background-color: white;
+                border-radius: 4px;
+            }
+
+            /* 当复选框被选中时，改变背景颜色为绿色 */
+            input[type='checkbox']:checked + label::before {
+                background-color: green;
+                border-color: green;
+            }
+
+            /* 复选框被选中时的勾选标记 */
+            input[type='checkbox']:checked + label::after {
+                content: '✔';
+                position: absolute;
+                left: -4px;
+                top: 1px;
+                color: white;
+                font-size: 14px;
+            }
+
+            /*input-radio设置*/
+
+            input[type='radio'] {
+                display: none;
+            }
+            input[type='radio'] + label {
+                position: relative;
+                padding-left: 30px;
+                cursor: pointer;
+            }
+
+            input[type='radio'] + label::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 1px;
+                width: 20px;
+                height: 20px;
+                border: 2px solid #ccc;
+                background-color: white;
+                border-radius: 50%;
+            }
+
+            /* 当复选框被选中时，改变背景颜色为绿色 */
+            input[type='radio']:checked + label::before {
+                background-color: white;
+                border: 6px solid green;
+            }
+
             label:not(.label-custom)::after {
                 content: '*';
                 color: #8b9f98;
@@ -56,17 +120,13 @@
             textarea {
                 cursor: pointer;
             }
+
             input:focus,
             textarea:focus {
                 border-color: rgba(12, 125, 105, 0.5);
                 outline: none;
             }
-            input[type='checkbox'] {
-                width: 1rem;
-                height: 1rem;
-                margin-right: 1rem;
-                margin-bottom: 0;
-            }
+
             /*container*/
             .container-fluid {
                 height: 100vh;
@@ -75,67 +135,226 @@
                 width: clamp(30rem, 50%, 40rem);
                 background-color: #fff;
                 padding: 2rem;
+                border-radius: 1rem;
             }
-
+            #thx-msg {
+                background-color: #2a4244;
+                color: #fff;
+                padding: 1rem;
+                border-radius: 1rem;
+                display: none;
+            }
             /*elements*/
             .query-type-box-radio {
                 display: flex;
                 align-items: center;
+                gap: 1rem;
             }
-            .label-custom {
-                margin-top: 6px;
-            }
+
             #submit {
                 padding: 1rem;
                 border: none;
-                background-color: #063f36;
+                background-color: #0c7d69;
                 color: #fff;
                 border-radius: 0.5rem;
                 font-size: 1.2rem;
+            }
+            #submit:hover {
+                background-color: #063f36;
+            }
+            /*forJS*/
+            .border-red {
+                border-color: rgb(220, 53, 69);
+            }
+            .text-danger {
+                visibility: hidden;
+            }
+            @media (max-width: 768px) {
+                #container-fluid {
+                    padding: 1rem;
+                }
+                #name-box,
+                #query-type-box {
+                    flex-direction: column;
+                    gap: 0;
+                }
+                #name-box-first,
+                #name-box-last {
+                    width: 100%;
+                }
             }
         </style>
     </head>
 
     <body>
-        <main class="container-fluid d-flex justify-content-center align-items-center">
+        <main class="container-fluid d-flex flex-column justify-content-center align-items-center">
+            <div id="thx-msg" role="alert" aria-live="polite">
+                <div class="d-flex flex-row align-items-center gap-3 mb-3">
+                    <img src="images/icon-success-check.svg" alt="Success Icon" />
+                    <p class="mb-0">Message Sent!</p>
+                </div>
+                <p>Thanks for completing the form. We'll be in touch soon!</p>
+            </div>
             <div id="contact-form">
                 <h1 class="mb-5">Contact Us</h1>
-                <form>
+                <form novalidate aria-labelledby="contact-form-heading">
                     <div id="name-box" class="d-flex align-items-center gap-3">
                         <div id="name-box-first">
-                            <label for="first-name">First Name</label>
-                            <input type="text" id="first-name" class="w-100" name="first-name" required />
-                            <p></p>
+                            <label for="first-name" class="mb-2" aria-label="First Name">First Name</label>
+                            <input
+                                type="text"
+                                id="first-name"
+                                class="w-100 mb-0"
+                                name="first-name"
+                                required
+                                aria-required="true"
+                                aria-describedby="first-name-error"
+                            />
+                            <p id="first-name-error" class="text-danger" aria-live="assertive">
+                                This field is required
+                            </p>
                         </div>
                         <div id="name-box-last">
-                            <label for="last-name">Last Name</label>
-                            <input type="text" id="last-name" class="w-100" name="last-name" required />
+                            <label for="last-name" class="mb-2" aria-label="Last Name">Last Name</label>
+                            <input
+                                type="text"
+                                id="last-name"
+                                class="w-100 mb-0"
+                                name="last-name"
+                                required
+                                aria-required="true"
+                                aria-describedby="last-name-error"
+                            />
+                            <p id="last-name-error" class="text-danger" aria-live="assertive">This field is required</p>
                         </div>
                     </div>
-
-                    <label for="email" class="d-block">Email Address</label>
-                    <input type="email" id="email" name="email" class="w-100" required />
-
-                    <label for="query-type" class="d-block">Query Type</label>
-                    <div id="query-type-box" class="d-flex align-items-center gap-3 mb-3">
+                    <div>
+                        <label for="email" class="d-block mb-2" aria-label="Email Address">Email Address</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            class="w-100 mb-0"
+                            required
+                            aria-required="true"
+                            aria-describedby="email-error"
+                        />
+                        <p id="email-error" class="text-danger" aria-live="assertive">
+                            Please enter a valid email address
+                        </p>
+                    </div>
+                    <label for="query-type" class="d-block mb-2" aria-label="Query Type">Query Type</label>
+                    <div id="query-type-box" class="d-flex align-items-center gap-3">
                         <div id="query-type-box-1" class="query-type-box-radio w-100">
-                            <input type="radio" id="query-type-1" name="query-type" value="General Enquiry" required />
+                            <input
+                                type="radio"
+                                id="query-type-1"
+                                name="query-type"
+                                value="General Enquiry"
+                                required
+                                aria-required="true"
+                                aria-describedby="query-type-error"
+                            />
                             <label class="label-custom" for="query-type-1">General Enquiry</label>
                         </div>
                         <div id="query-type-box-2" class="query-type-box-radio w-100">
-                            <input type="radio" id="query-type-2" name="query-type" value="Support Request" required />
+                            <input
+                                type="radio"
+                                id="query-type-2"
+                                name="query-type"
+                                value="Support Request"
+                                required
+                                aria-required="true"
+                                aria-describedby="query-type-error"
+                            />
                             <label class="label-custom" for="query-type-2">Support Request</label>
                         </div>
                     </div>
+                    <p id="query-type-error" class="text-danger radio-danger" aria-live="assertive">
+                        Please select a query type
+                    </p>
 
-                    <label for="message" class="d-block">Message</label>
-                    <textarea id="message" class="d-block w-100 mb-4" name="message" rows="5" required></textarea>
+                    <div>
+                        <label for="message" class="d-block mb-2" aria-label="Message">Message</label>
+                        <textarea
+                            id="message"
+                            class="d-block w-100"
+                            name="message"
+                            rows="5"
+                            required
+                            aria-required="true"
+                            aria-describedby="message-error"
+                        ></textarea>
+                        <p id="message-error" class="text-danger" aria-live="assertive">This field is required</p>
+                    </div>
 
-                    <input type="checkbox" id="terms-and-conditions" name="terms-and-conditions" required />
-                    <label for="terms-and-conditions" class="mb-4">I consent to being contacted by the team</label>
-                    <button id="submit" type="submit" class="d-block w-100">Submit</button>
+                    <div class="d-flex align-items-center gap-3">
+                        <input
+                            type="checkbox"
+                            id="terms-and-conditions"
+                            name="terms-and-conditions"
+                            required
+                            aria-required="true"
+                            aria-describedby="terms-error"
+                        />
+                        <label for="terms-and-conditions" aria-label="Consent to be contacted">
+                            I consent to being contacted by the team
+                        </label>
+                    </div>
+                    <p id="terms-error" class="text-danger checkbox-danger" aria-live="assertive">
+                        To submit this form, please consent to being contacted
+                    </p>
+
+                    <button id="submit" type="submit" class="d-block w-100" aria-label="Submit form">Submit</button>
                 </form>
             </div>
         </main>
+
+        <script>
+            const inputs = document.querySelectorAll('input:not([type="radio"]), textarea');
+            const form = document.querySelector('form');
+            const textAreas = document.querySelectorAll('textarea');
+            const queryTypeRadios = document.querySelectorAll('input[type="radio"]');
+            const checkbox = document.querySelector('input[type="checkbox"]');
+
+            const dangerInfo = () => {
+                inputs.forEach((input) => {
+                    form.addEventListener('submit', (e) => {
+                        e.preventDefault();
+
+                        const inputMessage = input.parentElement.querySelector('.text-danger');
+                        const inputsWrongInfo = input.validity.valueMissing || input.validity.typeMismatch;
+                        if (inputsWrongInfo) {
+                            inputMessage.style.visibility = 'visible'; // 显示错误信息
+                        } else {
+                            inputMessage.style.visibility = 'hidden'; // 隐藏错误信息
+                        }
+
+                        const radioWrongInfo = !queryTypeRadios[0].checked && !queryTypeRadios[1].checked;
+                        const checkboxWrongInfo = !checkbox.checked;
+                        const radioDanger = document.querySelector('.radio-danger');
+                        const checkboxDanger = document.querySelector('.checkbox-danger');
+
+                        if (radioWrongInfo) {
+                            radioDanger.style.visibility = 'visible'; // 显示错误信息
+                        } else {
+                            radioDanger.style.visibility = 'hidden'; // 隐藏错误信息
+                        }
+
+                        if (checkboxWrongInfo) {
+                            checkboxDanger.style.visibility = 'visible'; // 显示错误信息
+                        } else {
+                            checkboxDanger.style.visibility = 'hidden'; // 隐藏错误信息
+                        }
+
+                        if (!radioWrongInfo && !checkboxWrongInfo && !inputsWrongInfo) {
+                            document.querySelector('#thx-msg').style.display = 'block'; // 显示感谢信息
+                        }
+                    });
+                });
+            };
+
+            dangerInfo();
+        </script>
     </body>
 </html>
