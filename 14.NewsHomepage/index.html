@@ -249,7 +249,7 @@
                 }
                 #navbar-links li {
                     display: none;
-                    font-size: 1.5rem;
+                    font-size: 1.2rem;
                     font-weight: 700;
                 }
                 #menu-close {
@@ -269,13 +269,13 @@
         <main class="container-fluid">
             <section id="navbar" class="d-flex justify-content-between align-items-center">
                 <img src="images/logo.svg" alt="logo" />
-                <ul id="navbar-links" class="d-flex gap-5">
+                <ul id="navbar-links" class="d-flex gap-3">
                     <img id="menu-close" src="images/icon-menu-close.svg" alt="icon-menu-close" />
                     <li><a href="#hero" class="text-end">Home</a></li>
                     <li><a href="#popular">Popular</a></li>
                     <li><a href="#trending">Trending</a></li>
                     <li><a href="#new">New</a></li>
-                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#category1">Categories</a></li>
                 </ul>
                 <a id="menu-open"><img src="images/icon-menu.svg" alt="menu-open" /></a>
             </section>
@@ -357,9 +357,9 @@
                 menuOpen.addEventListener('click', () => {
                     var bodyHeight = document.body.offsetHeight;
                     navbarLinks.style.display = 'flex';
-                    navbarLinks.style.position = 'absolute';
+                    navbarLinks.style.position = 'fixed';
                     navbarLinks.style.height = bodyHeight + 'px';
-                    navbarLinks.style.padding = '20rem 4rem';
+                    navbarLinks.style.padding = '20vh 10vw';
                     lis.forEach((li) => {
                         li.style.display = 'block';
                     });
@@ -384,3 +384,4 @@
         </main>
     </body>
 </html>
+
