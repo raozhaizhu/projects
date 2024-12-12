@@ -262,15 +262,15 @@
     <body>
         <section id="navbar" class="d-flex justify-content-between align-items-center">
             <img src="images/logo.svg" alt="logo" />
-            <ul id="navbar-links" class="d-flex gap-3">
+            <ul id="navbar-links" class="d-flex gap-3" aria-live="polite">
                 <img id="menu-close" src="images/icon-menu-close.svg" alt="icon-menu-close" />
-                <li><a href="#hero" class="text-end">Home</a></li>
-                <li><a href="#popular">Popular</a></li>
-                <li><a href="#trending">Trending</a></li>
-                <li><a href="#new">New</a></li>
-                <li><a href="#category1">Categories</a></li>
+                <li><a aria-label="Home" href="#hero" class="text-end">Home</a></li>
+                <li><a aria-label="Popular" href="#popular">Popular</a></li>
+                <li><a aria-label="Trending" href="#trending">Trending</a></li>
+                <li><a aria-label="New" href="#new">New</a></li>
+                <li><a aria-label="Categories" href="#category1">Categories</a></li>
             </ul>
-            <a id="menu-open"><img src="images/icon-menu.svg" alt="menu-open" /></a>
+            <a id="menu-open" aria-label="menu-open"><img src="images/icon-menu.svg" alt="icon-menu-open" /></a>
         </section>
         <main class="container-fluid">
             <picture id="hero">
@@ -280,11 +280,15 @@
             <section id="new">
                 <h2 class="my-4">New</h2>
                 <article id="new1" class="new-article">
-                    <a href="#"><h4>Hydrogen VS Electric Cars</h4></a>
+                    <a href="#">
+                        <h4>Hydrogen VS Electric Cars</h4>
+                    </a>
                     <p>Will hydrogen-fueled cars ever catch up to EVs?</p>
                 </article>
                 <article id="new2" class="new-article">
-                    <a href="#"><h4>The Downsides of AI Artistry</h4></a>
+                    <a href="#">
+                        <h4>The Downsides of AI Artistry</h4>
+                    </a>
                     <p>What are the possible adverse effects of on-demand AI image generation?</p>
                 </article>
                 <article id="new3" class="new-article">
@@ -302,7 +306,7 @@
                     We dive into the next evolution of the web that claims to put the power of the platforms back into
                     the hands of the people. But is it really fulfilling its promise?
                 </p>
-                <button type="button" id="read-more" class="fw-bold" aria-lable="read more">READ MORE</button>
+                <button type="button" id="read-more" class="fw-bold">READ MORE</button>
             </section>
 
             <section id="category1" class="category d-flex gap-4">
