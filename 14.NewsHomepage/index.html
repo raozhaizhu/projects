@@ -176,6 +176,15 @@
                 display: none;
             }
             /*RWD*/
+            @media only screen and (max-width: 1400px) and (min-device-pixel-ratio: 2),
+                only screen and (max-width: 1400px) and (min-resolution: 192dpi) {
+                html {
+                    font-size: 14px; /* 768P：14px */
+                }
+                body {
+                    grid-template-columns: 5% 90% 5%; /* 左右5%宽度，中间自适应 */
+                }
+            }
 
             @media (max-width: 768px) {
                 html {
