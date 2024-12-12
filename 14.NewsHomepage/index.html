@@ -30,7 +30,7 @@
                 color: black;
                 font-family: 'Inter', sans-serif;
                 display: grid;
-                grid-template-columns: 10% 80% 10%; /* 左右5%宽度，中间自适应 */
+                grid-template-columns: 10% 80% 10%; /* 左右10%宽度，中间自适应 */
                 grid-template-rows: auto auto; /* 自动行高 */
                 grid-template-areas:
                     '. navbar .'
@@ -181,10 +181,16 @@
                 html {
                     font-size: 14px; /* 768P：14px */
                 }
+                body {
+                    grid-template-columns: 5% 90% 5%; /* 左右5%宽度，中间自适应 */
+                }
             }
             @media (min-width: 1080px) {
                 html {
                     font-size: 16px; /* 1080P：16px */
+                }
+                body {
+                    grid-template-columns: 5% 90% 5%; /* 左右5%宽度，中间自适应 */
                 }
             }
 
@@ -219,7 +225,6 @@
             @media (max-width: 768px) {
                 main {
                     padding-bottom: 2rem;
-                    display: grid;
                     grid-template-areas: 'hero' 'popular' 'trending' 'new' 'category1' 'category2' 'category3';
                     grid-gap: 1rem;
                 }
