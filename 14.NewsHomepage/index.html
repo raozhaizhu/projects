@@ -25,33 +25,38 @@
                 font-size: 16px;
             }
             body {
-                width: 100%;
                 height: auto;
                 background-color: #fefdf9;
                 color: black;
                 font-family: 'Inter', sans-serif;
                 display: grid;
-                grid-template-columns: 5% 90% 5%;
-                grid-template-rows: 5% 90% 5%;
+                grid-template-columns: 10% 80% 10%; /* 左右10%宽度，中间自适应 */
+                grid-template-rows: auto auto; /* 自动行高 */
+                grid-template-areas:
+                    '. navbar .'
+                    '. main .';
             }
-            #navbar {
-                grid-column: 1/4;
-                grid-row: 1/2;
-            }
+
             main {
-                padding-bottom: 5%;
-                grid-column: 2/3;
-                grid-row: 2/3;
+                grid-area: main;
+                padding: 0 !important;
+                margin-top: 3rem;
                 display: grid;
                 grid-template-areas:
-                    'navbar navbar navbar'
                     'hero hero new'
                     'popular trending new'
                     'category1 category2 category3';
                 grid-gap: 2rem;
+                margin-bottom: 3%;
             }
+
             #navbar {
                 grid-area: navbar;
+                margin-top: 3%;
+                position: sticky;
+                top: 0;
+                z-index: 100;
+                background-color: #fff;
             }
             #hero {
                 grid-area: hero;
@@ -173,15 +178,30 @@
                 display: none;
             }
             /*RWD*/
+            @media only screen and (max-width: 1400px) and (min-device-pixel-ratio: 2),
+                only screen and (max-width: 1400px) and (min-resolution: 192dpi) {
+                html {
+                    font-size: 14px; /* 768P：14px */
+                }
+                body {
+                    grid-template-columns: 5% 90% 5%; /* 左右5%宽度，中间自适应 */
+                }
+            }
 
             @media (max-width: 768px) {
                 html {
                     font-size: 14px; /* 768P：14px */
                 }
+                body {
+                    grid-template-columns: 5% 90% 5%; /* 左右5%宽度，中间自适应 */
+                }
             }
             @media (min-width: 1080px) {
                 html {
                     font-size: 16px; /* 1080P：16px */
+                }
+                body {
+                    grid-template-columns: 5% 90% 5%; /* 左右5%宽度，中间自适应 */
                 }
             }
 
@@ -214,18 +234,9 @@
             }
 
             @media (max-width: 768px) {
-                body {
-                    display: block;
-                    grid-template-columns: unset;
-                    grid-template-rows: unset;
-                }
                 main {
-                    padding-top: 5%;
-                    grid-column: unset;
-                    grid-row: unset;
                     padding-bottom: 2rem;
-                    display: grid;
-                    grid-template-areas: 'navbar' 'hero' 'popular' 'trending' 'new' 'category1' 'category2' 'category3';
+                    grid-template-areas: 'hero' 'popular' 'trending' 'new' 'category1' 'category2' 'category3';
                     grid-gap: 1rem;
                 }
                 #categories {
@@ -239,7 +250,6 @@
                     display: none;
                     position: relative;
                     width: 60%;
-                    /* padding: 20rem 4rem;*/
                     background-color: #fff;
                     flex-direction: column;
                     align-items: start;
@@ -249,7 +259,7 @@
                 }
                 #navbar-links li {
                     display: none;
-                    font-size: 1.5rem;
+                    font-size: 1.2rem;
                     font-weight: 700;
                 }
                 #menu-close {
@@ -266,20 +276,19 @@
     </head>
 
     <body>
+        <section id="navbar" class="d-flex justify-content-between align-items-center">
+            <img src="images/logo.svg" alt="logo" />
+            <ul id="navbar-links" class="d-flex gap-3" aria-live="polite">
+                <img id="menu-close" src="images/icon-menu-close.svg" alt="icon-menu-close" />
+                <li><a aria-label="Home" href="#hero" class="text-end">Home</a></li>
+                <li><a aria-label="Popular" href="#popular">Popular</a></li>
+                <li><a aria-label="Trending" href="#trending">Trending</a></li>
+                <li><a aria-label="New" href="#new">New</a></li>
+                <li><a aria-label="Categories" href="#category1">Categories</a></li>
+            </ul>
+            <a id="menu-open" aria-label="menu-open"><img src="images/icon-menu.svg" alt="icon-menu-open" /></a>
+        </section>
         <main class="container-fluid">
-            <section id="navbar" class="d-flex justify-content-between align-items-center">
-                <img src="images/logo.svg" alt="logo" />
-                <ul id="navbar-links" class="d-flex gap-5">
-                    <img id="menu-close" src="images/icon-menu-close.svg" alt="icon-menu-close" />
-                    <li><a href="#hero" class="text-end">Home</a></li>
-                    <li><a href="#popular">Popular</a></li>
-                    <li><a href="#trending">Trending</a></li>
-                    <li><a href="#new">New</a></li>
-                    <li><a href="#categories">Categories</a></li>
-                </ul>
-                <a id="menu-open"><img src="images/icon-menu.svg" alt="menu-open" /></a>
-            </section>
-
             <picture id="hero">
                 <source srcset="images/image-web-3-mobile.jpg" media="(max-width: 768px)" />
                 <img src="images/image-web-3-desktop.jpg " alt="image-web-3-desktop" />
@@ -287,11 +296,15 @@
             <section id="new">
                 <h2 class="my-4">New</h2>
                 <article id="new1" class="new-article">
-                    <a href="#"><h4>Hydrogen VS Electric Cars</h4></a>
+                    <a href="#">
+                        <h4>Hydrogen VS Electric Cars</h4>
+                    </a>
                     <p>Will hydrogen-fueled cars ever catch up to EVs?</p>
                 </article>
                 <article id="new2" class="new-article">
-                    <a href="#"><h4>The Downsides of AI Artistry</h4></a>
+                    <a href="#">
+                        <h4>The Downsides of AI Artistry</h4>
+                    </a>
                     <p>What are the possible adverse effects of on-demand AI image generation?</p>
                 </article>
                 <article id="new3" class="new-article">
@@ -309,7 +322,7 @@
                     We dive into the next evolution of the web that claims to put the power of the platforms back into
                     the hands of the people. But is it really fulfilling its promise?
                 </p>
-                <button type="button" id="read-more" class="fw-bold" aria-lable="read more">READ MORE</button>
+                <button type="button" id="read-more" class="fw-bold">READ MORE</button>
             </section>
 
             <section id="category1" class="category d-flex gap-4">
@@ -357,9 +370,9 @@
                 menuOpen.addEventListener('click', () => {
                     var bodyHeight = document.body.offsetHeight;
                     navbarLinks.style.display = 'flex';
-                    navbarLinks.style.position = 'absolute';
+                    navbarLinks.style.position = 'fixed';
                     navbarLinks.style.height = bodyHeight + 'px';
-                    navbarLinks.style.padding = '20rem 4rem';
+                    navbarLinks.style.padding = '20vh 10vw';
                     lis.forEach((li) => {
                         li.style.display = 'block';
                     });
@@ -384,3 +397,4 @@
         </main>
     </body>
 </html>
+
