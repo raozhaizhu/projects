@@ -21,6 +21,13 @@
                 padding: 0;
                 box-sizing: border-box;
             }
+            /* Chrome, Safari, Edge, Opera */
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+
             /*容器*/
             html {
                 font-size: 16px;
@@ -50,6 +57,7 @@
                 grid-area: slide-gallery;
                 width: 100%;
                 height: auto;
+                position: relative;
             }
             #product-info {
                 grid-area: product-info;
@@ -60,8 +68,112 @@
                 justify-content: center;
             }
 
-            #slide-gallery img:not(:first-child) {
+            .slideshow:not(:first-child) {
                 display: none;
+            }
+            .img-column {
+                flex: 1;
+                max-width: 25%;
+            }
+            .cursor {
+                cursor: pointer;
+            }
+            /* Next & previous buttons */
+            .prev,
+            .next {
+                position: absolute;
+                top: 40%;
+                width: auto;
+                padding: 16px;
+                margin-top: -50px;
+                color: white;
+                font-weight: bold;
+                font-size: 20px;
+                border-radius: 0 3px 3px 0;
+                user-select: none;
+                -webkit-user-select: none;
+                text-decoration: none;
+            }
+            /* Position the "next button" to the right */
+            .next {
+                right: 0;
+                border-radius: 3px 0 0 3px;
+            }
+            .prev:hover,
+            .next:hover {
+                background-color: rgba(0, 0, 0, 0.8);
+            }
+            .demo {
+                opacity: 0.6;
+            }
+            .active,
+            .demo:hover {
+                opacity: 1;
+            }
+
+            h1 {
+                font-weight: 700;
+            }
+            h2 {
+                font-weight: 700;
+            }
+            span {
+                font-size: 1rem;
+                color: #fff;
+                background-color: #000;
+                padding: 0.3rem 0.6rem;
+                border-radius: 0.5rem;
+                font-weight: 500;
+                margin-left: 1rem;
+            }
+            .brand {
+                color: #888;
+                text-transform: uppercase;
+                font-size: 0.85rem;
+                letter-spacing: 1px;
+                font-weight: 600;
+            }
+            p {
+                color: #888;
+            }
+            .origin-price {
+                font-weight: 700;
+                text-decoration: line-through;
+            }
+            .bg-grey {
+                background-color: #f7f8fd;
+            }
+            .decrease,
+            .increase {
+                padding: 0.65rem 1.3rem;
+                font-size: 1.5rem;
+                font-weight: bold;
+                color: #ff7d1b;
+                border: none;
+            }
+            .number-input-container {
+                border: none;
+                font-size: 1.2rem;
+                overflow: hidden;
+                background-color: #f7f8fd;
+            }
+            #numberInput {
+                text-align: center;
+                width: 4rem !important;
+                border: none;
+                outline: none;
+            }
+
+            .add-to-cart {
+                border: none;
+                background-color: #ff7d1b;
+                font-weight: 700;
+                padding: 0.8rem 3.5rem;
+            }
+            .add-to-cart > span {
+                background-color: #ff7d1b;
+                color: #000;
+                padding: 0;
             }
         </style>
     </head>
@@ -71,18 +183,26 @@
             <div class="navbar"></div>
         </header>
         <main class="wrapper">
-            <div id="slide-gallery">
-                <div class="slideshow"><img src="images/image-product-1.jpg" alt="Product 1" class="img-fluid" /></div>
-                <div class="slideshow"><img src="images/image-product-2.jpg" alt="Product 2" class="img-fluid" /></div>
-                <div class="slideshow"><img src="images/image-product-3.jpg" alt="Product 3" class="img-fluid" /></div>
-                <div class="slideshow"><img src="images/image-product-4.jpg" alt="Product 4" class="img-fluid" /></div>
+            <div id="slide-gallery" class="d-flex flex-column">
+                <div class="slideshow">
+                    <img src="images/image-product-1.jpg" alt="Product 1" class="img-fluid rounded" />
+                </div>
+                <div class="slideshow">
+                    <img src="images/image-product-2.jpg" alt="Product 2" class="img-fluid rounded" />
+                </div>
+                <div class="slideshow">
+                    <img src="images/image-product-3.jpg" alt="Product 3" class="img-fluid rounded" />
+                </div>
+                <div class="slideshow">
+                    <img src="images/image-product-4.jpg" alt="Product 4" class="img-fluid rounded" />
+                </div>
 
-                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                <a class="next" onclick="plusSlides(1)">&#10095;</a>
-                <div class="img-row">
+                <a class="prev cursor" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next cursor" onclick="plusSlides(1)">&#10095;</a>
+                <div class="img-row d-flex flex-row gap-4">
                     <div class="img-column">
                         <img
-                            class="demo cursor"
+                            class="cursor demo img-fluid rounded"
                             src="images/image-product-1-thumbnail.jpg"
                             style="width: 100%"
                             onclick="currentSlide(1)"
@@ -91,7 +211,7 @@
                     </div>
                     <div class="img-column">
                         <img
-                            class="demo cursor"
+                            class="cursor img-fluid rounded"
                             src="images/image-product-2-thumbnail.jpg"
                             style="width: 100%"
                             onclick="currentSlide(2)"
@@ -100,7 +220,7 @@
                     </div>
                     <div class="img-column">
                         <img
-                            class="demo cursor"
+                            class="cursor img-fluid rounded"
                             src="images/image-product-3-thumbnail.jpg"
                             style="width: 100%"
                             onclick="currentSlide(3)"
@@ -109,7 +229,7 @@
                     </div>
                     <div class="img-column">
                         <img
-                            class="demo cursor"
+                            class="cursor img-fluid rounded"
                             src="images/image-product-4-thumbnail.jpg"
                             style="width: 100%"
                             onclick="currentSlide(4)"
@@ -119,7 +239,7 @@
                 </div>
             </div>
             <div id="product-info">
-                <h3>Sneaker Company</h3>
+                <p class="brand">Sneaker Company</p>
                 <h1>Fall Limited Edition Sneakers</h1>
                 <p>
                     These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer
@@ -130,11 +250,19 @@
                         $125.00
                         <span>50%</span>
                     </h2>
-                    <p>$250.00</p>
+                    <p class="origin-price">$250.00</p>
                 </div>
-                <div id="add-to-cart">
-                    <input type="number" value="1" min="1" max="100" />
-                    <button class="btn btn-primary">Add to cart</button>
+                <div id="button-box" class="d-flex w-100 justify-content-between">
+                    <div class="number-input-container flex-1 d-flex align-items-center bg-grey rounded-3">
+                        <button class="decrease bg-grey" onclick="decreaseValue()">-</button>
+                        <input type="number" id="numberInput" class="bg-grey" value="0" />
+                        <button class="increase bg-grey" onclick="increaseValue()">+</button>
+                    </div>
+
+                    <button class="add-to-cart flex-2 rounded-3">
+                        <span class="fas fa-shopping-cart"></span>
+                        Add to cart
+                    </button>
                 </div>
             </div>
         </main>
@@ -179,3 +307,4 @@ Collections
   Add to cart
 
 -->
+
