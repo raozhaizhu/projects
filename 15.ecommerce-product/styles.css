@@ -60,6 +60,7 @@ main {
     height: auto;
     padding: 1rem;
 }
+
 #product-info {
     grid-area: product-info;
     padding: 1rem;
@@ -152,7 +153,9 @@ p {
     width: 3rem;
     height: 3rem;
 }
-
+.slideshow {
+    flex-shrink: 1;
+}
 #modal-lightbox {
     display: none;
     flex-direction: column;
@@ -168,8 +171,8 @@ p {
 }
 
 #lightbox-content {
-    width: 80%;
     max-width: 800px;
+    max-height: calc(80vh-60px);
     position: relative;
 }
 
@@ -185,7 +188,7 @@ p {
     top: 50%;
     width: 3.25rem;
     height: 3.25rem;
-    margin-top: -50px;
+    transform: translateY(-50%); /* 使按钮在垂直方向精确居中 */
     background-color: #fff;
     color: #000;
     font-weight: bold;
@@ -290,6 +293,9 @@ hr {
 }
 
 @media (max-width: 854px) {
+    html {
+        font-size: 14px;
+    }
     #menu-open {
         display: block;
     }
@@ -331,6 +337,26 @@ hr {
     }
     #product-info {
         margin: 0 auto;
+    }
+}
+
+/* 当设备处于横屏时，元素宽度变为 30% */
+@media (orientation: landscape) {
+    #lightbox-content {
+        width: 30%;
+    }
+    #sidebar img {
+        margin-bottom: 1rem;
+    }
+}
+
+/* 当设备处于竖屏时，元素宽度为 50% */
+@media (orientation: portrait) {
+    #lightbox-content {
+        width: 80%;
+    }
+    #sidebar img {
+        margin-bottom: 3rem;
     }
 }
 
