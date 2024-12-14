@@ -11,198 +11,102 @@
             href="https://fonts.googleapis.com/css2?family=Kumbh Sans:wght@100;200;300;400;500;600;700;800;900&display=swap"
             rel="stylesheet"
         />
+        <link rel="stylesheet" href="styles.css" />
+        <script src="script.js"></script>
         <title>Ecommerce-Product</title>
-        <style>
-            /*全局设置*/
-            *,
-            *::before,
-            *::after {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
-            /* Chrome, Safari, Edge, Opera */
-            input::-webkit-outer-spin-button,
-            input::-webkit-inner-spin-button {
-                -webkit-appearance: none;
-                margin: 0;
-            }
-
-            /*容器*/
-            html {
-                font-size: 16px;
-                font-family: 'Kumbh Sans', sans-serif;
-            }
-            body {
-                width: 100%;
-                height: auto;
-                background-color: #ffffff;
-                color: black;
-                display: grid;
-                grid-template-areas:
-                    '. navbar .'
-                    '. main .';
-                grid-template-columns: 10% 80% 10%;
-            }
-            main {
-                grid-area: main;
-                width: 100%;
-                height: auto;
-                display: grid;
-                grid-template-areas: '. slide-gallery . product-info .';
-                grid-template-columns: 5% 40% 10% 40% 5%;
-                background-color: bisque;
-            }
-            #slide-gallery {
-                grid-area: slide-gallery;
-                width: 100%;
-                height: auto;
-                position: relative;
-            }
-            #product-info {
-                grid-area: product-info;
-                width: 100%;
-                height: auto;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-            }
-
-            .slideshow:not(:first-child) {
-                display: none;
-            }
-            .img-column {
-                flex: 1;
-                max-width: 25%;
-            }
-            .cursor {
-                cursor: pointer;
-            }
-            /* Next & previous buttons */
-            .prev,
-            .next {
-                position: absolute;
-                top: 40%;
-                width: auto;
-                padding: 16px;
-                margin-top: -50px;
-                color: white;
-                font-weight: bold;
-                font-size: 20px;
-                border-radius: 0 3px 3px 0;
-                user-select: none;
-                -webkit-user-select: none;
-                text-decoration: none;
-            }
-            /* Position the "next button" to the right */
-            .next {
-                right: 0;
-                border-radius: 3px 0 0 3px;
-            }
-            .prev:hover,
-            .next:hover {
-                background-color: rgba(0, 0, 0, 0.8);
-            }
-            .demo {
-                opacity: 0.6;
-            }
-            .active,
-            .demo:hover {
-                opacity: 1;
-            }
-
-            h1 {
-                font-weight: 700;
-            }
-            h2 {
-                font-weight: 700;
-            }
-            span {
-                font-size: 1rem;
-                color: #fff;
-                background-color: #000;
-                padding: 0.3rem 0.6rem;
-                border-radius: 0.5rem;
-                font-weight: 500;
-                margin-left: 1rem;
-            }
-            .brand {
-                color: #888;
-                text-transform: uppercase;
-                font-size: 0.85rem;
-                letter-spacing: 1px;
-                font-weight: 600;
-            }
-            p {
-                color: #888;
-            }
-            .origin-price {
-                font-weight: 700;
-                text-decoration: line-through;
-            }
-            .bg-grey {
-                background-color: #f7f8fd;
-            }
-            .decrease,
-            .increase {
-                padding: 0.65rem 1.3rem;
-                font-size: 1.5rem;
-                font-weight: bold;
-                color: #ff7d1b;
-                border: none;
-            }
-            .number-input-container {
-                border: none;
-                font-size: 1.2rem;
-                overflow: hidden;
-                background-color: #f7f8fd;
-            }
-            #numberInput {
-                text-align: center;
-                width: 4rem !important;
-                border: none;
-                outline: none;
-            }
-
-            .add-to-cart {
-                border: none;
-                background-color: #ff7d1b;
-                font-weight: 700;
-                padding: 0.8rem 3.5rem;
-            }
-            .add-to-cart > span {
-                background-color: #ff7d1b;
-                color: #000;
-                padding: 0;
-            }
-        </style>
     </head>
 
     <body>
-        <header>
-            <div class="navbar"></div>
+        <div id="sidebar" role="dialog" aria-labelledby="sidebar-tittle" aria-hidden="true">
+            <ul>
+                <img
+                    src="images/icon-close.svg"
+                    alt="sidebar-close"
+                    class="close-btn cursor"
+                    onclick="closeSidebar()"
+                />
+                <li><a class="cursor" href="#collections" aria-label="View our product collections">Collections</a></li>
+                <li><a class="cursor" href="#men" aria-label="View our men's products">Men</a></li>
+                <li><a class="cursor" href="#women" aria-label="View our women's products">Women</a></li>
+                <li><a class="cursor" href="#about" aria-label="Learn more about us">About</a></li>
+                <li><a class="cursor" href="#contact" aria-label="Get in touch with us">Contact</a></li>
+            </ul>
+        </div>
+
+        <header class="d-flex" role="banner">
+            <a id="menu-open" aria-label="menu-open">
+                <img src="images/icon-menu.svg" alt="sidebar-open" onclick="openSidebar()" />
+            </a>
+
+            <h2 class="logo d-inline-block ms-3">sneakers</h2>
+            <div class="navbar d-flex gap-3 ms-5">
+                <a class="cursor" href="#collections" aria-label="View our product collections">Collections</a>
+                <a class="cursor" href="#men" aria-label="View our men's products">Men</a>
+                <a class="cursor" href="#women" aria-label="View our women's products">Women</a>
+                <a class="cursor" href="#about" aria-label="Learn more about us">About</a>
+                <a class="cursor" href="#contact" aria-label="Get in touch with us">Contact</a>
+            </div>
+            <div class="cart-avatar d-inline-block ms-auto">
+                <img src="images/icon-cart.svg" alt="Cart-toggle" class="cart-icon cursor" onclick="toggleCart()" />
+                <img
+                    src="images/image-avatar.png"
+                    alt="Avatar"
+                    class="ms-4 avatar-icon cursor"
+                    onclick="toggleCart()"
+                />
+                <div id="cart" class="shadow-lg">
+                    <h2 class="cart-title d-inline">Cart</h2>
+                    <img
+                        src="images/icon-delete.svg"
+                        alt="cart-items-delete"
+                        class="delete-icon cursor"
+                        onclick="deleteItem()"
+                    />
+                    <hr />
+                    <div id="cart-items-container" class="d-flex flex-column gap-3"></div>
+                    <button class="cart-checkout w-100 rounded">Checkout</button>
+                </div>
+            </div>
         </header>
-        <main class="wrapper">
-            <div id="slide-gallery" class="d-flex flex-column">
-                <div class="slideshow">
-                    <img src="images/image-product-1.jpg" alt="Product 1" class="img-fluid rounded" />
+        <main class="wrapper" role="main">
+            <div id="normal-slide-gallery" class="slide-gallery ms-auto d-flex flex-column">
+                <div class="slideshow origin">
+                    <img
+                        src="images/image-product-1.jpg"
+                        alt="Product img 1"
+                        class="img-fluid rounded"
+                        onclick="openModal()"
+                    />
                 </div>
-                <div class="slideshow">
-                    <img src="images/image-product-2.jpg" alt="Product 2" class="img-fluid rounded" />
+                <div class="slideshow origin">
+                    <img
+                        src="images/image-product-2.jpg"
+                        alt="Product img 2"
+                        class="img-fluid rounded"
+                        onclick="openModal()"
+                    />
                 </div>
-                <div class="slideshow">
-                    <img src="images/image-product-3.jpg" alt="Product 3" class="img-fluid rounded" />
+                <div class="slideshow origin">
+                    <img
+                        src="images/image-product-3.jpg"
+                        alt="Product img 3"
+                        class="img-fluid rounded"
+                        onclick="openModal()"
+                    />
                 </div>
-                <div class="slideshow">
-                    <img src="images/image-product-4.jpg" alt="Product 4" class="img-fluid rounded" />
+                <div class="slideshow origin">
+                    <img
+                        src="images/image-product-4.jpg"
+                        alt="Product img 4"
+                        class="img-fluid rounded"
+                        onclick="openModal()"
+                    />
                 </div>
 
-                <a class="prev cursor" onclick="plusSlides(-1)">&#10094;</a>
-                <a class="next cursor" onclick="plusSlides(1)">&#10095;</a>
-                <div class="img-row d-flex flex-row gap-4">
+                <div class="img-row d-flex flex-row gap-4 mt-4">
                     <div class="img-column">
                         <img
-                            class="cursor demo img-fluid rounded"
+                            class="dot origin cursor img-fluid rounded"
                             src="images/image-product-1-thumbnail.jpg"
                             style="width: 100%"
                             onclick="currentSlide(1)"
@@ -211,7 +115,7 @@
                     </div>
                     <div class="img-column">
                         <img
-                            class="cursor img-fluid rounded"
+                            class="dot origin cursor img-fluid rounded"
                             src="images/image-product-2-thumbnail.jpg"
                             style="width: 100%"
                             onclick="currentSlide(2)"
@@ -220,7 +124,7 @@
                     </div>
                     <div class="img-column">
                         <img
-                            class="cursor img-fluid rounded"
+                            class="dot origin cursor img-fluid rounded"
                             src="images/image-product-3-thumbnail.jpg"
                             style="width: 100%"
                             onclick="currentSlide(3)"
@@ -229,9 +133,10 @@
                     </div>
                     <div class="img-column">
                         <img
-                            class="cursor img-fluid rounded"
+                            class="dot origin cursor img-fluid rounded"
                             src="images/image-product-4-thumbnail.jpg"
                             style="width: 100%"
+                            s
                             onclick="currentSlide(4)"
                             alt="Display the fourth slide"
                         />
@@ -239,72 +144,111 @@
                 </div>
             </div>
             <div id="product-info">
-                <p class="brand">Sneaker Company</p>
-                <h1>Fall Limited Edition Sneakers</h1>
+                <p class="p-brand">Sneaker Company</p>
+                <h1 class="mt-3 mb-4">Fall Limited Edition Sneakers</h1>
                 <p>
                     These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer
                     sole, they’ll withstand everything the weather can offer.
                 </p>
-                <div id="price-box">
+                <div id="price-box" class="mb-4">
                     <h2>
                         $125.00
-                        <span>50%</span>
+                        <span class="discount">50%</span>
                     </h2>
                     <p class="origin-price">$250.00</p>
                 </div>
-                <div id="button-box" class="d-flex w-100 justify-content-between">
-                    <div class="number-input-container flex-1 d-flex align-items-center bg-grey rounded-3">
+                <div id="button-box" class="d-flex w-100 gap-3">
+                    <div class="number-input-container d-flex justify-content-between bg-grey rounded-3">
                         <button class="decrease bg-grey" onclick="decreaseValue()">-</button>
-                        <input type="number" id="numberInput" class="bg-grey" value="0" />
+                        <input type="number" id="numberInput" class="bg-grey" value="0" oninput="validateInput()" />
                         <button class="increase bg-grey" onclick="increaseValue()">+</button>
                     </div>
 
-                    <button class="add-to-cart flex-2 rounded-3">
-                        <span class="fas fa-shopping-cart"></span>
+                    <button class="add-to-cart rounded-3 w-100" onclick="addItemToCart()">
+                        <img src="images/icon-cart.svg" alt="add-to-Cart" />
                         Add to cart
                     </button>
                 </div>
             </div>
         </main>
+        <div id="modal-lightbox" role="dialog" aria-labelledby="lightbox-tittle" aria-hidden="true">
+            <div id="lightbox-content" class="d-flex flex-column justify-content-center align-items-center">
+                <span class="close ms-auto mb-4 cursor" onclick="closeModal() ">&times;</span>
+                <a class="prev cursor" onclick="plusSlides(-1)" aria-label="Previous Picture">&#10094;</a>
+                <a class="next cursor" onclick="plusSlides(1)" aria-label="Next Picture">&#10095;</a>
+                <div class="slideshow gogo">
+                    <img
+                        src="images/image-product-1.jpg"
+                        alt="Product img 1"
+                        class="img-fluid rounded"
+                        onclick="openModal()"
+                    />
+                </div>
+                <div class="slideshow gogo">
+                    <img
+                        src="images/image-product-2.jpg"
+                        alt="Product img 2"
+                        class="img-fluid rounded"
+                        onclick="openModal()"
+                    />
+                </div>
+                <div class="slideshow gogo">
+                    <img
+                        src="images/image-product-3.jpg"
+                        alt="Product img 3"
+                        class="img-fluid rounded"
+                        onclick="openModal()"
+                    />
+                </div>
+                <div class="slideshow gogo">
+                    <img
+                        src="images/image-product-4.jpg"
+                        alt="Product img 4"
+                        class="img-fluid rounded"
+                        onclick="openModal()"
+                    />
+                </div>
+
+                <div class="img-row d-flex flex-row gap-4 mt-5">
+                    <div class="img-column d-flex justify-content-center align-items-center">
+                        <img
+                            class="dot gogo cursor img-fluid rounded"
+                            src="images/image-product-1-thumbnail.jpg"
+                            style="width: 80%"
+                            onclick="currentSlide(1)"
+                            alt="Display the first slide"
+                        />
+                    </div>
+                    <div class="img-column d-flex justify-content-center align-items-center">
+                        <img
+                            class="dot gogo cursor img-fluid rounded"
+                            src="images/image-product-2-thumbnail.jpg"
+                            style="width: 80%"
+                            onclick="currentSlide(2)"
+                            alt="Display the second slide"
+                        />
+                    </div>
+                    <div class="img-column d-flex justify-content-center align-items-center">
+                        <img
+                            class="dot gogo cursor img-fluid rounded"
+                            src="images/image-product-3-thumbnail.jpg"
+                            style="width: 80%"
+                            onclick="currentSlide(3)"
+                            alt="Display the third slide"
+                        />
+                    </div>
+                    <div class="img-column d-flex justify-content-center align-items-center">
+                        <img
+                            class="dot gogo cursor img-fluid rounded"
+                            src="images/image-product-4-thumbnail.jpg"
+                            style="width: 80%"
+                            s
+                            onclick="currentSlide(4)"
+                            alt="Display the fourth slide"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
-
-<!-- Primary
-Orange: hsl(26, 100%, 55%)
-Pale orange: hsl(25, 100%, 94%)
-Neutral
-Very dark blue: hsl(220, 13%, 13%)
-Dark grayish blue: hsl(219, 9%, 45%)
-Grayish blue: hsl(220, 14%, 75%)
-Light grayish blue: hsl(223, 64%, 98%)
-White: hsl(0, 0%, 100%)
-Black (with 75% opacity for lightbox background): hsl(0, 0%, 0%)
-Typography
-Body Copy
-Font size (paragraph): 16px
-Font
-Family: Kumbh Sans
-Weights: 400, 700 
-
-//
-
-Collections
-  Men
-  Women
-  About
-  Contact
-
-  
-
-  Fall Limited Edition Sneakers
-
-
-
-  
-  
-
-  0
-  Add to cart
-
--->
-
