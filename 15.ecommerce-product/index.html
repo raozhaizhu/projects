@@ -158,12 +158,16 @@
                     <p class="origin-price">$250.00</p>
                 </div>
                 <div id="button-box" class="d-flex w-100 gap-3">
-                    <div
-                        class="number-input-container d-flex justify-content-between bg-grey rounded-3"
-                        aria-label="QuantityInput"
-                    >
+                    <div class="number-input-container d-flex justify-content-between bg-grey rounded-3">
                         <button class="decrease bg-grey" onclick="decreaseValue()">-</button>
-                        <input type="number" id="numberInput" class="bg-grey" value="0" oninput="validateInput()" />
+                        <input
+                            type="number"
+                            id="numberInput"
+                            class="bg-grey"
+                            value="0"
+                            oninput="validateInput()"
+                            aria-label="QuantityInput"
+                        />
                         <button class="increase bg-grey" onclick="increaseValue()">+</button>
                     </div>
 
