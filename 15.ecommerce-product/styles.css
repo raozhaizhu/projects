@@ -348,11 +348,24 @@ hr {
     }
 }
 
-/* 当设备是手机且处于横屏时，元素宽度变为 25% */
-@media (max-width: 900px) and (orientation: landscape) {
+/* 手机竖屏 */
+@media (max-width: 480px) and (orientation: portrait) {
+    #lightbox-content {
+        width: 80%;
+        max-width: 25rem;
+    }
+
+    #sidebar img {
+        margin-bottom: 3rem;
+    }
+}
+
+/* 手机横屏 */
+@media (min-width: 420px) and (max-width: 900px) and (orientation: landscape) {
     #lightbox-content {
         width: 25%;
-        max-width: 35rem;
+        min-width: 15rem;
+        max-width: 30rem;
     }
 
     .img-row {
@@ -369,10 +382,22 @@ hr {
     }
 }
 
-/* 当设备是手机且处于竖屏时，元素宽度为 80% */
-@media (max-width: 900x) and (orientation: portrait) {
+/* 平板竖屏 */
+@media (min-width: 600px) and (max-width: 1440px) and (orientation: portrait) {
     #lightbox-content {
         width: 80%;
+        max-width: 40rem;
+    }
+
+    #sidebar img {
+        margin-bottom: 3rem;
+    }
+}
+
+/* 平板横屏 */
+@media (min-width: 1024px) and (orientation: landscape) {
+    #lightbox-content {
+        width: 35%;
         max-width: 35rem;
     }
 
