@@ -158,7 +158,7 @@ p {
     align-items: center;
     justify-content: center;
     position: fixed;
-    z-index: 9999;
+    z-index: 10;
     top: 0;
     left: 0;
     width: 100%;
@@ -259,7 +259,7 @@ hr {
     width: 65%;
     height: 100%;
     background-color: #fff;
-    z-index: 999;
+    z-index: 99;
     padding: 2rem;
 }
 #menu-open {
