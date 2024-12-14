@@ -89,6 +89,7 @@ h1 {
 }
 h2 {
     font-weight: 700;
+    margin: 0;
 }
 .discount {
     font-size: 1rem;
@@ -288,7 +289,7 @@ hr {
     float: right;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 812px) {
     #menu-open {
         display: block;
     }
