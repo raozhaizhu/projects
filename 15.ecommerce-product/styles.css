@@ -343,10 +343,18 @@ hr {
 /* 当设备处于横屏时，元素宽度变为 30% */
 @media (orientation: landscape) {
     #lightbox-content {
-        width: 30%;
+        width: 25%;
+    }
+
+    .img-row {
+        gap: 0 !important;
+        margin-top: 0.5rem !important;
     }
     #sidebar img {
         margin-bottom: 1rem;
+    }
+    .modal-close {
+        margin-bottom: 0 !important;
     }
 }
 

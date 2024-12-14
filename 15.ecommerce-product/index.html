@@ -158,7 +158,10 @@
                     <p class="origin-price">$250.00</p>
                 </div>
                 <div id="button-box" class="d-flex w-100 gap-3">
-                    <div class="number-input-container d-flex justify-content-between bg-grey rounded-3">
+                    <div
+                        class="number-input-container d-flex justify-content-between bg-grey rounded-3"
+                        aria-label="QuantityInput"
+                    >
                         <button class="decrease bg-grey" onclick="decreaseValue()">-</button>
                         <input type="number" id="numberInput" class="bg-grey" value="0" oninput="validateInput()" />
                         <button class="increase bg-grey" onclick="increaseValue()">+</button>
@@ -173,7 +176,7 @@
         </main>
         <div id="modal-lightbox" role="dialog" aria-labelledby="lightbox-tittle" aria-hidden="true">
             <div id="lightbox-content" class="d-flex flex-column justify-content-center align-items-center">
-                <span class="close ms-auto mb-3 cursor" onclick="closeModal() ">&times;</span>
+                <span class="modal-close close ms-auto mb-3 cursor" onclick="closeModal() ">&times;</span>
                 <a class="prev cursor" onclick="plusSlides(-1)" aria-label="Previous Picture">&#10094;</a>
                 <a class="next cursor" onclick="plusSlides(1)" aria-label="Next Picture">&#10095;</a>
                 <div class="slideshow gogo">
