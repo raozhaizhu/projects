@@ -289,7 +289,7 @@ hr {
     float: right;
 }
 
-@media (max-width: 812px) {
+@media (max-width: 854px) {
     #menu-open {
         display: block;
     }
