@@ -171,6 +171,7 @@ p {
 }
 
 #lightbox-content {
+    width: 40%;
     max-width: 800px;
     max-height: calc(80vh-60px);
     position: relative;
@@ -338,31 +339,43 @@ hr {
     #product-info {
         margin: 0 auto;
     }
+    .img-row {
+        gap: 0.5rem !important;
+        margin-top: 0.5rem !important;
+    }
+    #lightbox-content {
+        max-width: 35rem;
+    }
 }
 
-/* 当设备处于横屏时，元素宽度变为 30% */
-@media (orientation: landscape) {
+/* 当设备是手机且处于横屏时，元素宽度变为 25% */
+@media (max-width: 900px) and (orientation: landscape) {
     #lightbox-content {
         width: 25%;
+        max-width: 35rem;
     }
 
     .img-row {
-        gap: 0 !important;
+        gap: 0.5rem !important;
         margin-top: 0.5rem !important;
     }
+
     #sidebar img {
         margin-bottom: 1rem;
     }
+
     .modal-close {
         margin-bottom: 0 !important;
     }
 }
 
-/* 当设备处于竖屏时，元素宽度为 50% */
-@media (orientation: portrait) {
+/* 当设备是手机且处于竖屏时，元素宽度为 80% */
+@media (max-width: 900x) and (orientation: portrait) {
     #lightbox-content {
         width: 80%;
+        max-width: 35rem;
     }
+
     #sidebar img {
         margin-bottom: 3rem;
     }
