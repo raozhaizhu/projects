@@ -293,7 +293,7 @@ hr {
     float: right;
 }
 
-@media (max-width: 854px) {
+@media (max-width: 900px) {
     html {
         font-size: 14px;
     }
