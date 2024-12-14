@@ -57,7 +57,6 @@ main {
     grid-area: slide-gallery;
     width: 100%;
     max-width: 35rem;
-
     height: auto;
     padding: 1rem;
 }
@@ -324,6 +323,12 @@ hr {
     #price-box {
         display: flex;
         justify-content: space-between;
+    }
+    .slide-gallery {
+        margin: 0 auto;
+    }
+    #product-info {
+        margin: 0 auto;
     }
 }
 
