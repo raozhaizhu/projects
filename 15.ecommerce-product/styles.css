@@ -310,12 +310,13 @@ hr {
     }
     #cart {
         position: fixed;
-        top: 10%;
+        z-index: 999;
+        top: 20%;
         left: 5%;
         width: 90%;
     }
     #cart-items-container {
-        min-height: 20rem;
+        min-height: 8rem;
     }
     #button-box {
         flex-direction: column;
