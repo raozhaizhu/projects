@@ -19,11 +19,36 @@
         <div id="wrapper-wholepage">
             <header>
                 <div id="hero-container">
-                    <img src="images/desktop/image-hero.jpg" alt="Loopstudios" />
+                    <picture>
+                        <source srcset="images/mobile/image-hero.jpg" media="(max-width: 768px)" alt="Loopstudios" />
+                        <img src="images/desktop/image-hero.jpg" alt="Loopstudios" />
+                    </picture>
                 </div>
                 <div id="nav-container" class="d-flex justify-content-between align-items-center">
                     <h2>loopstudios</h2>
-                    <div id="footer-links" class="d-flex gap-4">
+                    <div id="header-links" class="d-flex gap-4">
+                        <a href="javascript:void(0)">About</a>
+                        <a href="javascript:void(0)">Careers</a>
+                        <a href="javascript:void(0)">Events</a>
+                        <a href="javascript:void(0)">Products</a>
+                        <a href="javascript:void(0)">Support</a>
+                    </div>
+                    <div id="menu-open">
+                        <img src="images/icon-hamburger.svg" alt="OpenMenu" onclick="openMenu()" />
+                    </div>
+                </div>
+                <div id="hero-title">
+                    <!--prettier-ignore-->
+                    <h1>IMMERSIVE
+EXPERIENCES
+THAT DELIVER</h1>
+                </div>
+                <div id="menu-modal">
+                    <div id="modal-header" class="d-flex justify-content-between align-items-center">
+                        <h2>loopstudios</h2>
+                        <img src="images/icon-close.svg" alt="CloseMenu" onclick="closeMenu()" />
+                    </div>
+                    <div id="modal-links" class="d-flex flex-column gap-4">
                         <a href="javascript:void(0)">About</a>
                         <a href="javascript:void(0)">Careers</a>
                         <a href="javascript:void(0)">Events</a>
@@ -31,15 +56,11 @@
                         <a href="javascript:void(0)">Support</a>
                     </div>
                 </div>
-                <div id="hero-title">
-                    <!--prettier-ignore-->
-                    <h1>IMMERSIVE
-EXPERIENCES THAT
-DELIVER</h1>
-                </div>
             </header>
             <main>
                 <section id="vision-container" class="w-100 d-flex align-items-end">
+                    <img src="images/desktop/image-interactive.jpg" alt="Interactive" />
+
                     <div class="text-container">
                         <h2 class="text-uppercase">The leader in interactive VR</h2>
                         <p>
@@ -189,4 +210,14 @@ fisheye</div>
             </footer>
         </div>
     </body>
+    <script>
+        function openMenu() {
+            document.getElementById('menu-modal').style.display = 'block';
+        }
+
+        function closeMenu() {
+            document.getElementById('menu-modal').style.display = 'none';
+        }
+    </script>
 </html>
+

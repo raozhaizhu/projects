@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   box-sizing: border-box;
   margin: 0;
@@ -9,6 +10,7 @@ html {
 }
 
 body {
+  width: 100%;
   color: #000;
   font-family: "Outfit", sans-serif;
   background-color: #fff;
@@ -17,10 +19,42 @@ body {
 a {
   text-decoration: none;
   color: #fff;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
+a:not(.social-icon):after,
+i:after {
+  content: "";
+  position: absolute;
+  bottom: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background-color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+i:after {
+  bottom: 0;
+}
+
+i:hover::after,
+a:hover::after {
+  width: 1rem;
 }
 
 button {
   border: none;
+  padding: 0.5rem 2rem;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #000;
+}
+button:hover {
+  background-color: #000;
+  color: #fff;
 }
 
 header {
@@ -39,6 +73,7 @@ footer {
 }
 
 main {
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-areas: "vision" "creations";
@@ -68,17 +103,22 @@ img {
   width: 100%;
   height: 500px;
   grid-area: vision;
-  background-image: url("images/desktop/image-interactive.jpg ");
-  background-position: left bottom;
-  background-size: contain;
-  background-repeat: no-repeat;
+  position: relative;
+}
+#vision-container img {
+  position: absolute;
+  bottom: 0;
+  left: 0%;
 }
 
 .text-container {
   background-color: #fff;
   padding: 5rem 0 0 5rem;
   max-width: 550px;
-  margin-left: 500px;
+  position: absolute;
+  bottom: 0;
+  left: 30%;
+  z-index: 2;
 }
 .text-container h2 {
   font-size: 2rem;
@@ -92,8 +132,13 @@ img {
   font-size: 2rem;
 }
 
+#creations-header {
+  margin-bottom: 5rem;
+}
+
 #creations-grid {
   width: 100%;
+  max-width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 2rem;
@@ -102,9 +147,11 @@ img {
 .creation-card {
   position: relative;
   width: 100%;
+  max-width: 100%;
 }
 .creation-card img {
   width: 100%;
+  max-width: 100%;
 }
 .creation-card .caption {
   width: 100%;
@@ -121,6 +168,7 @@ img {
 }
 
 footer {
+  width: 100%;
   padding: 2.5rem 10%;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -135,16 +183,19 @@ footer #social-container {
   grid-area: social;
   font-size: 1.5rem;
 }
-footer #footer-links {
-  grid-area: links;
-  float: right;
-}
 footer p {
   grid-area: copyright;
   text-align: end;
 }
 
+#header-links,
+#footer-links {
+  grid-area: links;
+  float: right;
+}
+
 header {
+  width: 100%;
   color: #fff;
   position: relative;
 }
@@ -168,11 +219,112 @@ header #nav-container a {
   font-size: 1.2rem;
 }
 header h1 {
-  padding: 2.5rem;
-  border: 2px solid #fff;
-  font-size: 3.3rem;
+  padding: clamp(1rem, 1rem + 1vw, 2.5rem);
+  border: 3px solid #fff;
+  font-size: clamp(1.5rem, 1.5rem + 2vw, 10rem);
   white-space: pre;
+  letter-spacing: 3px;
   position: absolute;
   top: 40%;
   left: 10%;
+}
+
+#menu-open {
+  cursor: pointer;
+  display: none;
+}
+
+#menu-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 3rem 2rem;
+  background-color: rgb(0, 0, 0);
+  display: none;
+  z-index: 999;
+}
+#menu-modal #modal-header {
+  margin-bottom: 8rem;
+}
+#menu-modal img {
+  cursor: pointer;
+}
+#menu-modal h2 {
+  font-size: 3rem;
+}
+#menu-modal a {
+  font-size: 1.8rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  align-self: flex-start;
+}
+#menu-modal a:hover::after {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  #menu-open {
+    display: block;
+  }
+  #wrapper-wholepage {
+    grid-template-columns: 5% 90% 5%;
+  }
+  #creations-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  footer {
+    grid-template-columns: 1fr;
+    grid-template-areas: "logo" "links" "social" "copyright";
+    place-items: center; /* 同时控制水平和垂直居中 */
+  }
+  footer #footer-links {
+    flex-direction: column;
+  }
+  footer #footer-links a {
+    text-align: center;
+  }
+  #header-links {
+    display: none !important;
+  }
+  h1 {
+    padding: 2rem !important;
+    border: 3px solid #fff;
+    font-size: 2rem !important;
+    white-space: pre !important;
+    position: absolute;
+    top: 50%;
+  }
+  #vision-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    position: static;
+    top: auto;
+    left: auto;
+  }
+  #vision-container img {
+    max-width: 100%;
+    position: static;
+    top: auto;
+    left: auto;
+    display: block;
+  }
+  .text-container {
+    margin-top: 5rem;
+    padding: 0;
+    max-width: 100%;
+    position: static;
+    top: auto;
+    left: auto;
+  }
+  .text-container h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
 }/*# sourceMappingURL=styles.css.map */
