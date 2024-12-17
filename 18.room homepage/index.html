@@ -12,14 +12,13 @@
             rel="stylesheet"
         />
         <link rel="stylesheet" href="styles.css" />
-        <script src="script.js"></script>
         <title>Room Homepage</title>
     </head>
 
     <body>
-        <div id="wrapper-wholepage">
-            <section id="hero-img">
-                <picture id="hero-img-1" class="img-wrapper mySlides">
+        <div class="wrapper-wholepage">
+            <section class="hero-img">
+                <picture class="hero-img-1 img-wrapper mySlides">
                     <source
                         srcset="images/mobile-image-hero-1.jpg"
                         media="(max-width: 768px)"
@@ -28,7 +27,7 @@
                     <img src="images/desktop-image-hero-1.jpg" alt="desktop-image-hero-1" />
                 </picture>
 
-                <picture id="hero-img-2" class="img-wrapper mySlides">
+                <picture class="img-wrapper hero-img-2 mySlides">
                     <source
                         srcset="images/mobile-image-hero-2.jpg"
                         media="(max-width: 768px)"
@@ -37,7 +36,7 @@
                     <img src="images/desktop-image-hero-2.jpg" alt="desktop-image-hero-2" />
                 </picture>
 
-                <picture id="hero-img-3" class="img-wrapper mySlides">
+                <picture class="hero-img-3 img-wrapper mySlides">
                     <source
                         srcset="images/mobile-image-hero-3.jpg"
                         media="(max-width: 768px)"
@@ -46,20 +45,44 @@
                     <img src="images/desktop-image-hero-3.jpg" alt="desktop-image-hero-3" />
                 </picture>
 
-                <div id="button-prev-next" class="d-flex">
+                <div class="button-prev-next">
                     <img src="images/icon-angle-left.svg" alt="last-article-picture" onclick="plusSlides(-1)" />
                     <img src="images/icon-angle-right.svg" alt="next-article-picture" onclick="plusSlides(1)" />
                 </div>
-                <div id="top-menu" class="d-flex align-items-baseline">
+                <div class="top-menu align-items-baseline">
+                    <img
+                        id="open-menu-btn"
+                        class="open-menu"
+                        src="images/icon-hamburger.svg"
+                        alt="menu-icon"
+                        aira-label="open-menu"
+                    />
                     <h1>room</h1>
-                    <a href="javascript:void(0)">home</a>
-                    <a href="javascript:void(0)">shop</a>
-                    <a href="javascript:void(0)">about</a>
-                    <a href="javascript:void(0)">contact</a>
+                    <div class="menu-links">
+                        <a href="javascript:void(0)" aria-label="home">home</a>
+                        <a href="javascript:void(0)" aria-label="shop">shop</a>
+                        <a href="javascript:void(0)" aria-label="about">about</a>
+                        <a href="javascript:void(0)" aria-label="contact">contact</a>
+                    </div>
+                </div>
+                <div id="hidden-menu" class="menu-hidden">
+                    <img
+                        id="close-menu-btn"
+                        class="close-menu"
+                        src="images/icon-close.svg"
+                        alt="close-menu"
+                        aria-label="close-menu"
+                    />
+                    <div class="hidden-menu-links">
+                        <a href="javascript:void(0)" aria-label="home">home</a>
+                        <a href="javascript:void(0)" aria-label="shop">shop</a>
+                        <a href="javascript:void(0)" aria-label="about">about</a>
+                        <a href="javascript:void(0)" aria-label="contact">contact</a>
+                    </div>
                 </div>
             </section>
-            <section id="hero-article">
-                <article id="article-1" class="myArticles">
+            <section class="hero-article">
+                <article class="article-1 myArticles">
                     <h2>Discover innovative ways to decorate</h2>
                     <p>
                         We provide unmatched quality, comfort, and style for property owners across the country. Our
@@ -68,11 +91,11 @@
                     </p>
                     <a href="javascript:void(0)">
                         SHOP NOW
-                        <img src="images/icon-arrow.svg" alt="shop now" />
+                        <img src="images/icon-arrow.svg" alt="shop now" aria-label="shop now" />
                     </a>
                 </article>
 
-                <article id="article-2" class="myArticles">
+                <article class="myArticles article-2">
                     <h2>We are available all across the globe</h2>
                     <p>
                         With stores all over the world, it's easy for you to find furniture for your home or place of
@@ -81,11 +104,11 @@
                     </p>
                     <a href="javascript:void(0)">
                         SHOP NOW
-                        <img src="images/icon-arrow.svg" alt="shop now" />
+                        <img src="images/icon-arrow.svg" alt="shop now" aria-label="shop now" />
                     </a>
                 </article>
 
-                <article id="article-3" class="myArticles">
+                <article class="myArticles article-3">
                     <h2>Manufactured with the best materials</h2>
                     <p>
                         Our modern furniture store provide a high level of quality. Our company has invested in advanced
@@ -95,14 +118,14 @@
                     </p>
                     <a href="javascript:void(0)">
                         SHOP NOW
-                        <img src="images/icon-arrow.svg" alt="shop now" />
+                        <img src="images/icon-arrow.svg" alt="shop now" aria-label="shop now" />
                     </a>
                 </article>
             </section>
-            <picture id="img-wrapper-1" class="img-wrapper">
+            <picture class="img-wrapper img-wrapper-1">
                 <img src="images/image-about-dark.jpg" alt="image-about-dark" />
             </picture>
-            <article id="sub-article">
+            <article class="sub-article">
                 <h2>About our furniture</h2>
                 <p>
                     Our multifunctional collection blends design and function to suit your individual taste. Make each
@@ -111,9 +134,11 @@
                     Product specialis
                 </p>
             </article>
-            <picture id="img-wrapper-2" class="img-wrapper">
+            <picture class="img-wrapper img-wrapper-2">
                 <img src="images/image-about-light.jpg" alt="image-about-light" />
             </picture>
         </div>
     </body>
+    <script src="script.js"></script>
 </html>
+

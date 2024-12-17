@@ -13,6 +13,18 @@ function currentSlide(n) {
     showSlides((slideIndex = n));
 }
 
+const openMenuBtn = document.getElementById('open-menu-btn');
+const closeMenuBtn = document.getElementById('close-menu-btn');
+const menu = document.getElementById('hidden-menu');
+
+openMenuBtn.addEventListener('click', function () {
+    menu.style.display = 'flex';
+});
+
+closeMenuBtn.addEventListener('click', function () {
+    menu.style.display = 'none';
+});
+
 function showSlides(n) {
     let i;
     let slides = document.getElementsByClassName('mySlides');
