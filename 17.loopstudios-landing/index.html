@@ -19,27 +19,48 @@
         <div id="wrapper-wholepage">
             <header>
                 <div id="hero-container">
-                    <img src="images/desktop/image-hero.jpg" alt="Loopstudios" />
+                    <picture>
+                        <source srcset="images/mobile/image-hero.jpg" media="(max-width: 768px)" alt="Loopstudios" />
+                        <img src="images/desktop/image-hero.jpg" alt="Loopstudios" />
+                    </picture>
                 </div>
                 <div id="nav-container" class="d-flex justify-content-between align-items-center">
                     <h2>loopstudios</h2>
-                    <div id="footer-links" class="d-flex gap-4">
-                        <a href="javascript:void(0)">About</a>
-                        <a href="javascript:void(0)">Careers</a>
-                        <a href="javascript:void(0)">Events</a>
-                        <a href="javascript:void(0)">Products</a>
-                        <a href="javascript:void(0)">Support</a>
+                    <div id="header-links" class="d-flex gap-4">
+                        <a href="javascript:void(0)" aria-label="About">About</a>
+                        <a href="javascript:void(0)" aria-label="Careers">Careers</a>
+                        <a href="javascript:void(0)" aria-label="Events">Events</a>
+                        <a href="javascript:void(0)" aria-label="Products">Products</a>
+                        <a href="javascript:void(0)" aria-label="Support">Support</a>
+                    </div>
+                    <div id="menu-open">
+                        <img src="images/icon-hamburger.svg" alt="OpenMenu" onclick="openMenu()" />
                     </div>
                 </div>
                 <div id="hero-title">
                     <!--prettier-ignore-->
                     <h1>IMMERSIVE
-EXPERIENCES THAT
-DELIVER</h1>
+EXPERIENCES
+THAT DELIVER</h1>
+                </div>
+                <div id="menu-modal">
+                    <div id="modal-header" class="d-flex justify-content-between align-items-center">
+                        <h2>loopstudios</h2>
+                        <img src="images/icon-close.svg" alt="CloseMenu" onclick="closeMenu()" />
+                    </div>
+                    <div id="modal-links" class="d-flex flex-column gap-4">
+                        <a href="javascript:void(0)" aria-label="About">About</a>
+                        <a href="javascript:void(0)" aria-label="Careers">Careers</a>
+                        <a href="javascript:void(0)" aria-label="Events">Events</a>
+                        <a href="javascript:void(0)" aria-label="Products">Products</a>
+                        <a href="javascript:void(0)" aria-label="Support">Support</a>
+                    </div>
                 </div>
             </header>
             <main>
                 <section id="vision-container" class="w-100 d-flex align-items-end">
+                    <img src="images/desktop/image-interactive.jpg" alt="Interactive" />
+
                     <div class="text-container">
                         <h2 class="text-uppercase">The leader in interactive VR</h2>
                         <p>
@@ -75,7 +96,7 @@ Earth</div>
                                     media="(max-width: 768px)"
                                     alt="Deep Earth"
                                 />
-                                <img src="images/desktop/image-night-arcade.jpg" />
+                                <img src="images/desktop/image-night-arcade.jpg" alt="Night Arcade" />
                             </picture>
                             <!--prettier-ignore-->
                             <div class="caption">night
@@ -88,7 +109,7 @@ arcade</div>
                                     media="(max-width: 768px)"
                                     alt="Deep Earth"
                                 />
-                                <img src="images/desktop/image-soccer-team.jpg" />
+                                <img src="images/desktop/image-soccer-team.jpg" alt="Soccer Team VR" />
                             </picture>
                             <!--prettier-ignore-->
                             <div class="caption">soccer 
@@ -101,7 +122,7 @@ team vr</div>
                                     media="(max-width: 768px)"
                                     alt="Deep Earth"
                                 />
-                                <img src="images/desktop/image-grid.jpg" />
+                                <img src="images/desktop/image-grid.jpg" alt="The Grid" />
                             </picture>
                             <!--prettier-ignore-->
                             <div class="caption">the 
@@ -114,7 +135,7 @@ grid</div>
                                     media="(max-width: 768px)"
                                     alt="Deep Earth"
                                 />
-                                <img src="images/desktop/image-from-above.jpg" alt="Deep Earth" />
+                                <img src="images/desktop/image-from-above.jpg" alt="From Above VR" />
                             </picture>
                             <!--prettier-ignore-->
                             <div class="caption">from up
@@ -127,7 +148,7 @@ above vr</div>
                                     media="(max-width: 768px)"
                                     alt="Deep Earth"
                                 />
-                                <img src="images/desktop/image-pocket-borealis.jpg" />
+                                <img src="images/desktop/image-pocket-borealis.jpg" alt="Pocket Borealis" />
                             </picture>
                             <!--prettier-ignore-->
                             <div class="caption">pocket
@@ -140,7 +161,7 @@ borealis</div>
                                     media="(max-width: 768px)"
                                     alt="Deep Earth"
                                 />
-                                <img src="images/desktop/image-curiosity.jpg" />
+                                <img src="images/desktop/image-curiosity.jpg" alt="The Curiosity" />
                             </picture>
                             <!--prettier-ignore-->
                             <div class="caption">the 
@@ -153,7 +174,7 @@ curiosity</div>
                                     media="(max-width: 768px)"
                                     alt="Deep Earth"
                                 />
-                                <img src="images/desktop/image-fisheye.jpg" />
+                                <img src="images/desktop/image-fisheye.jpg" alt="Make It Fisheye" />
                             </picture>
                             <!--prettier-ignore-->
                             <div class="caption">make it 
@@ -165,28 +186,38 @@ fisheye</div>
             <footer>
                 <h2>loopstudios</h2>
                 <div id="social-container" class="d-flex justify-content-end gap-3">
-                    <a href="javascript:void(0)" class="social-icon">
+                    <a href="javascript:void(0)" class="social-icon" aria-label="Facebook">
                         <i class="fab fa-facebook-f"></i>
                     </a>
-                    <a href="javascript:void(0)" class="social-icon">
+                    <a href="javascript:void(0)" class="social-icon" aria-label="Twitter">
                         <i class="fab fa-twitter"></i>
                     </a>
-                    <a href="javascript:void(0)" class="social-icon">
+                    <a href="javascript:void(0)" class="social-icon" aria-label="Instagram">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="javascript:void(0)" class="social-icon">
+                    <a href="javascript:void(0)" class="social-icon" aria-label="Github">
                         <i class="fab fa-github"></i>
                     </a>
                 </div>
                 <div id="footer-links" class="d-flex gap-4">
-                    <a href="javascript:void(0)">About</a>
-                    <a href="javascript:void(0)">Careers</a>
-                    <a href="javascript:void(0)">Events</a>
-                    <a href="javascript:void(0)">Products</a>
-                    <a href="javascript:void(0)">Support</a>
+                    <a href="javascript:void(0)" aria-label="About">About</a>
+                    <a href="javascript:void(0)" aria-label="Careers">Careers</a>
+                    <a href="javascript:void(0)" aria-label="Events">Events</a>
+                    <a href="javascript:void(0)" aria-label="Products">Products</a>
+                    <a href="javascript:void(0)" aria-label="Support">Support</a>
                 </div>
                 <p>© 2021 Loopstudios. All rights reserved.</p>
             </footer>
         </div>
     </body>
+    <script>
+        function openMenu() {
+            document.getElementById('menu-modal').style.display = 'block';
+        }
+
+        function closeMenu() {
+            document.getElementById('menu-modal').style.display = 'none';
+        }
+    </script>
 </html>
+
