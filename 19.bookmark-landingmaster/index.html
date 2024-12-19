@@ -22,28 +22,32 @@
                     <img src="images/logo-bookmark.svg" alt="Bookmark Landingmaster" />
                 </div>
                 <nav class="nav-menu">
-                    <a href="#" aria-label="Features">Features</a>
-                    <a href="#" aria-label="Pricing">Pricing</a>
-                    <a href="#" aria-label="Contact">Contact</a>
-                    <a href="#" aria-label="Login">Login</a>
+                    <a aria-label="Features">Features</a>
+                    <a aria-label="Pricing">Pricing</a>
+                    <a aria-label="Contact">Contact</a>
+                    <a aria-label="Login" class="login">Login</a>
                 </nav>
             </section>
         </header>
         <main>
-            <section class="section1">
+            <section class="section1 d-flex justify-content-between align-items-center">
                 <div class="hero">
                     <h1>A Simple Bookmark Manager</h1>
                     <p>
                         A clean and simple interface to organize your favourite websites. Open a new browser tab and see
                         your sites load instantly. Try it for free.
                     </p>
-                    <a href="#" class="btn">Get it on Chrome</a>
-                    <a href="#" class="btn">Get it on Firefox</a>
+                    <a class="btn">Get it on Chrome</a>
+                    <a class="btn">Get it on Firefox</a>
+                </div>
+                <div class="hero-image1">
+                    <img src="images/illustration-hero.svg" alt="Illustration" class="illustration" />
+                    <div class="color-part1"></div>
                 </div>
             </section>
             <section class="section2">
                 <div class="section2-header">
-                    <div class="section2-header-text">
+                    <div class="section2-header-text mb-5">
                         <h2 class="text-center">Features</h2>
                         <p class="text-center">
                             Our aim is to make it quick and easy for you to access your favourite websites. Your
@@ -51,13 +55,17 @@
                         </p>
                     </div>
                     <div class="collapse-choices w-100 d-flex justify-content-around align-items-center">
-                        <a href="#">Simple Bookmarking</a>
-                        <a href="#">Speedy Searching</a>
-                        <a href="#">Easy Sharing</a>
+                        <a onclick="goCollapse(0)">Simple Bookmarking</a>
+                        <a onclick="goCollapse(1)">Speedy Searching</a>
+                        <a onclick="goCollapse(2)">Easy Sharing</a>
                     </div>
                 </div>
-                <div class="collapse-info">
-                    <div class="info-1">
+                <div class="hero-image2">
+                    <img src="images/illustration-features-tab-1.svg" alt="Illustration" class="illustration" />
+                    <div class="color-part2"></div>
+                </div>
+                <div class="collapse-info d-flex justify-content-between align-items-center">
+                    <div class="info active-item">
                         <h3>Bookmark in one click</h3>
                         <p>
                             Organize your bookmarks however you like. Our simple drag-and-drop interface gives you
@@ -65,24 +73,22 @@
                         </p>
                         <button class="btn btn-primary">More Info</button>
                     </div>
-                    <!--
-                        <div class="info-2">
-                            <h3>Intelligent search</h3>
-                            <p>
-                                Our powerful searchfeature will help you find saved sites in no time at all. No need to
-                                trawl through all of your bookmarks.
-                            </p>
-                            <button class="btn ">More Info</button>
-                        </div>
-                        <div class="info-3">
-                            <h3>Share your bookmarks</h3>
-                            <p>
-                                Easily share your bookmarks and collections with others. Create a shareable link that
-                                you can send at the click of a button.
-                            </p>
-                            <button class="btn ">More Info</button>
-                        </div>
-                        -->
+                    <div class="info">
+                        <h3>Intelligent search</h3>
+                        <p>
+                            Our powerful searchfeature will help you find saved sites in no time at all. No need to
+                            trawl through all of your bookmarks.
+                        </p>
+                        <button class="btn btn-primary">More Info</button>
+                    </div>
+                    <div class="info">
+                        <h3>Share your bookmarks</h3>
+                        <p>
+                            Easily share your bookmarks and collections with others. Create a shareable link that you
+                            can send at the click of a button.
+                        </p>
+                        <button class="btn btn-primary">More Info</button>
+                    </div>
                 </div>
             </section>
             <section class="section3">
@@ -94,96 +100,108 @@
                     </p>
                 </div>
                 <div class="cards-download d-flex justify-content-between align-items-center">
-                    <div class="card card-chrome">
-                        <img src="images/logo-chrome.svg" alt="Add toChrome" />
-                        <h3>Add to Chrome</h3>
-                        <p>Minimum version 62</p>
-                        <button class="btn">Add & Install Extension</button>
+                    <div class="card align-self-start">
+                        <div class="card-top">
+                            <img src="images/logo-chrome.svg" alt="Add to Chrome" />
+                            <h3>Add to Chrome</h3>
+                            <p>Minimum version 62</p>
+                        </div>
+                        <img src="images/bg-dots.svg" alt="Dots" class="dot" />
+
+                        <button class="btn btn-primary">Add & Install Extension</button>
                     </div>
-                    <div class="card card-firefox">
-                        <img src="images/logo-firefox.svg" alt="Add toChrome" />
-                        <h3>Add to Firefox</h3>
-                        <p>Minimum version 55</p>
-                        <button class="btn">Add & Install Extension</button>
+                    <div class="card">
+                        <div class="card-top">
+                            <img src="images/logo-firefox.svg" alt="Add to Firefox" />
+                            <h3>Add to Firefox</h3>
+                            <p>Minimum version 55</p>
+                        </div>
+                        <img src="images/bg-dots.svg" alt="Dots" class="dot" />
+
+                        <button class="btn btn-primary">Add & Install Extension</button>
                     </div>
-                    <div class="card card-opera">
-                        <img src="images/logo-opera.svg" alt="Add toChrome" />
-                        <h3>Add to Opera Minimum</h3>
-                        <p>Minimum version 46</p>
-                        <button class="btn">Add & Install Extension</button>
+                    <div class="card align-self-end">
+                        <div class="card-top">
+                            <img src="images/logo-opera.svg" alt="Add to Opera" />
+                            <h3>Add to Opera</h3>
+                            <p>Minimum version 46</p>
+                        </div>
+                        <img src="images/bg-dots.svg" alt="Dots" class="dot" />
+
+                        <button class="btn btn-primary">Add & Install Extension</button>
                     </div>
                 </div>
             </section>
-            <section class="section4">
-                <h2>Frequently Asked Questions</h2>
-                <p>
+            <section class="section4 text-center">
+                <h2 class="mb-4">Frequently Asked Questions</h2>
+                <p class="mb-5">
                     Here are some of our FAQs. If you have any other questions you’d like answered please feel free to
                     email us.
                 </p>
-                <div class="accordion-qa">
-                    <div class="qa-1">
-                        <div class="qa-1-q">
-                            <a href="#">What is Bookmark?</a>
-                            <img src="images/icon-arrow.svg" alt="toggle this qa" />
+                <div class="accordion-qa mb-4">
+                    <div class="qa active-qa">
+                        <div class="qa-q qa-q-1 d-flex align-items-center justify-content-between">
+                            <a onclick="toggleQa(0)">What is Bookmark?</a>
+                            <img src="images/icon-arrow.svg" alt="toggle this qa" onclick="toggleQa(0)" />
                         </div>
-                        <div class="qa-1-a">
+                        <div class="qa-a">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tincidunt justo eget
                             ultricies fringilla. Phasellus blandit ipsum quis quam ornare mattis.
                         </div>
                     </div>
-                    <!--
-                    <div class="qa-2">
-                        <div class="qa-2-q">
-                            <a href="#">How can I request a new browser?</a>
-                            <img src="images/icon-arrow.svg" alt="toggle this qa" />
+                    <div class="qa">
+                        <div class="qa-q d-flex align-items-center justify-content-between">
+                            <a onclick="toggleQa(1)">How can I request a new browser?</a>
+                            <img src="images/icon-arrow.svg" alt="toggle this qa" onclick="toggleQa(1)" />
                         </div>
-                        <div class="qa-2-a">
+                        <div class="qa-a">
                             Vivamus luctus eros aliquet convallis ultricies. Mauris augue massa, ultricies non ligula.
                             Suspendisse imperdiet. Vivamus luctus eros aliquet convallis ultricies. Mauris augue massa,
                             ultricies non ligula. Suspendisse imperdie tVivamus luctus eros aliquet convallis ultricies.
                             Mauris augue massa, ultricies non ligula. Suspendisse imperdiet.
                         </div>
                     </div>
-                    <div class="qa-3">
-                        <div class="qa-3-q">
-                            <a href="#">Is there a mobile app?</a>
-                            <img src="images/icon-arrow.svg" alt="toggle this qa" />
+                    <div class="qa">
+                        <div class="qa-q d-flex align-items-center justify-content-between">
+                            <a onclick="toggleQa(2)">Is there a mobile app?</a>
+                            <img src="images/icon-arrow.svg" alt="toggle this qa" onclick="toggleQa(2)" />
                         </div>
-                        <div class="qa-3-a">
-                            Sed consectetur quam id neque fermentum accumsan. Praesent luctus vestibulum dolor, ut
+                        <div class="qa-a">
+                            ed consectetur quam id neque fermentum accumsan. Praesent luctus vestibulum dolor, ut
                             condimentum urna vulputate eget. Cras in ligula quis est pharetra mattis sit amet pharetra
                             purus. Sed sollicitudin ex et ultricies bibendum.
                         </div>
                     </div>
-                    <div class="qa-4">
-                        <div class="qa-4-q">
-                            <a href="#">What about other Chromium browsers?</a>
-                            <img src="images/icon-arrow.svg" alt="toggle this qa" />
+                    <div class="qa">
+                        <div class="qa-q d-flex align-items-center justify-content-between">
+                            <a onclick="toggleQa(3)">What about other Chromium browsers?</a>
+                            <img src="images/icon-arrow.svg" alt="toggle this qa" onclick="toggleQa(3)" />
                         </div>
-                        <div class="qa-4-a">
+                        <div class="qa-a">
                             Integer condimentum ipsum id imperdiet finibus. Vivamus in placerat mi, at euismod dui.
                             Aliquam vitae neque eget nisl gravida pellentesque non ut velit.
                         </div>
                     </div>
-                    -->
                 </div>
 
-                <button class="btn">More Info</button>
+                <button class="btn btn-primary">More Info</button>
             </section>
         </main>
         <footer>
-            <section class="f-section1">
+            <section class="f-section1 d-flex flex-column align-items-center">
                 <p>35,000+ already joined</p>
-                <h2>Stay up-to-date with what we’re doing</h2>
-                <input type="email" placeholder="Enter your email" />
-                <button class="btn">Contact Us</button>
+                <h2 class="mb-4">Stay up-to-date with what we’re doing</h2>
+                <div class="d-flex justify-content-center align-items-center">
+                    <input type="email" placeholder="Enter your email" />
+                    <button class="btn btn-contact ms-2">Contact Us</button>
+                </div>
             </section>
             <section class="f-section2 d-flex justify-content-between align-items-center">
                 <nav>
-                    <img src="images/logo-bookmark - white.svg" alt="Bookmark Landingmaster" />
-                    <a href="#" aria-label="Features">Features</a>
-                    <a href="#" aria-label="Pricing">Pricing</a>
-                    <a href="#" aria-label="Contact">Contact</a>
+                    <img src="images/logo-bookmark - white.svg" alt="Bookmark Landingmaster" class="me-4" />
+                    <a aria-label="Features" class="text-white">Features</a>
+                    <a aria-label="Pricing" class="text-white">Pricing</a>
+                    <a aria-label="Contact" class="text-white">Contact</a>
                 </nav>
                 <div class="social-icons">
                     <img src="images/icon-facebook.svg" alt="facebook" />
@@ -204,3 +222,4 @@
   
 Features Pricing Contact 
 -->
+
