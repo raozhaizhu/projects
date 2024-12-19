@@ -1,0 +1,125 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 1vw;
+}
+p {
+    font-size: clamp(14px, 0.833rem, 40px);
+}
+a {
+    font-size: 1.2rem;
+}
+.btn {
+    font-size: 1.2rem;
+}
+.btn-primary {
+    padding: 0.5rem 1rem;
+    background-color: #5266df;
+}
+
+body {
+    height: 100%;
+    color: #000;
+    font-family: 'Roboto Mono', monospace;
+
+    background-color: blue;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+/* Header */
+header {
+    background-color: aqua;
+}
+.nav-menu {
+    a {
+        margin-left: 2rem;
+    }
+}
+.h-section1 {
+    width: 80rem;
+    margin: 0 auto;
+    padding: 1rem 0;
+    background-color: #fff;
+}
+/* Main */
+main {
+    background-color: bisque;
+    width: 80rem;
+    margin: 0 auto;
+}
+.section1,
+.section2,
+.section3,
+.section4 {
+    padding-bottom: 7rem;
+}
+/*section1*/
+.section1 {
+    padding-top: 7rem;
+}
+.hero {
+    background-color: #fff;
+    width: 33.3rem;
+    h1 {
+        font-size: 3rem;
+    }
+    a {
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        box-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.5);
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+        &:hover {
+            border-color: rgba(81, 102, 220, 0.5);
+            box-shadow: 0 0.1rem 0.3rem rgba(81, 102, 220, 0.5);
+        }
+    }
+}
+/*section2*/
+.section2-header {
+    width: 50rem;
+    margin: 0 auto;
+}
+.section2-header-text {
+    width: 70%;
+    margin: 0 auto;
+}
+.collapse-choices {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    a {
+        text-align: center;
+        width: 33.3%;
+        padding-bottom: 2rem;
+        transition: border-bottom 0.3s ease;
+        &:hover {
+            border-bottom: 3px solid #f95659;
+        }
+    }
+}
+.collapse-info {
+    width: 33.3rem;
+    margin-left: auto;
+    padding: 8rem 0 8rem 8rem;
+}
+/*section3*/
+.section3-header {
+    width: 30rem;
+    margin: 0 auto;
+}
+/* Footer */
+footer {
+    background-color: #242946;
+    padding: 0;
+}
+
+.f-section1 {
+    background-color: #5266df;
+    text-align: center;
+    color: #fff;
+}
