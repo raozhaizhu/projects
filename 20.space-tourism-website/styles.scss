@@ -29,15 +29,7 @@ main {
 .t-aaa {
     color: #aaa;
 }
-body main .tab-content {
-    display: none;
-}
-body main .now-active {
-    display: block;
-}
-body main .flex-active {
-    display: flex;
-}
+
 /*nav*/
 .round-funny {
     flex-shrink: 0;
@@ -188,8 +180,5 @@ body main .flex-active {
         color: #fff;
         border-bottom: 3px solid #fff;
     }
-}
-.planet-info-content {
-    display: none;
 }
 

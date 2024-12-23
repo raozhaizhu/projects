@@ -42,7 +42,7 @@
                 </div>
             </nav>
 
-            <section class="home tab-content now-active">
+            <section class="home tab-content">
                 <div class="text-part">
                     <h3>So, you want to travel to</h3>
                     <h2>SPACE</h2>
@@ -55,7 +55,7 @@
                 <a href="#" class="explore-btn d-flex justify-content-center align-items-center">EXPLORE</a>
             </section>
 
-            <section class="destination tab-content gap-5">
+            <section class="destination tab-content gap-5" hidden>
                 <div class="left-part d-flex flex-column justify-content-center">
                     <h2>
                         <span>01</span>
@@ -71,7 +71,7 @@
                         <a href="#" onclick="planetSwitch('titan')" class="planet-btn t-aaa">TITAN</a>
                     </div>
                     <div class="planet-info">
-                        <div class="planet-info-content moon flex-active flex-column">
+                        <div class="planet-info-content moon flex-column">
                             <h3>MOON</h3>
                             <p class="t-aaa">
                                 See our planet as you’ve never seen it before. A perfect relaxing trip away to help
@@ -90,7 +90,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="planet-info-content mars flex-column">
+                        <div class="planet-info-content mars flex-column" hidden>
                             <h3>Mars</h3>
                             <p class="t-aaa">
                                 Don’t forget to pack your hiking boots. You’ll need them to tackle Olympus Mons, the
@@ -109,7 +109,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="planet-info-content europa flex-column">
+                        <div class="planet-info-content europa flex-column" hidden>
                             <h3>Europa</h3>
                             <p class="t-aaa">
                                 The smallest of the four Galilean moons orbiting Jupiter, Europa is a winter lover’s
@@ -128,7 +128,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="planet-info-content titan flex-column">
+                        <div class="planet-info-content titan flex-column" hidden>
                             <h3>Titan</h3>
                             <p class="t-aaa">
                                 The only moon known to have a dense atmosphere other than Earth, Titan is a home away
@@ -151,7 +151,8 @@
                 </div>
             </section>
             <!--昨天做到这里-->
-            <section class="crew tab-content gap-5"></section>
+            <section class="crew tab-content gap-5" hidden></section>
+            <section class="technology tab-content gap-5" hidden></section>
         </main>
         <script src="script.js"></script>
     </body>
