@@ -1,0 +1,102 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: clamp(14px, 1vw, 18px);
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+  padding: 2.5rem 0;
+  background-image: url("home/background-home-desktop.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+nav {
+  padding: 0 0% 0 3.5%;
+}
+
+.round-funny {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #0b0f1a;
+  position: relative;
+  overflow: hidden;
+}
+
+.round-funny-inner {
+  width: 25px;
+  height: 25px;
+  background-color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0 0 99% 0;
+}
+
+.p2 {
+  left: auto;
+  right: 0;
+  border-radius: 0 0 0 99%;
+}
+
+.p3 {
+  top: auto;
+  bottom: 0;
+  border-radius: 0 99% 0 0;
+}
+
+.p4 {
+  top: auto;
+  bottom: 0;
+  left: auto;
+  right: 0;
+  border-radius: 99% 0 0 0;
+}
+
+.menu {
+  gap: 3vw;
+  padding: 2rem 15% 2rem 7.5%;
+  background-color: rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+}
+.menu a {
+  letter-spacing: 2px;
+}
+
+.white-line {
+  margin-left: 3.5%;
+  flex: 1 1 30%;
+  height: 1px;
+  background-color: #aaa;
+  position: relative;
+}
+.white-line::after {
+  position: absolute;
+  z-index: 10;
+  content: "";
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  width: 2vw;
+  height: 1px;
+  background-color: #aaa;
+}/*# sourceMappingURL=styles.css.map */
