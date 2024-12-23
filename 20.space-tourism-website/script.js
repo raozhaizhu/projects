@@ -72,11 +72,10 @@ const setBackgroundImage = () => {
     };
     const size = width < 768 ? 'mobile' : width < 1024 ? 'tablet' : 'desktop';
 
-    let activeTab = null;
-    if (homeTab.hidden === false) activeTab = 'home';
-    else if (destinationTab.hidden === false) activeTab = 'destination';
-    else if (crewTab.hidden === false) activeTab = 'crew';
-    else if (technologyTab.hidden === false) activeTab = 'technology';
+    const tabs = [homeTab, destinationTab, crewTab, technologyTab];
+    const tabNames = ['home', 'destination', 'crew', 'technology'];
+
+    let activeTab = tabNames.find((_, index) => !tabs[index].hidden) || null;
 
     if (activeTab) {
         main.style.backgroundImage = `url(${backgrounds[activeTab]}-${size}.jpg)`;
