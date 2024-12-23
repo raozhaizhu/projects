@@ -12,7 +12,7 @@
     </head>
 
     <body>
-        <main>
+        <main class="background-image">
             <nav class="d-flex justify-content-between align-items-center">
                 <div class="round-funny">
                     <div class="round-funny-inner p1"></div>
@@ -23,37 +23,137 @@
                 <div class="white-line"></div>
 
                 <div class="menu d-flex align-items-center">
-                    <a href="#" onclick="tabSwitch('home')">
+                    <a href="#" onclick="tabSwitch('home')" class="tab-btn">
                         <strong>00</strong>
                         HOME
                     </a>
-                    <a href="#" onclick="tabSwitch('home')">
+                    <a href="#" onclick="tabSwitch('destination')" class="tab-btn">
                         <strong>01</strong>
                         Destination
                     </a>
-                    <a href="#" onclick="tabSwitch('home')">
+                    <a href="#" onclick="tabSwitch('crew')" class="tab-btn">
                         <strong>02</strong>
                         Crew
                     </a>
-                    <a href="#" onclick="tabSwitch('home')">
+                    <a href="#" onclick="tabSwitch('technology')" class="tab-btn">
                         <strong>03</strong>
                         Technology
                     </a>
                 </div>
             </nav>
 
-            <section class="section-home"></section>
+            <section class="home tab-content now-active">
+                <div class="text-part">
+                    <h3>So, you want to travel to</h3>
+                    <h2>SPACE</h2>
+                    <p>
+                        Let’s face it; if you want to go to space, you might as well genuinely go to outer space and not
+                        hover kind of on the edge of it. Well sit back, and relax because we’ll give you a truly out of
+                        this world experience!
+                    </p>
+                </div>
+                <a href="#" class="explore-btn d-flex justify-content-center align-items-center">EXPLORE</a>
+            </section>
+
+            <section class="destination tab-content gap-5">
+                <div class="left-part d-flex flex-column justify-content-center">
+                    <h2>
+                        <span>01</span>
+                        Pick Your Destination
+                    </h2>
+                    <img src="destination/image-moon.png" alt="moon" class="planet-img" />
+                </div>
+                <div class="right-part d-flex flex-column justify-content-center">
+                    <div class="planet-list d-flex align-items-center gap-4">
+                        <a href="#" onclick="planetSwitch('moon')" class="planet-btn t-aaa pressed">MOON</a>
+                        <a href="#" onclick="planetSwitch('mars')" class="planet-btn t-aaa">MARS</a>
+                        <a href="#" onclick="planetSwitch('europa')" class="planet-btn t-aaa">EUROPA</a>
+                        <a href="#" onclick="planetSwitch('titan')" class="planet-btn t-aaa">TITAN</a>
+                    </div>
+                    <div class="planet-info">
+                        <div class="planet-info-content moon flex-active flex-column">
+                            <h3>MOON</h3>
+                            <p class="t-aaa">
+                                See our planet as you’ve never seen it before. A perfect relaxing trip away to help
+                                regain perspective and come back refreshed. While you’re there, take in some history by
+                                visiting the Luna 2 and Apollo 11 landing sites.
+                            </p>
+                            <hr />
+                            <div class="d-flex gap-5">
+                                <div class="distance">
+                                    <p class="t-aaa">Avg. distance</p>
+                                    <p class="value">384,400 km</p>
+                                </div>
+                                <div class="time">
+                                    <p class="t-aaa">Est. travel time</p>
+                                    <p class="value">3 days</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="planet-info-content mars flex-column">
+                            <h3>Mars</h3>
+                            <p class="t-aaa">
+                                Don’t forget to pack your hiking boots. You’ll need them to tackle Olympus Mons, the
+                                tallest planetary mountain in our solar system. It’s two and a half times the size of
+                                Everest!
+                            </p>
+                            <hr />
+                            <div class="d-flex gap-5">
+                                <div class="distance">
+                                    <p class="t-aaa">Avg. distance</p>
+                                    <p class="value">225 mil. km</p>
+                                </div>
+                                <div class="time">
+                                    <p class="t-aaa">Est. travel time</p>
+                                    <p class="value">9 months</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="planet-info-content europa flex-column">
+                            <h3>Europa</h3>
+                            <p class="t-aaa">
+                                The smallest of the four Galilean moons orbiting Jupiter, Europa is a winter lover’s
+                                dream. With an icy surface, it’s perfect for a bit of ice skating, curling, hockey, or
+                                simple relaxation in your snug wintery cabin.
+                            </p>
+                            <hr />
+                            <div class="d-flex gap-5">
+                                <div class="distance">
+                                    <p class="t-aaa">Avg. distance</p>
+                                    <p class="value">628 mil. km</p>
+                                </div>
+                                <div class="time">
+                                    <p class="t-aaa">Est. travel time</p>
+                                    <p class="value">3 years</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="planet-info-content titan flex-column">
+                            <h3>Titan</h3>
+                            <p class="t-aaa">
+                                The only moon known to have a dense atmosphere other than Earth, Titan is a home away
+                                from home (just a few hundred degrees colder!). As a bonus, you get striking views of
+                                the Rings of Saturn.
+                            </p>
+                            <hr />
+                            <div class="d-flex gap-5">
+                                <div class="distance">
+                                    <p class="t-aaa">Avg. distance</p>
+                                    <p class="value">1.6 bil. km</p>
+                                </div>
+                                <div class="time">
+                                    <p class="t-aaa">Est. travel time</p>
+                                    <p class="value">7 years</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--昨天做到这里-->
+            <section class="crew tab-content gap-5"></section>
         </main>
         <script src="script.js"></script>
     </body>
 </html>
 
-<!--
-
-
-
-
-
-  
-Features Pricing Contact 
--->
