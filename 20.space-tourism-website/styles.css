@@ -4,14 +4,21 @@
   padding: 0;
 }
 
+html,
+body {
+  height: 100%;
+  overflow-y: auto;
+}
+
 html {
-  font-size: clamp(14px, 1vw, 18px);
+  font-size: clamp(16px, 1vw, 30px);
 }
 
 body {
   width: 100%;
-  min-height: 100vh;
   color: #fff;
+  background-color: blue;
+  position: relative;
 }
 
 a {
@@ -22,13 +29,17 @@ a {
 main {
   width: 100%;
   height: 100%;
-  min-height: 100vh;
-  padding: 2.5rem 0 2.5rem 3.5%;
+  padding: 0 0 0 3.5%;
   background-image: url("home/background-home-desktop.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  justify-content: space-between;
 }
 
 .t-aaa {
@@ -77,6 +88,7 @@ main {
 }
 
 .menu {
+  display: flex;
   gap: 2vw;
   padding: 2rem 15% 2rem 7.5%;
   background: linear-gradient(to right, rgba(45, 80, 116, 0.2) 20%, rgba(83, 97, 124, 0.2) 60%, rgba(16, 39, 73, 0.2) 100%);
@@ -104,6 +116,37 @@ main {
   background-color: #aaa;
 }
 
+.show-menu {
+  display: none;
+  margin-right: 1rem;
+  font-size: 2rem;
+}
+
+.menu-modal {
+  position: absolute;
+  z-index: 99;
+  width: 50%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background-color: rgb(0, 0, 0);
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+.menu-modal a {
+  font-size: 1.5rem;
+}
+.menu-modal .close-menu-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
 /*home*/
 .text-part {
   width: 30%;
@@ -113,7 +156,7 @@ main {
   left: calc(3.5% + 50px);
 }
 .text-part h2 {
-  font-size: 10rem;
+  font-size: 8rem;
 }
 .text-part h3 {
   font-size: 1.8rem;
@@ -128,8 +171,8 @@ main {
 }
 
 .explore-btn {
-  width: 250px;
-  height: 250px;
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
   background-color: #fff;
   color: #000;
@@ -137,16 +180,17 @@ main {
   bottom: calc(3.5% + 50px);
   right: calc(3.5% + 50px);
   font-size: 2rem;
+  margin-bottom: 3rem;
 }
 
 /*Destination*/
 .destination {
+  margin-top: clamp(0px, 5%, 200px);
   display: flex;
   margin-left: calc(3.5% + 50px);
 }
 
 .left-part {
-  margin-top: 20%;
   width: 40%;
 }
 .left-part h2 {
@@ -163,7 +207,6 @@ main {
 }
 
 .right-part {
-  margin-top: 20%;
   width: 35%;
 }
 .right-part h3 {
@@ -191,4 +234,249 @@ main {
 .planet-list .pressed {
   color: #fff;
   border-bottom: 3px solid #fff;
+}
+
+/*crew*/
+.crew {
+  display: flex;
+  margin-left: calc(3.5% + 50px);
+  margin-top: clamp(0px, 5%, 200px);
+}
+
+.crew-left {
+  width: 35%;
+}
+
+.crew-card {
+  margin-top: clamp(0px, 10rem, 400px);
+}
+.crew-card h4 {
+  font-size: 3rem;
+  margin: 5% 0 5% 0;
+}
+.crew-card p {
+  letter-spacing: 1px;
+}
+
+.crew-right {
+  width: 65%;
+}
+.crew-right img {
+  width: 50%;
+}
+
+.dots {
+  margin-top: 10%;
+}
+
+.dot {
+  width: 1rem;
+  height: 1rem;
+  background-color: grey;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.be-focused {
+  width: 1.2rem;
+  height: 1.2rem;
+  background-color: #fff;
+}
+
+/*technology*/
+.technology {
+  display: flex;
+  margin-left: calc(3.5% + 50px);
+  margin-top: clamp(0px, 5%, 200px);
+  position: relative;
+}
+
+.technology-left {
+  width: 35%;
+}
+
+.technology-title {
+  margin: 0 0 15% 0;
+  text-transform: uppercase;
+}
+
+.technology-btns {
+  margin-right: 4rem;
+}
+
+.technology-btn {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background-color: #0b0e17;
+  color: #fff;
+  border: 1px solid #fff;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.technology-btn-pressed {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid transparent;
+}
+
+.technology-content h3 {
+  font-size: 3rem;
+  margin: 5% 0 5% 0;
+  text-transform: uppercase;
+}
+.technology-content p {
+  letter-spacing: 1px;
+  color: #f1f1f1;
+  font-weight: 300;
+}
+.technology-content .technology-content-title {
+  text-transform: uppercase;
+  font-size: 1.2rem;
+}
+
+.technology-right {
+  width: 45%;
+}
+.technology-right img {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: top;
+     object-position: top;
+}
+
+@media (max-width: 1200px) {
+  html {
+    font-size: 16px;
+  }
+  /*nav*/
+  .menu {
+    gap: 2vw;
+    padding: 2rem 15% 2rem 7.5%;
+    background: linear-gradient(to right, rgba(45, 80, 116, 0.2) 20%, rgba(83, 97, 124, 0.2) 60%, rgba(16, 39, 73, 0.2) 100%);
+    -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+  }
+  .menu a {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+  }
+  .white-line {
+    display: none;
+  }
+  /*home*/
+  .home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .home .text-part {
+    width: 60%;
+    text-align: center;
+    position: relative;
+    bottom: auto;
+    left: auto;
+    margin-bottom: 4rem;
+  }
+  .home .explore-btn {
+    position: relative;
+    bottom: auto;
+    right: auto;
+  }
+  /*destination*/
+  .destination {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: 0;
+  }
+  .destination h2 {
+    margin-bottom: 5rem;
+  }
+  .destination .left-part {
+    width: 80%;
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  .destination .right-part {
+    width: 80%;
+  }
+  .destination .distance-time,
+  .destination .planet-list {
+    justify-content: center;
+    align-items: center;
+  }
+  .destination .distance,
+  .destination .time,
+  .destination .planet-info-content {
+    text-align: center;
+  }
+  /*crew*/
+  .crew {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: 0;
+  }
+  .crew-card {
+    margin-top: 4rem;
+  }
+  .crew-card h4 {
+    font-size: 3rem;
+    margin: 5% 0 5% 0;
+  }
+  .crew-right,
+  .crew-left {
+    width: 80%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+  .crew-right img {
+    width: 100%;
+    max-height: 70rem;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: top;
+       object-position: top;
+  }
+  /*technology*/
+  .technology {
+    margin-left: 0;
+    justify-content: space-around;
+  }
+  .technology,
+  .technology-body,
+  .technology-left {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .technology-left,
+  .technology-right {
+    width: 80%;
+  }
+  .technology-btns {
+    flex-direction: row !important;
+    margin-bottom: 3rem;
+  }
+}
+@media (max-width: 900px) {
+  .show-menu {
+    display: block;
+  }
+  html {
+    font-size: 12px;
+  }
+  .menu {
+    display: none;
+  }
 }/*# sourceMappingURL=styles.css.map */

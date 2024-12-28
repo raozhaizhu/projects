@@ -12,6 +12,27 @@
     </head>
 
     <body>
+        <div class="menu-modal">
+            <div class="close-menu-btn">
+                <img src="shared/icon-close.svg" alt="close-menu-btn" onclick="closeModal()" />
+            </div>
+            <a href="#" onclick="tabSwitch('home')" class="tab-btn">
+                <strong>00</strong>
+                HOME
+            </a>
+            <a href="#" onclick="tabSwitch('destination')" class="tab-btn">
+                <strong>01</strong>
+                Destination
+            </a>
+            <a href="#" onclick="tabSwitch('crew')" class="tab-btn">
+                <strong>02</strong>
+                Crew
+            </a>
+            <a href="#" onclick="tabSwitch('technology')" class="tab-btn">
+                <strong>03</strong>
+                Technology
+            </a>
+        </div>
         <main class="background-image">
             <nav class="d-flex justify-content-between align-items-center">
                 <div class="round-funny">
@@ -22,7 +43,7 @@
                 </div>
                 <div class="white-line"></div>
 
-                <div class="menu d-flex align-items-center">
+                <div class="menu align-items-center">
                     <a href="#" onclick="tabSwitch('home')" class="tab-btn">
                         <strong>00</strong>
                         HOME
@@ -38,6 +59,11 @@
                     <a href="#" onclick="tabSwitch('technology')" class="tab-btn">
                         <strong>03</strong>
                         Technology
+                    </a>
+                </div>
+                <div class="show-menu">
+                    <a href="#" class="open-menu-btn">
+                        <img src="shared/icon-hamburger.svg" alt="open-menu-btn" onclick="openModal()" />
                     </a>
                 </div>
             </nav>
@@ -79,7 +105,7 @@
                                 visiting the Luna 2 and Apollo 11 landing sites.
                             </p>
                             <hr />
-                            <div class="d-flex gap-5">
+                            <div class="distance-time d-flex gap-5">
                                 <div class="distance">
                                     <p class="t-aaa">Avg. distance</p>
                                     <p class="value">384,400 km</p>
@@ -98,7 +124,7 @@
                                 Everest!
                             </p>
                             <hr />
-                            <div class="d-flex gap-5">
+                            <div class="distance-time d-flex gap-5">
                                 <div class="distance">
                                     <p class="t-aaa">Avg. distance</p>
                                     <p class="value">225 mil. km</p>
@@ -117,7 +143,7 @@
                                 simple relaxation in your snug wintery cabin.
                             </p>
                             <hr />
-                            <div class="d-flex gap-5">
+                            <div class="distance-time d-flex gap-5">
                                 <div class="distance">
                                     <p class="t-aaa">Avg. distance</p>
                                     <p class="value">628 mil. km</p>
@@ -136,7 +162,7 @@
                                 the Rings of Saturn.
                             </p>
                             <hr />
-                            <div class="d-flex gap-5">
+                            <div class="distance-time d-flex gap-5">
                                 <div class="distance">
                                     <p class="t-aaa">Avg. distance</p>
                                     <p class="value">1.6 bil. km</p>
@@ -150,11 +176,117 @@
                     </div>
                 </div>
             </section>
-            <!--昨天做到这里-->
-            <section class="crew tab-content gap-5" hidden></section>
-            <section class="technology tab-content gap-5" hidden></section>
+            <section class="crew tab-content gap-5" hidden>
+                <div class="crew-left d-flex flex-column">
+                    <h2>
+                        <span class="t-aaa">02</span>
+                        Meet your crew
+                    </h2>
+                    <div class="crew-card commander">
+                        <h3 class="t-aaa">Commander</h3>
+                        <h4 class="crew-name">Douglas Hurley</h4>
+                        <p class="t-aaa">
+                            Douglas Gerald Hurley is an American engineer, former Marine Corps pilot and former NASA
+                            astronaut. He launched into space for the third time as commander of Crew Dragon Demo-2.
+                        </p>
+                    </div>
+                    <div class="crew-card pilot" hidden>
+                        <h3 class="t-aaa">Pilot</h3>
+                        <h4 class="crew-name">Victor Glover</h4>
+                        <p class="t-aaa">
+                            Pilot on the first operational flight of the SpaceX Crew Dragon to the International Space
+                            Station. Glover is a commander in the U.S. Navy where he pilots an F/A-18.He was a crew
+                            member of Expedition 64, and served as a station systems flight engineer.
+                        </p>
+                    </div>
+                    <div class="crew-card engineer" hidden>
+                        <h3 class="t-aaa">Flight Engineer</h3>
+                        <h4 class="crew-name">Anousheh Ansari</h4>
+                        <p class="t-aaa">
+                            Anousheh Ansari is an Iranian American engineer and co-founder of Prodea Systems. Ansari was
+                            the fourth self-funded space tourist, the first self-funded woman to fly to the ISS, and the
+                            first Iranian in space.
+                        </p>
+                    </div>
+                    <div class="crew-card specialist" hidden>
+                        <h3 class="t-aaa">Mission Specialist</h3>
+                        <h4 class="crew-name">Mark Shuttleworth</h4>
+                        <p class="t-aaa">
+                            Mark Richard Shuttleworth is the founder and CEO of Canonical, the company behind the
+                            Linux-based Ubuntu operating system. Shuttleworth became the first South African to travel
+                            to space as a space tourist.
+                        </p>
+                    </div>
+                    <div class="dots d-flex align-items-center gap-3">
+                        <div class="dot be-focused" onclick="switchCrew('commander')"></div>
+                        <div class="dot" onclick="switchCrew('pilot')"></div>
+                        <div class="dot" onclick="switchCrew('engineer')"></div>
+                        <div class="dot" onclick="switchCrew('specialist')"></div>
+                    </div>
+                </div>
+                <div class="crew-right d-flex justify-content-center align-items-end">
+                    <img src="crew/image-douglas-hurley.png" alt="commander" class="crew-pic" />
+                </div>
+            </section>
+            <section class="technology tab-content gap-5" hidden>
+                <div class="technology-left">
+                    <h2 class="technology-title">
+                        <span class="t-aaa me-3">03</span>
+                        Space launch 101
+                    </h2>
+                    <div class="technology-body d-flex">
+                        <div class="technology-btns d-flex flex-column gap-4">
+                            <a
+                                href="#"
+                                class="technology-btn technology-btn-pressed"
+                                onclick="switchTechnology('vehicle')"
+                            >
+                                1
+                            </a>
+                            <a href="#" class="technology-btn" onclick="switchTechnology('capsule')">2</a>
+                            <a href="#" class="technology-btn" onclick="switchTechnology('spaceport')">3</a>
+                        </div>
+
+                        <div class="technology-content vehicle">
+                            <p class="technology-content-title">The terminology...</p>
+                            <h3>Launch vehicle</h3>
+                            <p>
+                                A launch vehicle or carrier rocket is a rocket-propelled vehicle used to carry a payload
+                                from Earth's surface to space, usually to Earth orbit or beyond. Our WEB-X carrier
+                                rocket is the most powerful in operation. Standing 150 metres tall, it's quite an
+                                awe-inspiring sight on the launch pad!
+                            </p>
+                        </div>
+                        <div class="technology-content capsule" hidden>
+                            <p class="technology-content-title">The terminology...</p>
+                            <h3>Space capsule</h3>
+                            <p>
+                                A space capsule is an often-crewed spacecraft that uses a blunt-body reentry capsule to
+                                reenter the Earth's atmosphere without wings. Our capsule is where you'll spend your
+                                time during the flight. It includes a space gym, cinema, and plenty of other activities
+                                to keep you entertained.
+                            </p>
+                        </div>
+                        <div class="technology-content spaceport" hidden>
+                            <p class="technology-content-title">The terminology...</p>
+                            <h3>Spaceport</h3>
+                            <p>
+                                A spaceport or cosmodrome is a site for launching (or receiving) spacecraft, by analogy
+                                to the seaport for ships or airport for aircraft. Based in the famous Cape Canaveral,
+                                our spaceport is ideally situated to take advantage of the Earth’s rotation for launch.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="technology-right d-flex justify-content-end align-items-start">
+                    <img
+                        class="technology-pic"
+                        src="technology/image-launch-vehicle-portrait.jpg"
+                        alt="launch vehicle"
+                    />
+                </div>
+            </section>
         </main>
         <script src="script.js"></script>
     </body>
 </html>
-
