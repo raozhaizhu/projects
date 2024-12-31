@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+        <link rel="stylesheet" href="styles.css" />
+        <title>summary-componente</title>
+    </head>
+
+    <body>
+        <main class="d-flex justify-content-center align-items-center">
+            <div class="wrapper ">
+                <div class="left d-flex flex-column justify-content-center align-items-center">
+                    <h2>Your Result</h2>
+                    <div class="score d-flex flex-column justify-content-center align-items-center">
+                        <h3>76</h3>
+                        <p class="dark-grey fw-bold">of / 100</p>
+                    </div>
+                    <h4>Great</h4>
+                    <p class="dark-grey">You scored higher than 65% of the people who have taken these tests.</p>
+                </div>
+                <div class="right">
+                    <h2>Summary</h2>
+                    <div class="score-progress score-progress-1 d-flex justify-content-between align-items-center">
+                        <div class="d-flex">
+                            <img src="images/icon-reaction.svg" class="me-2" />
+                            <p class="color-p color-p-1 fw-bold">Reaction</p>
+                        </div>
+                        <p class="light-grey">
+                            <span class="summary fw-bold text-black">80</span>
+                            / 100
+                        </p>
+                    </div>
+                    <div class="score-progress score-progress-2 d-flex justify-content-between align-items-center">
+                        <div class="d-flex">
+                            <img src="images/icon-memory.svg" class="me-2" />
+                            <p class="color-p color-p-2 fw-bold">Memory</p>
+                        </div>
+                        <p class="light-grey">
+                            <span class="summary fw-bold text-black">70</span>
+                            / 100
+                        </p>
+                    </div>
+                    <div class="score-progress score-progress-3 d-flex justify-content-between align-items-center">
+                        <div class="d-flex">
+                            <img src="images/icon-verbal.svg" class="me-2" />
+                            <p class="color-p color-p-3 fw-bold">Verbal</p>
+                        </div>
+                        <p class="light-grey">
+                            <span class="summary fw-bold text-black">80</span>
+                            / 100
+                        </p>
+                    </div>
+                    <div class="score-progress score-progress-4 d-flex justify-content-between align-items-center">
+                        <div class="d-flex">
+                            <img src="images/icon-visual.svg" class="me-2" />
+                            <p class="color-p color-p-4 fw-bold">Visual</p>
+                        </div>
+                        <p class="light-grey">
+                            <span class="summary fw-bold text-black">80</span>
+                            / 100
+                        </p>
+                    </div>
+                    <a class="btn-continue">Continue</a>
+                </div>
+            </div>
+        </main>
+        <script src="script.js"></script>
+    </body>
+</html>
