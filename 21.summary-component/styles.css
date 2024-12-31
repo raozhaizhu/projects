@@ -22,7 +22,10 @@ body {
 
 main {
   width: 100%;
-  height: auto;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /*wrapper*/
@@ -34,8 +37,6 @@ main {
   border-radius: 1.5rem;
   box-shadow: 1rem 1rem 3rem 0 #e8eefd;
   overflow: hidden;
-  align-items: stretch;
-  min-height: 100vh;
   justify-content: center;
   align-items: center;
 }
@@ -43,9 +44,8 @@ main {
 /*left*/
 .left {
   width: 23rem;
-  height: auto;
-  align-self: stretch;
   text-align: center;
+  align-self: stretch;
   background: linear-gradient(to bottom, #6542ff, #302cea);
   padding: 2.5rem 4rem;
   border-radius: 1.5rem;
@@ -149,6 +149,9 @@ a {
 }
 
 @media (max-width: 768px) {
+  main {
+    height: auto;
+  }
   .wrapper {
     flex-direction: column;
     border-radius: 0 0 1.5rem 1.5rem;
