@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+        <title>PLOT-SVG</title>
+        <style>
+            /* 清除默认样式 */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                font-family: Arial, sans-serif;
+            }
+            #tooltip {
+                position: absolute;
+                pointer-events: none;
+                background-color: rgba(164, 194, 225, 0.8);
+                padding: 1rem;
+                border-radius: 5px;
+                display: none; /* 初始隐藏 */
+            }
+        </style>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body>
+        <main class="flex justify-center items-center min-h-screen bg-[#708090]">
+            <div class="bg-[#fff]">
+                <h1 id="title" class="text-center text-[2rem]">Doping in Professional Bicycle Racing</h1>
+                <legend id="legend" class="text-center text-[1.2rem]">35 Fastest times up Alpe d'Huez</legend>
+                <svg id="chart"></svg>
+                <div id="tooltip"></div>
+            </div>
+        </main>
+        <script>
+            fetch('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/cyclist-data.json')
+                .then((response) => response.json())
+                .then((data) => {
+                    const w = 800;
+                    const h = 500;
+                    const padding = 50;
+
+                    // 时间字符串解析函数
+                    const parseTime = (timeStr) => {
+                        const [minutes, seconds] = timeStr.split(':').map(Number);
+                        return new Date(1970, 0, 1, 0, minutes, seconds);
+                    };
+
+                    const parsedData = data.map((d) => ({
+                        ...d,
+                        time: parseTime(d.Time),
+                    }));
+
+                    const xScale = d3
+                        .scaleLinear()
+                        .domain([d3.min(parsedData, (d) => d.Year) - 1, d3.max(parsedData, (d) => d.Year) + 1])
+                        .range([padding, w - padding]);
+
+                    const yScale = d3
+                        .scaleTime()
+                        .domain(d3.extent(parsedData, (d) => d.time))
+                        .range([padding, h - padding]);
+
+                    const chart = d3.select('#chart').attr('width', w).attr('height', h);
+
+                    const xAxis = d3.axisBottom(xScale).tickFormat(d3.format('d'));
+                    const yAxis = d3.axisLeft(yScale).tickFormat(d3.timeFormat('%M:%S'));
+
+                    chart
+                        .append('g')
+                        .attr('transform', `translate(0, ${h - padding})`)
+                        .attr('id', 'x-axis')
+                        .call(xAxis);
+
+                    chart.append('g').attr('transform', `translate(${padding}, 0)`).attr('id', 'y-axis').call(yAxis);
+
+                    const tooltip = d3.select('#tooltip');
+
+                    chart
+                        .selectAll('circle')
+                        .data(parsedData)
+                        .enter()
+                        .append('circle')
+                        .attr('cx', (d) => xScale(d.Year))
+                        .attr('cy', (d) => yScale(d.time))
+                        .attr('r', 5)
+                        .attr('class', 'dot')
+                        .attr('data-xvalue', (d) => d.Year)
+                        .attr('data-yvalue', (d) => d.time)
+                        .style('fill', 'blue')
+                        .on('mouseover', (event, d) => {
+                            tooltip
+                                .style('display', 'block')
+                                .style('top', `${event.pageY - 50}px`)
+                                .style('left', `${event.pageX + 10}px`)
+                                .html(
+                                    `Name: ${d.Name}<br>Year: ${d.Year}<br>Time: ${d.Time}<br>Doping: ${
+                                        d.Doping || 'No doping allegations'
+                                    }`
+                                )
+                                .attr('data-year', d.Year);
+                        })
+                        .on('mouseout', () => {
+                            tooltip.style('display', 'none');
+                        });
+                });
+        </script>
+        <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+    </body>
+</html>
