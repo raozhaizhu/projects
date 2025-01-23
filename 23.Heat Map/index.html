@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+        <title>Heat Map</title>
+        <style>
+            /* 清除默认样式 */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                font-family: Arial, sans-serif;
+            }
+            #tooltip {
+                position: absolute;
+                pointer-events: none;
+                background-color: rgba(164, 194, 225, 0.8);
+                padding: 1rem;
+                border-radius: 5px;
+                display: none; /* 初始隐藏 */
+            }
+        </style>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body>
+        <main class="flex justify-center items-center min-h-screen bg-[#708090]">
+            <div class="bg-[#fff]">
+                <h1 id="title" class="text-center text-[2rem]">Monthly Global Land-Surface Temperature</h1>
+                <legend id="description" class="text-center text-[1.2rem]">1753 - 2015: base temperature 8.66℃</legend>
+                <svg id="chart"></svg>
+                <div id="tooltip"></div>
+                <div id="legend"></div>
+            </div>
+        </main>
+        <script>
+            fetch('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/global-temperature.json')
+                .then((response) => response.json())
+                .then((data) => {
+                    const w = 1000;
+                    const h = 500;
+                    const padding = 100;
+
+                    const basetemp = data.baseTemperature;
+                    const parsedData = data.monthlyVariance;
+
+                    const months = [
+                        'January',
+                        'February',
+                        'March',
+                        'April',
+                        'May',
+                        'June',
+                        'July',
+                        'August',
+                        'September',
+                        'October',
+                        'November',
+                        'December',
+                    ];
+
+                    // Scales
+                    const xScale = d3
+                        .scaleLinear()
+                        .domain(d3.extent(parsedData, (d) => d.year))
+                        .range([padding, w - padding]);
+
+                    const yScale = d3
+                        .scaleBand()
+                        .domain(d3.range(1, 13)) // 1 到 12 映射
+                        .range([padding, h - padding]);
+
+                    // 定义颜色数组，从深蓝到浅蓝再到浅黄、橘色、深红
+                    const colorScale = d3
+                        .scaleQuantize()
+                        .domain(d3.extent(parsedData, (d) => d.variance)) // 动态计算数据范围
+                        .range([
+                            '#08306B', // 深蓝
+                            '#6BAED6', // 浅蓝
+                            '#FFFFB2', // 浅黄
+                            '#FE9929', // 橘色
+                            '#D7301F', // 深红
+                        ]);
+
+                    // Chart
+                    const chart = d3.select('#chart').attr('width', w).attr('height', h);
+
+                    // Axes
+                    const xAxis = d3.axisBottom(xScale).tickFormat(d3.format('d'));
+                    const yAxis = d3.axisLeft(yScale).tickFormat((d) => months[d - 1]);
+
+                    chart
+                        .append('g')
+                        .attr('transform', `translate(0, ${h - padding})`)
+                        .attr('id', 'x-axis')
+                        .call(xAxis);
+
+                    chart.append('g').attr('transform', `translate(${padding}, 0)`).attr('id', 'y-axis').call(yAxis);
+
+                    // Tooltip
+                    const tooltip = d3.select('#tooltip');
+
+                    chart
+                        .selectAll('rect')
+                        .data(parsedData)
+                        .enter()
+                        .append('rect')
+                        .attr('x', (d) => xScale(d.year))
+                        .attr('y', (d) => yScale(d.month))
+                        .attr(
+                            'width',
+                            (w - 2 * padding) /
+                                (d3.extent(parsedData, (d) => d.year)[1] - d3.extent(parsedData, (d) => d.year)[0])
+                        )
+                        .attr('height', yScale.bandwidth())
+                        .attr('class', 'cell')
+                        .attr('data-month', (d) => d.month - 1)
+                        .attr('data-year', (d) => d.year)
+                        .attr('data-temp', (d) => (d.variance + basetemp).toFixed(2))
+                        .style('fill', (d) => colorScale(d.variance))
+                        .on('mouseover', (event, d) => {
+                            tooltip
+                                .style('display', 'block')
+                                .style('top', `${event.pageY - 50}px`)
+                                .style('left', `${event.pageX + 10}px`)
+                                .html(
+                                    `Year: ${d.year} - ${months[d.month - 1]}<br>
+                                     Temp: ${(d.variance + basetemp).toFixed(2)}℃<br>
+                                     Variance: ${d.variance.toFixed(2)}`
+                                )
+                                .attr('data-year', d.year);
+                        })
+                        .on('mouseout', () => {
+                            tooltip.style('display', 'none');
+                        });
+
+                    // 图例尺寸
+                    const legendWidth = 300;
+                    const legendHeight = 20;
+
+                    // 定义位置偏移
+                    const margin = { top: 30, right: 50, bottom: 30, left: 50 }; // 适当的边距设置
+
+                    // 创建颜色比例尺
+                    const legendScale = d3
+                        .scaleLinear()
+                        .domain(d3.extent(parsedData, (d) => d.variance)) // 根据 variance 设置 domain
+                        .range([0, legendWidth]); // 颜色条的宽度
+
+                    // 创建坐标轴
+                    const legendAxis = d3.axisBottom(legendScale).ticks(5);
+
+                    // 创建图例容器，并设置位置
+                    const legend = d3
+                        .select('#legend')
+                        .append('svg')
+                        .attr('width', legendWidth + margin.left + margin.right) // 添加左右边距
+                        .attr('height', legendHeight + 40 + margin.top + margin.bottom) // 添加上下边距
+                        .attr('x', margin.left) // 设置图例的水平位置，避免贴边
+                        .attr('y', margin.top); // 设置图例的垂直位置，避免被遮挡
+
+                    // 添加渐变色的矩形条，通过 colorScale 获取每个位置的颜色
+                    for (let i = 0; i <= legendWidth; i++) {
+                        legend
+                            .append('rect')
+                            .attr('x', margin.left + i) // 为每个矩形设置 X 坐标
+                            .attr('y', margin.top)
+                            .attr('width', 1) // 每个矩形的宽度为 1，形成渐变效果
+                            .attr('height', legendHeight)
+                            .attr('fill', colorScale(legendScale.invert(i))); // 使用 colorScale 根据位置设置颜色
+                    }
+
+                    // 添加坐标轴，并把它放置在颜色条的下方
+                    legend
+                        .append('g')
+                        .attr('transform', `translate(${margin.left}, ${legendHeight + margin.top})`) // 移动坐标轴
+                        .call(legendAxis);
+                });
+        </script>
+        <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+    </body>
+</html>
