@@ -141,42 +141,52 @@
                     const legendWidth = 300;
                     const legendHeight = 20;
 
-                    // 定义位置偏移
-                    const margin = { top: 30, right: 50, bottom: 30, left: 50 }; // 适当的边距设置
+                    // 定义边距
+                    const margin = { top: 30, right: 50, bottom: 30, left: 50 };
 
                     // 创建颜色比例尺
-                    const legendScale = d3
-                        .scaleLinear()
-                        .domain(d3.extent(parsedData, (d) => d.variance)) // 根据 variance 设置 domain
-                        .range([0, legendWidth]); // 颜色条的宽度
+                    const varianceExtent = d3.extent(parsedData, (d) => d.variance);
+                    const legendScale = d3.scaleLinear().domain(varianceExtent).range([0, legendWidth]);
 
-                    // 创建坐标轴
-                    const legendAxis = d3.axisBottom(legendScale).ticks(5);
-
-                    // 创建图例容器，并设置位置
+                    // 创建 SVG 容器
                     const legend = d3
                         .select('#legend')
                         .append('svg')
-                        .attr('width', legendWidth + margin.left + margin.right) // 添加左右边距
-                        .attr('height', legendHeight + 40 + margin.top + margin.bottom) // 添加上下边距
-                        .attr('x', margin.left) // 设置图例的水平位置，避免贴边
-                        .attr('y', margin.top); // 设置图例的垂直位置，避免被遮挡
+                        .attr('width', legendWidth + margin.left + margin.right)
+                        .attr('height', legendHeight + 40 + margin.top + margin.bottom);
 
-                    // 添加渐变色的矩形条，通过 colorScale 获取每个位置的颜色
-                    for (let i = 0; i <= legendWidth; i++) {
-                        legend
-                            .append('rect')
-                            .attr('x', margin.left + i) // 为每个矩形设置 X 坐标
-                            .attr('y', margin.top)
-                            .attr('width', 1) // 每个矩形的宽度为 1，形成渐变效果
-                            .attr('height', legendHeight)
-                            .attr('fill', colorScale(legendScale.invert(i))); // 使用 colorScale 根据位置设置颜色
-                    }
+                    // 创建线性渐变定义
+                    const defs = legend.append('defs');
+                    const gradient = defs
+                        .append('linearGradient')
+                        .attr('id', 'gradient')
+                        .attr('x1', '0%')
+                        .attr('x2', '100%')
+                        .attr('y1', '0%')
+                        .attr('y2', '0%');
 
-                    // 添加坐标轴，并把它放置在颜色条的下方
+                    // 动态生成渐变颜色
+                    colorScale.range().forEach((color, i) => {
+                        gradient
+                            .append('stop')
+                            .attr('offset', `${(i / (colorScale.range().length - 1)) * 100}%`)
+                            .attr('stop-color', color);
+                    });
+
+                    // 添加渐变色矩形
+                    legend
+                        .append('rect')
+                        .attr('x', margin.left)
+                        .attr('y', margin.top)
+                        .attr('width', legendWidth)
+                        .attr('height', legendHeight)
+                        .attr('fill', 'url(#gradient)');
+
+                    // 添加坐标轴
+                    const legendAxis = d3.axisBottom(legendScale).ticks(5);
                     legend
                         .append('g')
-                        .attr('transform', `translate(${margin.left}, ${legendHeight + margin.top})`) // 移动坐标轴
+                        .attr('transform', `translate(${margin.left}, ${legendHeight + margin.top})`)
                         .call(legendAxis);
                 });
         </script>

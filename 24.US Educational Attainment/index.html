@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+        <title>US Educational Attainment</title>
+        <style>
+            /* 清除默认样式 */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                font-family: Arial, sans-serif;
+            }
+            #tooltip {
+                position: absolute;
+                pointer-events: none;
+                background-color: rgba(164, 194, 225, 0.8);
+                padding: 1rem;
+                border-radius: 5px;
+                display: none; /* 初始隐藏 */
+            }
+        </style>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://d3js.org/topojson.v3.min.js"></script>
+    </head>
+    <body>
+        <main class="flex justify-center items-center min-h-screen bg-[#708090]">
+            <div class="bg-[#fff] p-6 rounded-lg shadow-lg">
+                <h1 id="title" class="text-center text-[2rem] mb-4">United States Educational Attainment</h1>
+                <h2 id="description" class="text-center text-[1.2rem] mb-4">
+                    Percentage of adults age 25 and older with a bachelor's degree or higher (2010-2014)
+                </h2>
+                <svg id="chart"></svg>
+                <div id="tooltip"></div>
+                <div id="legend"></div>
+            </div>
+        </main>
+        <script>
+            Promise.all([
+                fetch('./education.json').then((response) => response.json()),
+                fetch('./counties.json').then((response) => response.json()),
+            ])
+                .then(([educationData, countiesData]) => {
+                    console.log('Education Data:', educationData);
+                    console.log('Counties Data:', countiesData);
+
+                    // SVG 宽高和边距
+                    const w = 960;
+                    const h = 600;
+                    const margin = 50;
+
+                    // 创建 SVG 容器并设置 viewBox
+                    const svg = d3
+                        .select('#chart')
+                        .attr('viewBox', `0 0 ${w + margin * 2} ${h + margin * 2}`) // 扩展 viewBox 包含边距
+                        .attr('width', w + margin * 2)
+                        .attr('height', h + margin * 2)
+                        .attr('preserveAspectRatio', 'xMidYMid meet');
+
+                    // 创建一个偏移组，绘制内容留出边距
+                    const g = svg.append('g').attr('transform', `translate(${margin}, ${margin})`);
+
+                    // 假设后续绘图使用 countiesData 绘制地图
+                    const path = d3.geoPath(); // D3 地理路径生成器
+                    const counties = topojson.feature(countiesData, countiesData.objects.counties);
+                    console.log('Counties topojson data:', counties);
+                    const tooltip = d3.select('#tooltip');
+                    // 动态计算阈值和颜色比例尺
+                    const educationValues = educationData.map((d) => d.bachelorsOrHigher).filter((d) => !isNaN(d));
+                    const minValue = d3.min(educationValues);
+                    const maxValue = d3.max(educationValues);
+
+                    // 生成包含min和max的阈值数组（7个区间需要8个分割点）
+                    const thresholds = Array.from({ length: 8 }, (_, i) => minValue + ((maxValue - minValue) * i) / 7);
+
+                    // 创建颜色比例尺（使用7个颜色）
+                    const colorScale = d3
+                        .scaleThreshold()
+                        .domain(thresholds.slice(1, -1)) // 排除首尾的min/max
+                        .range(['#e5f5e0', '#c7e9c0', '#a1d99b', '#74c476', '#41ab5d', '#238b45', '#006d2c']);
+
+                    // 绘制地图
+                    g.selectAll('path')
+                        .data(counties.features)
+                        .enter()
+                        .append('path')
+                        .attr('d', path)
+                        .attr('class', 'county') // 设置 class 方便后续样式设置
+                        .attr('data-fips', (d) => d.id) // 设置 data-fips 属性方便后续绑定数据
+                        .attr('data-education', (d) => {
+                            const id = d.id; // 地区 ID
+                            const eduData = educationData.find((e) => e.fips === id); // 匹配教育数据
+                            return eduData ? eduData.bachelorsOrHigher : 0; // 设置教育数据值
+                        })
+                        .attr('data-county', (d) => {
+                            const id = d.id; // 地区 ID
+                            const eduData = educationData.find((e) => e.fips === id); // 匹配教育数据
+                            return eduData ? eduData.area_name : 0; // 设置教育数据值
+                        })
+
+                        .attr('fill', (d) => {
+                            const eduData = educationData.find((e) => e.fips === d.id);
+                            return colorScale(eduData ? eduData.bachelorsOrHigher : 0);
+                        })
+                        .attr('stroke', '#333') // 设置边界颜色
+                        .on('mouseover', (event, d) => {
+                            const education = d3.select(event.target).attr('data-education');
+                            const county = d3.select(event.target).attr('data-county');
+                            tooltip
+                                .style('display', 'block')
+                                .attr('data-education', education)
+                                .style('top', `${event.pageY - 10}px`)
+                                .style('left', `${event.pageX + 10}px`).html(`Education: ${education}%<br>
+                                County: ${county}`);
+                        })
+                        .on('mouseout', () => {
+                            tooltip.style('display', 'none');
+                        });
+                    // 创建图例 -------------------------------------------------
+                    const legendWidth = 600;
+                    const legendHeight = 50;
+                    const legendMargin = { top: 20, right: 30, bottom: 30, left: 30 };
+
+                    // 创建图例容器
+                    const legendSvg = d3
+                        .select('#legend')
+                        .append('svg')
+                        .attr('width', legendWidth + legendMargin.left + legendMargin.right)
+                        .attr('height', legendHeight + legendMargin.top + legendMargin.bottom)
+                        .append('g')
+                        .attr('transform', `translate(${legendMargin.left},${legendMargin.top})`);
+
+                    // 创建线性比例尺（用于轴和颜色块定位）
+                    const xScale = d3.scaleLinear().domain([minValue, maxValue]).range([0, legendWidth]);
+
+                    // 绘制颜色条
+                    thresholds.slice(0, -1).forEach((start, i) => {
+                        const end = thresholds[i + 1];
+                        legendSvg
+                            .append('rect')
+                            .attr('x', xScale(start))
+                            .attr('width', xScale(end) - xScale(start))
+                            .attr('height', 20)
+                            .attr('fill', colorScale(end)); // 使用区间上限作为颜色参考
+                    });
+
+                    // 添加坐标轴
+                    const xAxis = d3.axisBottom(xScale).tickValues(thresholds).tickFormat(d3.format('.1f'));
+
+                    legendSvg
+                        .append('g')
+                        .attr('transform', `translate(0,20)`)
+                        .call(xAxis)
+                        .selectAll('text')
+                        .style('text-anchor', 'middle')
+                        .attr('dx', '-0.5em');
+                })
+                .catch((error) => {
+                    console.error('Error loading JSON data:', error);
+                });
+        </script>
+
+        <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+    </body>
+</html>

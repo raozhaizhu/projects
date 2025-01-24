@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #container {
+                font-family: Arial, sans-serif;
+            }
+            #title {
+                text-align: center;
+                font-size: 2em;
+            }
+            #tooltip {
+                position: absolute;
+                padding: 10px;
+                background: rgba(0, 0, 0, 0.8);
+                color: #fff;
+                border-radius: 5px;
+                pointer-events: none;
+                opacity: 0;
+            }
+            .legend-item {
+                stroke: #333;
+                stroke-width: 0.5;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <h1 id="title">Video Game Sales</h1>
+            <p id="description">Top 100 Most Sold Video Games Grouped by Platform</p>
+            <div id="legend"></div>
+            <div id="tooltip"></div>
+        </div>
+
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+        <script>
+            const width = 1600,
+                height = 800;
+            const svg = d3.select('#container').append('svg').attr('width', width).attr('height', height);
+            d3.json('https://cdn.freecodecamp.org/testable-projects-fcc/data/tree_map/video-game-sales-data.json').then(
+                (data) => {
+                    const root = d3
+                        .hierarchy(data)
+                        .sum((d) => d.value)
+                        .sort((a, b) => b.value - a.value);
+                    d3.treemap().size([width, height]).padding(1)(root);
+
+                    const categories = [...new Set(root.leaves().map((d) => d.data.category))];
+                    const color = d3.scaleOrdinal().domain(categories).range(d3.schemeCategory10);
+
+                    const tiles = svg
+                        .selectAll('g')
+                        .data(root.leaves())
+                        .enter()
+                        .append('g')
+                        .attr('transform', (d) => `translate(${d.x0},${d.y0})`); // 关键点：统一定位
+
+                    // 绘制矩形
+                    tiles
+                        .append('rect')
+                        .attr('class', 'tile')
+                        .attr('width', (d) => d.x1 - d.x0)
+                        .attr('height', (d) => d.y1 - d.y0)
+                        .attr('data-name', (d) => d.data.name)
+                        .attr('data-category', (d) => d.data.category)
+                        .attr('data-value', (d) => d.data.value)
+                        .attr('fill', (d) => color(d.data.category));
+
+                    // 添加文本
+                    tiles
+                        .append('text')
+                        .attr('class', 'tile-text')
+                        .attr('x', 5)
+                        .attr('y', 15)
+                        .text((d) => d.data.name)
+                        .style('font-size', '10px')
+                        .style('fill', 'white')
+                        .style('font-weight', 'bold');
+
+                    const tooltip = d3.select('#tooltip');
+                    tiles
+                        .on('mouseover', (event, d) => {
+                            tooltip
+                                .style('opacity', 0.9)
+                                .style('left', event.pageX + 10 + 'px')
+                                .style('top', event.pageY - 25 + 'px')
+                                .attr('data-value', d.data.value)
+                                .html(`名称:${d.data.name}<br>平台:${d.data.category}<br>销售量:${d.data.value}M`);
+                        })
+                        .on('mouseout', () => {
+                            tooltip.style('opacity', 0);
+                        });
+                    const legend = d3.select('#legend').append('svg').attr('width', 300).attr('height', 200);
+
+                    legend
+                        .selectAll('rect')
+                        .data(categories)
+                        .enter()
+                        .append('rect')
+                        .attr('class', 'legend-item')
+                        .attr('x', 10)
+                        .attr('y', (d, i) => i * 25)
+                        .attr('width', 20)
+                        .attr('height', 20)
+                        .attr('fill', (d) => color(d));
+
+                    legend
+                        .selectAll('text')
+                        .data(categories)
+                        .enter()
+                        .append('text')
+                        .attr('x', 40)
+                        .attr('y', (d, i) => i * 25 + 15)
+                        .text((d) => d)
+                        .style('font-size', '14px');
+                }
+            );
+        </script>
+        <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+    </body>
+</html>
+
