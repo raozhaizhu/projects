@@ -1,0 +1,2 @@
+./insert_data.sh
+./queries.sh
